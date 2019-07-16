@@ -1,0 +1,108 @@
+<resources>
+
+
+
+    <string name="dominio">192.168.1.102</string>
+
+
+
+    <string name="app_name">Bets</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+
+    <string name="login_activity">Bolão</string>
+
+
+
+    <!-- Drawer Actions -->
+    <string name="action_https">HTTPS</string>
+    <string name="action_refresh">Atualizar</string>
+    <string name="action_autologin">Login automático</string>
+    <string name="action_close">Fechar</string>
+    <string name="action_exit">Sair</string>
+
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+
+
+    <!-- Activity Login -->
+    <string name="lb_login">Login</string>
+
+
+
+    <!-- Buttons -->
+    <string name="btn_entrar">ENTRAR</string>
+    <string name="btn_configs">CONFIGURAÇÕES</string>
+    <string name="btn_tentar_novamente">TENTAR NOVAMENTE"</string>
+
+
+
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+
+
+
+    <!-- Content Descriptions -->
+    <string name="img_login_user">Icone de usuário da tela de login.</string>
+    <string name="img_wifi_off">Icone que indica que o dispositive está sem conexão com a internet.</string>
+    <string name="img_campeonato_flag">Mostra a bandeira do campeonato.</string>
+    <string name="img_time_flag">Mostra a bandeira/brasão da equipe.</string>
+
+
+
+    <!-- Mensagens de erro -->
+    <string name="no_conn_error_title">Sem conexão com a internet!</string>
+    <string name="no_conn_error_body">
+        Verifique se o Wi-fi ou Dados Módeis estão ligados!
+        Você pode ir até as configurações para tivá-los, caso necessário!
+    </string>
+
+    <string name="cod_000_title">Erro desconhecido!</string>
+    <string name="cod_000_body">
+        O servidor retornou um código de erro que não pode ser processado pelo dispositivo!
+    </string>
+
+    <string name="cod_111_title">Erro interno!</string>
+    <string name="cod_111_body">
+        O aplicativo está tendo dificuldades para se conectar com o servidor!
+    </string>
+
+    <string name="cod_404_title">Url não encontrada!</string>
+    <string name="cod_404_body">
+        O dispositivo tentou se conectar com uma url que não existe no servidor!
+    </string>
+
+    <string name="cod_500_title">Erro interno no servidor!</string>
+    <string name="cod_500_body">
+        O servisor está com dificuldades para fornecer os dados. Tente novamente, mais tarde!
+    </string>
+
+
+
+    <!-- Alertas de Toast -->
+    <string name="alert_http_response_empty">O servidor não enviou nenhuma resposta.</string>
+    <string name="alert_http_000">O servidor não enviou nenhuma resposta.</string>
+    <string name="alert_http_401">O email ou senha podem está incorretos.</string>
+    <string name="alert_http_404">Servidor não encontrado.</string>
+    <string name="alert_http_512">Erro no processamento da requisição.</string>
+
+    <string name="alert_auth_ok">Autorizado!</string>
+    <string name="alert_auth_error">Erro ao registrar as credenciais.</string>
+    <string name="alert_db_empty">Erro ao recuperar os dados primários.</string>
+
+    <string name="alert_email_empty">É necessário fornecer um email.</string>
+    <string name="alert_password_empty">É necessário fornecer uma senha de 6 dígitos!</string>
+    <string name="alert_invalid_credentials">Credenciais inválidas!</string>
+
+
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorPrimary">#263238</color>
+    <color name="colorAccent">#F44336</color>
+
+    <color name="activityBackground">#607D8B</color>
+
+    <color name="textColorPrimary">#263238</color>
+    <color name="textColorSecondary">#546E7A</color>
+    <color name="textColorTertiary">#90A4AE</color>
+
+    <color name="textColorPrimaryInverse">#ECEFF1</color>
+    <color name="textColorSecondaryInverse">#90A4AE</color>
+    <color name="textColorTertiaryInverse">#546E7A</color>
+
+</resources>

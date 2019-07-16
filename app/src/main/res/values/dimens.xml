@@ -1,0 +1,81 @@
+<resources>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+
+    <!-- Activity Login -->
+    <dimen name="bg_icon_login_size">64dp</dimen>
+    <dimen name="bg_icon_login_size_large">128dp</dimen>
+
+    <dimen name="icon_login_size">24dp</dimen>
+    <dimen name="icon_login_size_large">48dp</dimen>
+
+    <dimen name="card_top_margin">32dp</dimen>
+    <dimen name="card_top_margin_large">64dp</dimen>
+
+    <dimen name="btn_top_margin">10dp</dimen>
+    <dimen name="btn_top_margin_large">14dp</dimen>
+
+
+
+    <dimen name="card_hmargin">16dp</dimen>
+    <dimen name="card_hmargin_large">32dp</dimen>
+
+    <dimen name="card_vmargin">16dp</dimen>
+    <dimen name="card_vmargin_large">32dp</dimen>
+
+    <dimen name="card_hpadding">16dp</dimen>
+    <dimen name="card_hpadding_large">32dp</dimen>
+
+    <dimen name="card_vpadding">16dp</dimen>
+    <dimen name="card_vpadding_large">32dp</dimen>
+
+    <dimen name="card_sobra_hpadding">4dp</dimen>
+    <dimen name="card_sobra_hpadding_large">8dp</dimen>
+
+    <dimen name="card_sobra_vpadding">4dp</dimen>
+    <dimen name="card_sobra_vpadding_large">8dp</dimen>
+
+
+
+    <dimen name="badge_corner">6dp</dimen>
+    <dimen name="badge_corner_large">12dp</dimen>
+
+
+
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_21">21dp</dimen>
+
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_21">16dp</dimen>
+
+
+
+    <!-- Text Sizes -->
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_21">21sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+
+
+
+    <!-- Image Sizes -->
+    <dimen name="img_rounded_size">36dp</dimen>
+    <dimen name="img_rounded_size_large">48dp</dimen>
+
+
+</resources>

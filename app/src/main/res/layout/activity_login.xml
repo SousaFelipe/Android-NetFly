@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_dark"
+    tools:context=".view.LoginActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <FrameLayout
+                android:layout_width="@dimen/bg_icon_login_size"
+                android:layout_height="@dimen/bg_icon_login_size"
+                android:layout_gravity="top|center_horizontal"
+                android:background="@drawable/bg_login_icon_user"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_user_dark"
+                    android:contentDescription="@string/img_login_user"/>
+
+            </FrameLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/card_hmargin"
+                android:layout_marginTop="@dimen/card_top_margin"
+                android:layout_marginEnd="@dimen/card_hmargin"
+                android:focusable="true"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/card_hpadding"
+                    android:paddingTop="@dimen/card_vpadding"
+                    android:paddingEnd="@dimen/card_hpadding"
+                    android:paddingBottom="@dimen/card_vpadding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/card_vpadding"
+                        android:layout_marginBottom="@dimen/card_vpadding"
+                        android:textColor="@color/textColorPrimary"
+                        android:text="@string/lb_login"
+                        android:textSize="@dimen/text_32"/>
+
+                    <EditText
+                        android:id="@+id/input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/card_sobra_vpadding"
+                        android:layout_marginTop="@dimen/card_hpadding"
+                        android:layout_marginEnd="@dimen/card_sobra_vpadding"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="96"
+                        android:background="@drawable/bg_edittext_dark"/>
+
+                    <EditText
+                        android:id="@+id/input_senha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/card_sobra_vpadding"
+                        android:layout_marginTop="@dimen/card_hpadding"
+                        android:layout_marginEnd="@dimen/card_sobra_vpadding"
+                        android:hint="@string/senha"
+                        android:inputType="numberPassword"
+                        android:maxLength="6"
+                        android:background="@drawable/bg_edittext_dark"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/btn_top_margin"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="@color/textColorPrimaryInverse"
+                        android:text="@string/btn_entrar"
+                        android:textSize="@dimen/text_16"
+                        android:onClick="entrar"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/content_loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_gradient_dark">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_vpadding"
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/dominio"
+            android:textColor="@color/textColorSecondaryInverse"
+            android:textSize="@dimen/text_14"/>
+
+    </FrameLayout>
+
+</LinearLayout>

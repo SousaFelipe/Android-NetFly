@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_red">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_hmargin"
+        android:layout_marginEnd="@dimen/card_hmargin"
+        android:padding="@dimen/card_hpadding"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_wifi_off"
+            android:contentDescription="@string/img_wifi_off"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_vmargin"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/no_conn_error_title"
+            android:textSize="@dimen/text_18"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_vmargin"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/no_conn_error_body"
+            android:textSize="@dimen/text_14"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/btn_config_wifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_vmargin"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="@string/btn_configs"
+            android:textColor="@color/textColorPrimaryInverse"
+            android:textSize="@dimen/text_16"/>
+
+        <Button
+            android:id="@+id/btn_tryagain_wifi"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_outline_dark"
+            android:text="@string/btn_tentar_novamente"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_16"/>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>
