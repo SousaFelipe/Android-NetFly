@@ -3,78 +3,38 @@ package net.kingbets.cambista.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.Toast;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.remote.responses.CampeonatoResponse;
 import net.kingbets.cambista.utils.URL;
-import net.kingbets.cambista.view.adapters.CampeonatoAdapter;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.internal.annotations.EverythingIsNonNull;
+import net.kingbets.cambista.view.fragments.CampeonatosFragmnet;
+import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-
-
-    private Callback callback = new Callback() {
-
-        @EverythingIsNonNull
-        @Override
-        public void onFailure(Call call, IOException e) {
-            alertByCode(MainActivity.this, 404);
-            setLoaderVisibility(false);
-        }
-
-        @EverythingIsNonNull
-        @Override
-        public void onResponse(Call call, Response response) throws IOException {
-
-            if (response.isSuccessful()) {
-                if (response.body() != null) {
-                    onSuccessResponse( CampeonatoResponse.receive(response.body().string()) );
-                }
-                else {
-                    alert(MainActivity.this, R.string.alert_http_response_empty);
-                }
-            }
-            else {
-                alertByCode(MainActivity.this, response.code());
-            }
-
-            setLoaderVisibility(false);
-        }
-    };
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        setLoader(R.id.content_loader);
+
+        loadFragment(CampeonatosFragmnet.newInstance(this));
+
+        BottomNavigationView navigation = findViewById(R.id.bottom_nav);
+        navigation.setOnNavigationItemSelectedListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        inflateActionDrawer(toolbar);
     }
 
 
@@ -82,7 +42,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onStart() {
         super.onStart();
         URL.build(this);
-        requestCampeonatos();
     }
 
 
@@ -137,80 +96,40 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        Fragment fragment = null;
+
         switch (item.getItemId()) {
 
-            case R.id.nav_home:
+            case R.id.bottom_nav_partidas:
+                fragment = PartidasFragment.newInstance(this);
                 break;
 
-            case R.id.nav_gallery:
+            case R.id.bottom_nav_campeonatos:
+                fragment = CampeonatosFragmnet.newInstance(this);
                 break;
 
-            case R.id.nav_send:
+            case R.id.bottom_nav_meu_perfil:
+                fragment = null;
                 break;
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-
-        return true;
+        return loadFragment(fragment);
     }
 
 
 
-    private void setLoaderVisibility(boolean visible) {
+    private boolean loadFragment(Fragment fragment) {
 
-        final boolean fnVisible = visible;
+        if (fragment != null) {
 
-        runOnUiThread(new Runnable() {
-            @Override public void run() {
-                findViewById(R.id.content_loader).setVisibility( fnVisible ? View.VISIBLE : View.GONE );
-            }
-        });
-    }
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content_fragments, fragment)
+                    .commit();
 
-
-
-    public void inflateActionDrawer(Toolbar toolbar) {
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-        );
-
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
-
-
-    private void requestCampeonatos() {
-
-        setLoaderVisibility(true);
-
-        Cambista local = new CambistaContract(this).first();
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url( URL.CAMPEONATOS + "listar/" + local.getWebToken() )
-                .build();
-
-        client.newCall(request).enqueue(callback);
-    }
-
-
-
-    public void onSuccessResponse(CampeonatoResponse response) {
-
-        if (response.body.size() > 0) {
-            CampeonatoAdapter adapter = new CampeonatoAdapter(response.body);
-            RecyclerView recycler = findViewById(R.id.recycler_campeonatos);
-            recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            recycler.setAdapter(adapter);
+            return true;
         }
-        else {
-            alert(this, "Nenhum campeonato encontrado!");
-        }
+
+        return false;
     }
 }

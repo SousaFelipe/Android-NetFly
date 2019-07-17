@@ -15,7 +15,6 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.internal.annotations.EverythingIsNonNull;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
@@ -37,29 +36,13 @@ public class LoginActivity extends BaseActivity {
 
 
     private Callback callback = new Callback() {
-
-        @EverythingIsNonNull
-        @Override
-        public void onFailure(Call call, IOException e) {
+        @Override public void onFailure(@NonNull Call call, @NonNull IOException e) {
             alertByCode(LoginActivity.this, 404);
+            setLoaderVisibility(false);
         }
 
-        @EverythingIsNonNull
-        @Override
-        public void onResponse(Call call, Response response) throws IOException {
-            if (response.isSuccessful()) {
-                if (response.body() != null) {
-                    login(CambistaResponse.receive(response.body().string()));
-                }
-                else {
-                    setLoaderVisibility(false);
-                    alert(LoginActivity.this, R.string.alert_http_response_empty);
-                }
-            }
-            else {
-                setLoaderVisibility(false);
-                alertByCode(LoginActivity.this, response.code());
-            }
+        @Override public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+            proccessResponse(response);
         }
     };
 
@@ -67,7 +50,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
+        setLoader(R.id.content_loader);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -131,15 +116,20 @@ public class LoginActivity extends BaseActivity {
 
 
 
-    private void setLoaderVisibility(boolean visible) {
-
-        final boolean fnVisible = visible;
-
-        runOnUiThread(new Runnable() {
-            @Override public void run() {
-                findViewById(R.id.content_loader).setVisibility( fnVisible ? View.VISIBLE : View.GONE );
+    private void proccessResponse(Response response) throws IOException {
+        if (response.isSuccessful()) {
+            if (response.body() != null) {
+                login(CambistaResponse.receive(response.body().string()));
             }
-        });
+            else {
+                setLoaderVisibility(false);
+                alert(LoginActivity.this, R.string.alert_http_response_empty);
+            }
+        }
+        else {
+            setLoaderVisibility(false);
+            alertByCode(LoginActivity.this, response.code());
+        }
     }
 
 

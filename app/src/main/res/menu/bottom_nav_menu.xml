@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_partidas"
+        android:icon="@drawable/ic_partidas"
+        android:title="@string/menu_partidas" />
+
+    <item
+        android:id="@+id/bottom_nav_campeonatos"
+        android:icon="@drawable/ic_campeonatos"
+        android:title="@string/menu_campeonatos" />
+
+    <item
+        android:id="@+id/bottom_nav_meu_perfil"
+        android:icon="@drawable/ic_perfil"
+        android:title="@string/menu_perfil" />
+
+</menu>

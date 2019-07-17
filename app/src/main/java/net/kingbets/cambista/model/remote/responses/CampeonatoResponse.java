@@ -45,7 +45,7 @@ public class CampeonatoResponse extends BaseResponse {
 
                     Campeonato campeonato = new Campeonato();
 
-                    campeonato.id = body.getJSONObject(i).getLong("id");
+                    campeonato.id = body.getJSONObject(i).getInt("id");
                     campeonato.bandeira = body.getJSONObject(i).getString("bandeira");
                     campeonato.titulo = body.getJSONObject(i).getString("titulo");
                     campeonato.serie = body.getJSONObject(i).getString("serie");

@@ -33,12 +33,14 @@
                     android:id="@+id/img_bandeira"
                     android:layout_width="@dimen/img_rounded_size"
                     android:layout_height="@dimen/img_rounded_size"
+                    android:layout_gravity="center_vertical"
                     android:contentDescription="@string/img_campeonato_flag"/>
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16">
 
                     <TextView
                         android:id="@+id/txv_titulo"

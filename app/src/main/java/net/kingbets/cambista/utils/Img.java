@@ -26,4 +26,10 @@ public abstract class Img {
 
         return drawable;
     }
+
+
+
+    public static int getResourceId(Context context, String filename) {
+        return context.getResources().getIdentifier(filename, "drawable", context.getPackageName());
+    }
 }

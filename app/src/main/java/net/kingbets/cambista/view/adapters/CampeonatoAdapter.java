@@ -27,17 +27,15 @@ public class CampeonatoAdapter extends RecyclerView.Adapter<CampeonatoAdapter.Vi
 
 
 
-    public CampeonatoAdapter(List<Campeonato> campeonatos) {
+    public CampeonatoAdapter(Context context, List<Campeonato> campeonatos) {
+        this.context = context;
         this.campeonatos = campeonatos;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-
-        context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_campeonato, parent, false);
-
         return new ViewHolder(view);
     }
 
@@ -48,10 +46,10 @@ public class CampeonatoAdapter extends RecyclerView.Adapter<CampeonatoAdapter.Vi
         Campeonato campeonato = campeonatos.get(position);
         String titulo = campeonato.titulo + " Série " + campeonato.serie;
 
-        holder.imgBandeira.setImageDrawable(Img.getDrawable(context, campeonato.bandeira));
+        holder.imgBandeira.setImageResource( Img.getResourceId(context, campeonato.getFlag()) );
         holder.txvTitulo.setText(titulo);
         holder.txvFim.setText(campeonato.fim);
-        holder.txvPartidas.setText(campeonato.partidas);
+        holder.txvPartidas.setText( campeonato.partidas > 0 ? String.valueOf(campeonato.partidas) : "0" );
     }
 
 

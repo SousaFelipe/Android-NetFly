@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import net.kingbets.cambista.R;
@@ -15,6 +16,29 @@ import net.kingbets.cambista.utils.URL;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+
+
+    protected int loader;
+
+
+
+    protected void setLoaderVisibility(boolean visible) {
+
+        final boolean fnVisible = visible;
+
+        runOnUiThread(new Runnable() {
+            @Override public void run() {
+                findViewById(loader).setVisibility( fnVisible ? View.VISIBLE : View.GONE );
+            }
+        });
+    }
+
+
+
+    public void setLoader(int loader) {
+        this.loader = loader;
+    }
 
 
 

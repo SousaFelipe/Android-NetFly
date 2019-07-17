@@ -1,9 +1,7 @@
 <resources>
 
 
-
     <string name="dominio">192.168.1.102</string>
-
 
 
     <string name="app_name">Bets</string>
@@ -11,9 +9,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
 
-
     <string name="login_activity">Bolão</string>
-
 
 
     <!-- Drawer Actions -->
@@ -24,31 +20,27 @@
     <string name="action_exit">Sair</string>
 
 
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-
-
-
     <!-- Activity Login -->
     <string name="lb_login">Login</string>
-
+    <string name="lb_jogos">JOGOS</string>
+    <string name="lb_campeonatos">CAMPEONATOS</string>
+    <string name="lb_meu_perfil">MEU PERFIL</string>
+    <string name="lb_clientes">CLIENTES</string>
 
 
     <!-- Buttons -->
     <string name="btn_entrar">ENTRAR</string>
     <string name="btn_configs">CONFIGURAÇÕES</string>
-    <string name="btn_tentar_novamente">TENTAR NOVAMENTE"</string>
-
+    <string name="btn_tentar_novamente">TENTAR NOVAMENTE</string>
+    <string name="btn_hoje">HOJE</string>
+    <string name="btn_amanha">AMANHÃ</string>
+    <string name="btn_proximos">PRÓXIMOS</string>
+    <string name="btn_nacionais">NACIONAIS</string>
+    <string name="btn_internacionais">INETRNACIONAIS</string>
 
 
     <string name="email">Email</string>
     <string name="senha">Senha</string>
-
 
 
     <!-- Content Descriptions -->
@@ -56,7 +48,6 @@
     <string name="img_wifi_off">Icone que indica que o dispositive está sem conexão com a internet.</string>
     <string name="img_campeonato_flag">Mostra a bandeira do campeonato.</string>
     <string name="img_time_flag">Mostra a bandeira/brasão da equipe.</string>
-
 
 
     <!-- Mensagens de erro -->
@@ -87,12 +78,11 @@
     </string>
 
 
-
     <!-- Alertas de Toast -->
     <string name="alert_http_response_empty">O servidor não enviou nenhuma resposta.</string>
     <string name="alert_http_000">O servidor não enviou nenhuma resposta.</string>
     <string name="alert_http_401">O email ou senha podem está incorretos.</string>
-    <string name="alert_http_404">Servidor não encontrado.</string>
+    <string name="alert_http_404">Não foi possível se conectar com o servidor.</string>
     <string name="alert_http_512">Erro no processamento da requisição.</string>
 
     <string name="alert_auth_ok">Autorizado!</string>
@@ -102,7 +92,13 @@
     <string name="alert_email_empty">É necessário fornecer um email.</string>
     <string name="alert_password_empty">É necessário fornecer uma senha de 6 dígitos!</string>
     <string name="alert_invalid_credentials">Credenciais inválidas!</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
+
+
+    <string name="menu_partidas">Partidas</string>
+    <string name="menu_campeonatos">Campeonatos</string>
+    <string name="menu_perfil">Perfil</string>
 
 
 </resources>

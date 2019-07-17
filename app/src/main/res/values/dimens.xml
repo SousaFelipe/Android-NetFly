@@ -8,7 +8,6 @@
     <dimen name="fab_margin">16dp</dimen>
 
 
-
     <!-- Activity Login -->
     <dimen name="bg_icon_login_size">64dp</dimen>
     <dimen name="bg_icon_login_size_large">128dp</dimen>
@@ -21,7 +20,6 @@
 
     <dimen name="btn_top_margin">10dp</dimen>
     <dimen name="btn_top_margin_large">14dp</dimen>
-
 
 
     <dimen name="card_hmargin">16dp</dimen>
@@ -43,10 +41,8 @@
     <dimen name="card_sobra_vpadding_large">8dp</dimen>
 
 
-
     <dimen name="badge_corner">6dp</dimen>
     <dimen name="badge_corner_large">12dp</dimen>
-
 
 
     <dimen name="margin_2">2dp</dimen>
@@ -62,7 +58,6 @@
     <dimen name="padding_21">16dp</dimen>
 
 
-
     <!-- Text Sizes -->
     <dimen name="text_32">32sp</dimen>
     <dimen name="text_24">24sp</dimen>
@@ -70,7 +65,6 @@
     <dimen name="text_18">18sp</dimen>
     <dimen name="text_16">16sp</dimen>
     <dimen name="text_14">14sp</dimen>
-
 
 
     <!-- Image Sizes -->
