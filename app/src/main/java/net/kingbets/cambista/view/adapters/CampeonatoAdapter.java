@@ -14,7 +14,6 @@ import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.remote.futebol.Campeonato;
 import net.kingbets.cambista.utils.Img;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,9 +26,8 @@ public class CampeonatoAdapter extends RecyclerView.Adapter<CampeonatoAdapter.Vi
 
 
 
-    public CampeonatoAdapter(Context context, List<Campeonato> campeonatos) {
+    public CampeonatoAdapter(Context context) {
         this.context = context;
-        this.campeonatos = campeonatos;
     }
 
     @NonNull
@@ -56,6 +54,21 @@ public class CampeonatoAdapter extends RecyclerView.Adapter<CampeonatoAdapter.Vi
     @Override
     public int getItemCount() {
         return campeonatos.size();
+    }
+
+
+
+    public void setDataList(List<Campeonato> campeonatos) {
+        this.campeonatos = campeonatos;
+    }
+
+
+
+    public void clear() {
+        if (campeonatos != null) {
+            campeonatos.clear();
+            notifyDataSetChanged();
+        }
     }
 
 

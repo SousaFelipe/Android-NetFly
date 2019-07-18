@@ -1,6 +1,7 @@
 <resources>
 
 
+
     <string name="dominio">192.168.1.102</string>
 
 
@@ -8,8 +9,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-
     <string name="login_activity">Bolão</string>
+
 
 
     <!-- Drawer Actions -->
@@ -20,12 +21,15 @@
     <string name="action_exit">Sair</string>
 
 
+
     <!-- Activity Login -->
     <string name="lb_login">Login</string>
-    <string name="lb_jogos">JOGOS</string>
+    <string name="lb_jogos">PARTIDAS</string>
     <string name="lb_campeonatos">CAMPEONATOS</string>
     <string name="lb_meu_perfil">MEU PERFIL</string>
     <string name="lb_clientes">CLIENTES</string>
+    <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
+
 
 
     <!-- Buttons -->
@@ -36,11 +40,13 @@
     <string name="btn_amanha">AMANHÃ</string>
     <string name="btn_proximos">PRÓXIMOS</string>
     <string name="btn_nacionais">NACIONAIS</string>
-    <string name="btn_internacionais">INETRNACIONAIS</string>
+    <string name="btn_internacionais">INTERNACIONAIS</string>
+
 
 
     <string name="email">Email</string>
     <string name="senha">Senha</string>
+
 
 
     <!-- Content Descriptions -->
@@ -48,6 +54,8 @@
     <string name="img_wifi_off">Icone que indica que o dispositive está sem conexão com a internet.</string>
     <string name="img_campeonato_flag">Mostra a bandeira do campeonato.</string>
     <string name="img_time_flag">Mostra a bandeira/brasão da equipe.</string>
+    <string name="img_info_empty">Informa que o servidor não encontrou nenhum dado.</string>
+
 
 
     <!-- Mensagens de erro -->
@@ -78,6 +86,7 @@
     </string>
 
 
+
     <!-- Alertas de Toast -->
     <string name="alert_http_response_empty">O servidor não enviou nenhuma resposta.</string>
     <string name="alert_http_000">O servidor não enviou nenhuma resposta.</string>
@@ -99,6 +108,7 @@
     <string name="menu_partidas">Partidas</string>
     <string name="menu_campeonatos">Campeonatos</string>
     <string name="menu_perfil">Perfil</string>
+
 
 
 </resources>

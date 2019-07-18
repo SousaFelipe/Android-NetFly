@@ -26,7 +26,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/textColorTertiary"
                 android:textSize="@dimen/text_16"
-                android:text="@string/lb_jogos"/>
+                android:text="@string/lb_campeonatos"/>
 
             <!-- Seleciona jogos por data -->
             <LinearLayout
@@ -36,6 +36,7 @@
                 android:layout_gravity="center_horizontal">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/widget_nacionais"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_4"
@@ -62,6 +63,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/widget_internacionais"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_4"
@@ -112,6 +114,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/content_info_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/img_info_size"
+                    android:layout_height="@dimen/img_info_size"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_empty"
+                    android:contentDescription="@string/img_info_empty"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorTertiary"
+                    android:text="@string/lb_nenhum_campeonato"/>
+
+            </LinearLayout>
 
         </FrameLayout>
 

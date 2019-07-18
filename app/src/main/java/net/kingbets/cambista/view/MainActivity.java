@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
-import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -28,8 +26,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         setContentView(R.layout.activity_main);
         setLoader(R.id.content_loader);
 
-        loadFragment(CampeonatosFragmnet.newInstance(this));
-
         BottomNavigationView navigation = findViewById(R.id.bottom_nav);
         navigation.setOnNavigationItemSelectedListener(this);
 
@@ -42,17 +38,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     protected void onStart() {
         super.onStart();
         URL.build(this);
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
 

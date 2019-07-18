@@ -45,12 +45,12 @@ public class CampeonatoResponse extends BaseResponse {
 
                     Campeonato campeonato = new Campeonato();
 
-                    campeonato.id = body.getJSONObject(i).getInt("id");
-                    campeonato.bandeira = body.getJSONObject(i).getString("bandeira");
-                    campeonato.titulo = body.getJSONObject(i).getString("titulo");
-                    campeonato.serie = body.getJSONObject(i).getString("serie");
-                    campeonato.partidas = body.getJSONObject(i).getInt("proximas_partidas");
-                    campeonato.fim = body.getJSONObject(i).getString("fim");
+                    campeonato.id = body.getJSONObject( i ).getInt("id");
+                    campeonato.bandeira = body.getJSONObject( i ).getString("bandeira");
+                    campeonato.titulo = body.getJSONObject( i ).getString("titulo");
+                    campeonato.serie = body.getJSONObject( i ).getString("serie");
+                    campeonato.partidas = body.getJSONObject( i ).getInt("partidas_registradas");
+                    campeonato.fim = body.getJSONObject( i ).getString("fim");
 
                     response.body.add(campeonato);
                 }
