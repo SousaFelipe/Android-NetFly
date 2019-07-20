@@ -14,7 +14,12 @@ public class Campeonato extends BaseModel {
     public int partidas;
 
 
-    public String getFlag() {
-        return "img_" + this.bandeira;
+    public String getRoundFlag() {
+        return "img_" + this.bandeira + "_round";
+    }
+
+
+    public String getSquareFlag() {
+        return "img_" + this.bandeira + "_square";
     }
 }

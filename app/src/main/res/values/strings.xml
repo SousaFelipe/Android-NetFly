@@ -29,6 +29,14 @@
     <string name="lb_meu_perfil">MEU PERFIL</string>
     <string name="lb_clientes">CLIENTES</string>
     <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
+    <string name="lb_nenhuma_partida">NENHUMA PARTIDA ENCONTRADA</string>
+    <string name="lb_nenhuma_aposta">NENHUMA APOSTA ENCONTRADA</string>
+
+    <string name="lb_vs">VS</string>
+    <string name="lb_casa">CASA</string>
+    <string name="lb_empate">EMPATE</string>
+    <string name="lb_fora">FORA</string>
+    <string name="lb_ambas">AMBAS</string>
 
 
 
@@ -38,7 +46,7 @@
     <string name="btn_tentar_novamente">TENTAR NOVAMENTE</string>
     <string name="btn_hoje">HOJE</string>
     <string name="btn_amanha">AMANHÃ</string>
-    <string name="btn_proximos">PRÓXIMOS</string>
+    <string name="btn_proximos">PRÓXIMAS</string>
     <string name="btn_nacionais">NACIONAIS</string>
     <string name="btn_internacionais">INTERNACIONAIS</string>
 
@@ -55,6 +63,7 @@
     <string name="img_campeonato_flag">Mostra a bandeira do campeonato.</string>
     <string name="img_time_flag">Mostra a bandeira/brasão da equipe.</string>
     <string name="img_info_empty">Informa que o servidor não encontrou nenhum dado.</string>
+    <string name="img_odd_mais">Icone que leva o usuário a todas as ODDS de uma partida.</string>
 
 
 

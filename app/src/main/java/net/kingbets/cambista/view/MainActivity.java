@@ -42,6 +42,13 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        loadFragment(PartidasFragment.newInstance(this));
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;

@@ -70,6 +70,8 @@
     <dimen name="text_18">18sp</dimen>
     <dimen name="text_16">16sp</dimen>
     <dimen name="text_14">14sp</dimen>
+    <dimen name="text_11">11sp</dimen>
+    <dimen name="text_9">9sp</dimen>
 
 
 
@@ -77,8 +79,11 @@
     <dimen name="img_info_size">48dp</dimen>
     <dimen name="img_info_size_large">64dp</dimen>
 
-    <dimen name="img_rounded_size">36dp</dimen>
-    <dimen name="img_rounded_size_large">48dp</dimen>
+    <dimen name="img_flag_size">36dp</dimen>
+    <dimen name="img_flag_size_large">48dp</dimen>
+
+    <dimen name="img_square_size">24dp</dimen>
+    <dimen name="img_square_size_large">36dp</dimen>
 
 
 

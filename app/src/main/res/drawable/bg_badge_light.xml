@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="#ECEFF1"/>
+
+    <stroke
+        android:color="#B0BEC5"
+        android:width="1dp"/>
+
+    <corners
+        android:bottomLeftRadius="@dimen/badge_corner"
+        android:topLeftRadius="@dimen/badge_corner"
+        android:topRightRadius="@dimen/badge_corner"
+        android:bottomRightRadius="@dimen/badge_corner" />
+
+</shape>

@@ -127,7 +127,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_partidas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <FrameLayout
             android:visibility="gone"
@@ -167,7 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColorTertiary"
-                    android:text="@string/lb_nenhum_campeonato"/>
+                    android:text="@string/lb_nenhuma_partida"/>
 
             </LinearLayout>
 

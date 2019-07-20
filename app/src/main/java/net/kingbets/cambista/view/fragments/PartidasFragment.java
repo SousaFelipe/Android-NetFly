@@ -7,7 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,11 @@ import android.view.ViewGroup;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.local.Cambista;
+import net.kingbets.cambista.model.remote.responses.CampeonatoPartidasResponse;
 import net.kingbets.cambista.model.remote.responses.PartidaResponse;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CampeonatoAdapter;
+import net.kingbets.cambista.view.adapters.CampeonatoPartidaAdapter;
 
 import java.io.IOException;
 
@@ -45,7 +49,7 @@ public class PartidasFragment extends BaseFragment {
     private CardView proximos;
 
     private RecyclerView recycler;
-    private CampeonatoAdapter adapter;
+    private CampeonatoPartidaAdapter adapter;
 
 
 
@@ -61,7 +65,7 @@ public class PartidasFragment extends BaseFragment {
 
     private Callback callback = new Callback() {
         @Override public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
+            Log.e(getClass().getSimpleName(), "onFailure: ", e);
         }
 
         @Override public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
@@ -103,21 +107,27 @@ public class PartidasFragment extends BaseFragment {
         hoje = view.findViewById(R.id.widget_hoje);
         hoje.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
+                PERIODO = HOJE;
                 selecionarWidget(hoje);
+                requestPartidas();
             }
         });
 
         amanha = view.findViewById(R.id.widget_amanha);
         amanha.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
+                PERIODO = AMANHA;
                 selecionarWidget(amanha);
+                requestPartidas();
             }
         });
 
         proximos = view.findViewById(R.id.widget_proximos);
         proximos.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
+                PERIODO = PROXIMOS;
                 selecionarWidget(proximos);
+                requestPartidas();
             }
         });
     }
@@ -125,8 +135,8 @@ public class PartidasFragment extends BaseFragment {
 
 
     private void inflateListView() {
-        adapter = new CampeonatoAdapter(context);
-        recycler = view.findViewById(R.id.recycler_campeonatos);
+        adapter = new CampeonatoPartidaAdapter(context);
+        recycler = view.findViewById(R.id.recycler_partidas);
     }
 
 
@@ -152,7 +162,7 @@ public class PartidasFragment extends BaseFragment {
 
         if (response.isSuccessful()) {
             if (response.body() != null) {
-                onSuccessResponse( PartidaResponse.receive(response.body().string()) );
+                onSuccessResponse(CampeonatoPartidasResponse.receive( response.body().string() ));
             }
             else {
                 alert(R.string.alert_http_response_empty);
@@ -167,12 +177,22 @@ public class PartidasFragment extends BaseFragment {
 
 
 
-    private void onSuccessResponse(PartidaResponse response) {
+    private void onSuccessResponse(CampeonatoPartidasResponse response) {
 
         if (response.body.size() > 0) {
 
+            adapter.setDataList(response.body);
 
-
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override public void run() {
+                        LinearLayoutManager layoutManager = new LinearLayoutManager( context );
+                        recycler.setLayoutManager( layoutManager );
+                        recycler.setAdapter(adapter);
+                        layoutManager.scrollToPositionWithOffset(0, 0);
+                    }
+                });
+            }
         }
         else if (getActivity() != null) {
             getActivity().runOnUiThread(new Runnable() {

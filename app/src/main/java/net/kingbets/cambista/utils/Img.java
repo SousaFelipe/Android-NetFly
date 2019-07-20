@@ -2,29 +2,20 @@ package net.kingbets.cambista.utils;
 
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 
 public abstract class Img {
 
 
 
-    public static Drawable getDrawable(Context context, String filename) {
+    public static int getRoundResourceId(Context context, String filename) {
+        return getResourceId(context, filename + "_round");
+    }
 
-        Drawable drawable;
 
-        try {
-            InputStream stream = context.getAssets().open( "img_" + filename + ".png" );
-            drawable = Drawable.createFromStream(stream, null);
-        }
-        catch(IOException ex) {
-            return null;
-        }
 
-        return drawable;
+    public static int getSquareResourceId(Context context, String filename) {
+        return getResourceId(context, filename + "_square");
     }
 
 
