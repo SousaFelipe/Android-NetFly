@@ -3,6 +3,7 @@ package net.kingbets.cambista.view.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.remote.futebol.Partida;
 import net.kingbets.cambista.utils.Format;
+import net.kingbets.cambista.view.dialogs.MaisOddsDialog;
 
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +27,7 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
 
     private Context context;
     private List<Partida> partidas;
+    private FragmentManager fragmentManager;
 
 
 
@@ -43,7 +46,7 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull PartidaAdapter.ViewHolder holder, int position) {
 
-        Partida partida = partidas.get( position );
+        final Partida partida = partidas.get( position );
 
         holder.txvHora.setText(Format.Time.compaact(partida.inicio));
         holder.txvCasa.setText(partida.casa);
@@ -52,6 +55,12 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
         holder.txvCasaOdd.setText( String.format(Locale.getDefault(), "%.2f", partida.resultado.casa) );
         holder.txvEmpateOdd.setText( String.format(Locale.getDefault(), "%.2f", partida.resultado.empate) );
         holder.txvForaOdd.setText( String.format(Locale.getDefault(), "%.2f", partida.resultado.fora) );
+
+        holder.btnOddMais.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                MaisOddsDialog.display(fragmentManager, partida);
+            }
+        });
     }
 
 
@@ -64,6 +73,12 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
 
     void setDataList(List<Partida> campeonatos) {
         this.partidas = campeonatos;
+    }
+
+
+
+    public void setFragmentManager(FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
     }
 
 

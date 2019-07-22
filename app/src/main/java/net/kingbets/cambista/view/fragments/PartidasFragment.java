@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +17,7 @@ import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.local.Cambista;
 import net.kingbets.cambista.model.remote.responses.CampeonatoPartidasResponse;
-import net.kingbets.cambista.model.remote.responses.PartidaResponse;
 import net.kingbets.cambista.utils.URL;
-import net.kingbets.cambista.view.adapters.CampeonatoAdapter;
 import net.kingbets.cambista.view.adapters.CampeonatoPartidaAdapter;
 
 import java.io.IOException;
@@ -136,6 +133,7 @@ public class PartidasFragment extends BaseFragment {
 
     private void inflateListView() {
         adapter = new CampeonatoPartidaAdapter(context);
+        adapter.setFragmentManager( getFragmentManager() );
         recycler = view.findViewById(R.id.recycler_partidas);
     }
 
@@ -187,8 +185,10 @@ public class PartidasFragment extends BaseFragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override public void run() {
                         LinearLayoutManager layoutManager = new LinearLayoutManager( context );
+
                         recycler.setLayoutManager( layoutManager );
                         recycler.setAdapter(adapter);
+
                         layoutManager.scrollToPositionWithOffset(0, 0);
                     }
                 });

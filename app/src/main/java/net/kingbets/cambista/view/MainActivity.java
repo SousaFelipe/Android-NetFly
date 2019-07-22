@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 fragment = CampeonatosFragmnet.newInstance(this);
                 break;
 
-            case R.id.bottom_nav_meu_perfil:
+            case R.id.bottom_nav_financeiro:
                 fragment = null;
                 break;
         }

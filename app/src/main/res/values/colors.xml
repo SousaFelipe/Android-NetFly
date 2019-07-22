@@ -15,4 +15,6 @@
     <color name="textColorSecondaryInverse">#90A4AE</color>
     <color name="textColorTertiaryInverse">#546E7A</color>
 
+    <color name="textColorDisabled">#CFD8DC</color>
+
 </resources>

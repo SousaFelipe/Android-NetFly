@@ -1,7 +1,7 @@
-package net.kingbets.cambista.model.remote.futebol.odds.principais;
+package net.kingbets.cambista.model.remote.odds.principais;
 
 
-import net.kingbets.cambista.model.remote.futebol.odds.BaseODD;
+import net.kingbets.cambista.model.remote.odds.BaseODD;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,11 +9,14 @@ import org.json.JSONObject;
 
 public class Resultado extends BaseODD {
 
+    public static final String TIPO = "tt_resultado";
+
 
 
     public double casa;
     public double empate;
     public double fora;
+
 
 
     public Resultado(JSONObject odds) throws JSONException {

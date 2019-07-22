@@ -26,8 +26,9 @@
     <string name="lb_login">Login</string>
     <string name="lb_jogos">PARTIDAS</string>
     <string name="lb_campeonatos">CAMPEONATOS</string>
-    <string name="lb_meu_perfil">MEU PERFIL</string>
+    <string name="lb_meu_perfil">FINANCEIRO</string>
     <string name="lb_clientes">CLIENTES</string>
+    <string name="lb_mais_odds">MAIS OPÇÕES</string>
     <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
     <string name="lb_nenhuma_partida">NENHUMA PARTIDA ENCONTRADA</string>
     <string name="lb_nenhuma_aposta">NENHUMA APOSTA ENCONTRADA</string>
@@ -37,6 +38,83 @@
     <string name="lb_empate">EMPATE</string>
     <string name="lb_fora">FORA</string>
     <string name="lb_ambas">AMBAS</string>
+    <string name="lb_principais">PRINCIPAIS</string>
+    <string name="lb_1_2_tempo">1°/2° TEMPO</string>
+
+
+
+    <string name="odd_resultado_final">RESULTADO FINAL</string>
+    <string name="odd_dupla_chance">DUPLA CHANCE</string>
+    <string name="odd_ambas_marcam">AMBAS MARCAM</string>
+    <string name="odd_vencedor_ambas_marcam">RESULTADO FINAL - AMBAS MARCAM</string>
+    <string name="odd_intervalo_final">INTERVALO - FINAL</string>
+    <string name="odd_gols_par_ou_impar">TOTAL DE GOLS - PAR OU ÍMPAR</string>
+    <string name="odd_gols_mais_ou_menos">TOTAL DE GOLS - MAIS OU MENOS</string>
+    <string name="odd_empate_anula_aposta">EMPATE ANULA APOSTA</string>
+
+
+
+    <string name="odd_resultado_p">1° TEMPO - RESULTADO</string>
+    <string name="odd_resultado_s">2° TEMPO - RESULTADO</string>
+    <string name="odd_dupla_chance_p">1° TEMPO - DUPLA CHANCE</string>
+    <string name="odd_dupla_chance_s">2° TEMPO - DUPLA CHANCE</string>
+    <string name="odd_ambas_marcam_p">1° TEMPO - AMBAS MARCAM</string>
+    <string name="odd_ambas_marcam_s">2° TEMPO - AMBAS MARCAM</string>
+    <string name="odd_gols_par_ou_impar_p">1° TEMPO - PAR OU ÍMPAR</string>
+    <string name="odd_gols_par_ou_impar_s">2° TEMPO - PAR OU ÍMPAR</string>
+    <string name="odd_gols_mais_ou_menos_p">1° TEMPO - GOLS MAIS OU MENOS</string>
+    <string name="odd_gols_mais_ou_menos_s">2° TEMPO - GOLS MAIS OU MENOS</string>
+
+
+
+    <string name="lb_odd_casa_ou_empate">CASA OU EMPATE</string>
+    <string name="lb_odd_fora_ou_empate">FORA OU EMPATE</string>
+    <string name="lb_odd_casa_ou_fora">CASA OU FORA</string>
+
+    <string name="lb_odd_ambas_marcam_sim">SIM</string>
+    <string name="lb_odd_ambas_marcam_nao">NÃO</string>
+
+    <string name="lb_odd_casa_sim">CASA - SIM</string>
+    <string name="lb_odd_casa_nao">CASA - NÃO</string>
+    <string name="lb_odd_fora_sim">FORA - SIM</string>
+    <string name="lb_odd_fora_nao">FORA - NÃO</string>
+    <string name="lb_odd_empate_sim">EMPATE - SIM</string>
+    <string name="lb_odd_empate_nao">EMPATE - NÃO</string>
+
+    <string name="lb_odd_casa_casa">CASA - CASA</string>
+    <string name="lb_odd_casa_empate">CASA - EMPATE</string>
+    <string name="lb_odd_casa_fora">CASA - FORA</string>
+    <string name="lb_odd_empate_casa">EMPATE - CASA</string>
+    <string name="lb_odd_empate_empate">EMPATE - EMPATE</string>
+    <string name="lb_odd_empate_fora">EMPATE - FORA</string>
+    <string name="lb_odd_fora_casa">FORA - CASA</string>
+    <string name="lb_odd_fora_empate">FORA - EMPATE</string>
+    <string name="lb_odd_fora_fora">FORA - FORA</string>
+
+    <string name="lb_odd_mais_05">MAIS DE 0.5</string>
+    <string name="lb_odd_menos_05">MENOS DE 0.5</string>
+    <string name="lb_odd_mais_15">MAIS DE 1.5</string>
+    <string name="lb_odd_menos_15">MENOS DE 1.5</string>
+    <string name="lb_odd_mais_25">MAIS DE 2.5</string>
+    <string name="lb_odd_menos_25">MENOS DE 2.5</string>
+    <string name="lb_odd_mais_35">MAIS DE 3.5</string>
+    <string name="lb_odd_menos_35">MENOS DE 3.5</string>
+    <string name="lb_odd_mais_45">MAIS DE 4.5</string>
+    <string name="lb_odd_menos_45">MENOS DE 4.5</string>
+    <string name="lb_odd_mais_55">MAIS DE 5.5</string>
+    <string name="lb_odd_menos_55">MENOS DE 5.5</string>
+
+    <string name="lb_odd_impar">ÍMPAR</string>
+    <string name="lb_odd_par">PAR</string>
+
+    <string name="lb_odd_casa_ou_anula">CASA OU ANULA</string>
+    <string name="lb_odd_fora_ou_anula">FORA OU ANULA</string>
+
+
+
+    <string name="menu_partidas">PARTIDAS</string>
+    <string name="menu_campeonatos">CAMPEONATOS</string>
+    <string name="menu_financeiro">FINANCEIRO</string>
 
 
 
@@ -110,13 +188,6 @@
     <string name="alert_email_empty">É necessário fornecer um email.</string>
     <string name="alert_password_empty">É necessário fornecer uma senha de 6 dígitos!</string>
     <string name="alert_invalid_credentials">Credenciais inválidas!</string>
-    <string name="title_activity_main2">Main2Activity</string>
-
-
-
-    <string name="menu_partidas">Partidas</string>
-    <string name="menu_campeonatos">Campeonatos</string>
-    <string name="menu_perfil">Perfil</string>
 
 
 

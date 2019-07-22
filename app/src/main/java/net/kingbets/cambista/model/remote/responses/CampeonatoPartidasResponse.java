@@ -55,10 +55,10 @@ public class CampeonatoPartidasResponse extends BaseResponse {
                     for (int p = 0; p < partidas.length(); p++) {
 
                         Partida partida = new Partida();
+                        partida.id = partidas.getJSONObject( p ).getLong("id");
                         partida.casa = partidas.getJSONObject( p ).getString("casa");
                         partida.fora = partidas.getJSONObject( p ).getString("fora");
                         partida.inicio = partidas.getJSONObject( p ).getString("inicio");
-
                         partida.setODDS( partidas.getJSONObject( p ).getJSONObject("odds") );
 
                         campeonato.partidas.add(partida);

@@ -3,6 +3,7 @@ package net.kingbets.cambista.view.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
 
 
     private Context context;
+    private FragmentManager fragmentManager;
     private List<CampeonatoPartidas> campeonatoPartidas;
 
 
@@ -41,9 +43,10 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
 
     @Override
     public void onBindViewHolder(@NonNull CampeonatoPartidaAdapter.ViewHolder holder, int position) {
-
         CampeonatoPartidas campeonatoPartidas = this.campeonatoPartidas.get( position );
+
         holder.adapter = new PartidaAdapter(context);
+        holder.adapter.setFragmentManager( fragmentManager );
 
         if (campeonatoPartidas.partidas.size() > 0) {
 
@@ -73,6 +76,12 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
 
     public void setDataList(List<CampeonatoPartidas> campeonatos) {
         this.campeonatoPartidas = campeonatos;
+    }
+
+
+
+    public void setFragmentManager(FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
     }
 
 

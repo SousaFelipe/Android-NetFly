@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txv_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_16"
+        android:paddingTop="@dimen/padding_8"
+        android:paddingEnd="@dimen/padding_16"
+        android:paddingBottom="@dimen/padding_8"
+        android:background="@color/textColorDisabled"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/text_14"
+        android:textStyle="italic"
+        android:text="@string/odd_resultado_final"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2">
+
+        <TableRow>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_odd_casa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8"
+                android:paddingBottom="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11"
+                    android:text="@string/lb_casa"/>
+
+                <TextView
+                    android:id="@+id/txv_odd_casa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_odd_empate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8"
+                android:paddingBottom="@dimen/padding_8"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11"
+                    android:text="@string/lb_empate"/>
+
+                <TextView
+                    android:id="@+id/txv_odd_empate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_odd_fora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8"
+                android:paddingBottom="@dimen/padding_8"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11"
+                    android:text="@string/lb_fora"/>
+
+                <TextView
+                    android:id="@+id/txv_odd_fora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/textColorDisabled"/>
+
+</LinearLayout>
