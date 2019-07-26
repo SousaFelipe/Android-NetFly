@@ -16,9 +16,11 @@ import android.view.ViewGroup;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.remote.responses.CampeonatoPartidasResponse;
+import net.kingbets.cambista.model.remote.apostas.Single;
+import net.kingbets.cambista.model.responses.CampeonatoPartidasResponse;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CampeonatoPartidaAdapter;
+import net.kingbets.cambista.view.dialogs.CupomDialog;
 
 import java.io.IOException;
 
@@ -70,7 +72,6 @@ public class PartidasFragment extends BaseFragment {
         }
     };
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -84,10 +85,22 @@ public class PartidasFragment extends BaseFragment {
     public void onStart() {
         super.onStart();
 
-        inflateListView();
-        inflateWidgets();
+        if (getView() != null) {
 
-        selecionarWidget(hoje);
+            inflateListView();
+            inflateWidgets();
+
+            selecionarWidget(hoje);
+
+            CardView btnViewCupom = getView().findViewById(R.id.btn_view_cupom);
+            btnViewCupom.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    mostrarCupom();
+                }
+            });
+
+            Single.instance().setDisplayButton( (CardView) getView().findViewById(R.id.btn_view_cupom) );
+        }
     }
 
 
@@ -95,6 +108,12 @@ public class PartidasFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         requestPartidas();
+    }
+
+
+
+    private void mostrarCupom() {
+        CupomDialog.display(this);
     }
 
 
@@ -133,13 +152,13 @@ public class PartidasFragment extends BaseFragment {
 
     private void inflateListView() {
         adapter = new CampeonatoPartidaAdapter(context);
-        adapter.setFragmentManager( getFragmentManager() );
+        adapter.setParent(this);
         recycler = view.findViewById(R.id.recycler_partidas);
     }
 
 
 
-    private void requestPartidas() {
+    public void requestPartidas() {
 
         setLoaderVisibility(true);
         setInfoVisibility(false);

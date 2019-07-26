@@ -39,8 +39,11 @@ public class ParOuImparView extends BaseOddsView {
     @Override
     public ParOuImparView create() {
 
-        wgtPar = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_par), parOuImpar.par);
-        wgtImpar = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_impar), parOuImpar.impar);
+        wgtPar = new Widget(getAposta("P"), getRootView().findViewById(R.id.layout_odd_par), parOuImpar.par);
+        wgtPar.setTitulo("Par");
+
+        wgtImpar = new Widget(getAposta("I"), getRootView().findViewById(R.id.layout_odd_impar), parOuImpar.impar);
+        wgtImpar.setTitulo("Impar");
 
         txvOddPar = getRootView().findViewById(R.id.txv_odd_par);
         txvOddImpar = getRootView().findViewById(R.id.txv_odd_impar);

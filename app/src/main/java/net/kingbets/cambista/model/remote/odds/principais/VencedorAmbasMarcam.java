@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class VencedorAmbasMarcam extends BaseODD {
 
-    public static final String TIPO = "tt_vencedor_ambas_marcam";
+    public static final String TIPO = "tt:vencedor_ambas_marcam";
 
 
 

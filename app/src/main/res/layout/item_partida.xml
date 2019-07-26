@@ -81,7 +81,7 @@
                 android:background="@drawable/bg_odd">
 
                 <LinearLayout
-                    android:id="@+id/btn_odd_casa"
+                    android:id="@+id/layout_odd_casa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -99,7 +99,7 @@
                         android:textSize="@dimen/text_11" />
 
                     <TextView
-                        android:id="@+id/txv_casa_odd"
+                        android:id="@+id/txv_odd_casa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -110,7 +110,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/btn_odd_empate"
+                    android:id="@+id/layout_odd_empate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -128,7 +128,7 @@
                         android:textSize="@dimen/text_11" />
 
                     <TextView
-                        android:id="@+id/txv_empate_odd"
+                        android:id="@+id/txv_odd_empate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -139,7 +139,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/btn_odd_fora"
+                    android:id="@+id/layout_odd_fora"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -157,7 +157,7 @@
                         android:textSize="@dimen/text_11" />
 
                     <TextView
-                        android:id="@+id/txv_fora_odd"
+                        android:id="@+id/txv_odd_fora"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -166,15 +166,13 @@
 
                 </LinearLayout>
 
-
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/textColorSecondary" />
 
-
                 <FrameLayout
-                    android:id="@+id/btn_odd_mais"
+                    android:id="@+id/layout_mais_odds"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -187,7 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_mais_odds"
+                        android:src="@drawable/ic_mais_odds_dark"
                         android:contentDescription="@string/img_odd_mais"/>
 
                 </FrameLayout>

@@ -9,7 +9,6 @@ public class Campeonato extends BaseModel {
 
     public String bandeira;
     public String titulo;
-    public String serie;
     public String fim;
     public int partidas;
 

@@ -40,9 +40,14 @@ public class ResultadoView extends BaseOddsView {
     @Override
     public ResultadoView create() {
 
-        wgtCasa = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_casa), resultado.casa);
-        wgtEmpate = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_empate), resultado.empate);
-        wgtFora = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_fora), resultado.fora);
+        wgtCasa = new Widget(getAposta("C"), getRootView().findViewById(R.id.layout_odd_casa), resultado.casa);
+        wgtCasa.setTitulo("Casa");
+
+        wgtEmpate = new Widget(getAposta("E"), getRootView().findViewById(R.id.layout_odd_empate), resultado.empate);
+        wgtEmpate.setTitulo("Empate");
+
+        wgtFora = new Widget(getAposta("F"), getRootView().findViewById(R.id.layout_odd_fora), resultado.fora);
+        wgtFora.setTitulo("Fora");
 
         txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa);
         txvOddEmpate = getRootView().findViewById(R.id.txv_odd_empate);

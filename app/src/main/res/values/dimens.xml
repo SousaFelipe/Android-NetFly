@@ -51,15 +51,21 @@
 
     <dimen name="margin_2">2dp</dimen>
     <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_21">21dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
 
     <dimen name="padding_2">2dp</dimen>
     <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_6">6dp</dimen>
     <dimen name="padding_8">8dp</dimen>
     <dimen name="padding_16">16dp</dimen>
-    <dimen name="padding_21">16dp</dimen>
+    <dimen name="padding_21">21dp</dimen>
+    <dimen name="padding_32">32dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
 
 
 
@@ -84,6 +90,13 @@
 
     <dimen name="img_square_size">24dp</dimen>
     <dimen name="img_square_size_large">36dp</dimen>
+
+
+
+    <dimen name="fab_cupom_roud">19dp</dimen>
+    <dimen name="fab_cupom_height">54dp</dimen>
+    <dimen name="fab_cupom_hmargin">72dp</dimen>
+    <dimen name="fab_cupom_vmargin">14dp</dimen>
 
 
 

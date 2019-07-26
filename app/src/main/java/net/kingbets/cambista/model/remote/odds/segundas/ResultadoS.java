@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class ResultadoS extends Resultado {
 
-    public static final String TIPO = "st_resultado";
+    public static final String TIPO = "st:resultado";
 
 
 

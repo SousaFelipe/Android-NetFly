@@ -46,12 +46,23 @@ public class VencedorAmbasMarcamView extends BaseOddsView {
     @Override
     public VencedorAmbasMarcamView create() {
 
-        wgtCasaSim = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_casa_sim), vencedorAmbasMarcam.casaSim);
-        wgtCasaNao = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_casa_nao), vencedorAmbasMarcam.casaNao);
-        wgtForaSim = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_fora_sim), vencedorAmbasMarcam.foraSim);
-        wgtForaNao = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_fora_nao), vencedorAmbasMarcam.foraNao);
-        wgtEmpateSim = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_empate_sim), vencedorAmbasMarcam.empateSim);
-        wgtEmpateNao = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_empate_nao), vencedorAmbasMarcam.empateNao);
+        wgtCasaSim = new Widget(getAposta("C;S"), getRootView().findViewById(R.id.layout_odd_casa_sim), vencedorAmbasMarcam.casaSim);
+        wgtCasaSim.setTitulo("Casa x Ambas Marcam");
+
+        wgtCasaNao = new Widget(getAposta("C;N"), getRootView().findViewById(R.id.layout_odd_casa_nao), vencedorAmbasMarcam.casaNao);
+        wgtCasaNao.setTitulo("Casa x Ninguem Marca");
+
+        wgtForaSim = new Widget(getAposta("F;S"), getRootView().findViewById(R.id.layout_odd_fora_sim), vencedorAmbasMarcam.foraSim);
+        wgtForaSim.setTitulo("Fora x Ambas Marcam");
+
+        wgtForaNao = new Widget(getAposta("F;N"), getRootView().findViewById(R.id.layout_odd_fora_nao), vencedorAmbasMarcam.foraNao);
+        wgtForaNao.setTitulo("Fora x Ninguem Marca");
+
+        wgtEmpateSim = new Widget(getAposta("E;S"), getRootView().findViewById(R.id.layout_odd_empate_sim), vencedorAmbasMarcam.empateSim);
+        wgtEmpateSim.setTitulo("Empate x Ambas Marcam");
+
+        wgtEmpateNao = new Widget(getAposta("E;N"), getRootView().findViewById(R.id.layout_odd_empate_nao), vencedorAmbasMarcam.empateNao);
+        wgtEmpateNao.setTitulo("Empate x Ninguem Marca");
 
         txvOddCasaSim = getRootView().findViewById(R.id.txv_odd_casa_sim);
         txvOddCasaNao = getRootView().findViewById(R.id.txv_odd_casa_nao);

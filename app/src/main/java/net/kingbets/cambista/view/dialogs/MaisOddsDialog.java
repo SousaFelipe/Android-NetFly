@@ -3,11 +3,11 @@ package net.kingbets.cambista.view.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,9 +18,11 @@ import android.widget.TextView;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.view.fragments.PartidasFragment;
 import net.kingbets.cambista.view.odds.AmbasMarcamView;
 import net.kingbets.cambista.view.odds.DuplaChanceView;
 import net.kingbets.cambista.view.odds.EmpateAnulaApostaView;
+import net.kingbets.cambista.view.odds.PlacarView;
 import net.kingbets.cambista.view.odds.pt.AmbasMarcamPView;
 import net.kingbets.cambista.view.odds.pt.DuplaChancePView;
 import net.kingbets.cambista.view.odds.pt.GolsMaisMenosPView;
@@ -47,8 +49,7 @@ public class MaisOddsDialog extends DialogFragment {
     private Partida partida;
     private LinearLayout contentOdds;
 
-
-
+    private PartidasFragment parent;
 
     private CardView principais;
     private CardView primeiroSegundotempo;
@@ -56,10 +57,15 @@ public class MaisOddsDialog extends DialogFragment {
 
 
 
-    public static void display(FragmentManager fragmentManager, Partida partida) {
+    public static void display(PartidasFragment parent, Partida partida) {
+
         MaisOddsDialog dialog = new MaisOddsDialog();
+        dialog.setParent(parent);
         dialog.setPartida(partida);
-        dialog.show(fragmentManager, TAG);
+
+        if (parent.getFragmentManager() != null) {
+            dialog.show(parent.getFragmentManager(), TAG);
+        }
     }
 
 
@@ -117,6 +123,19 @@ public class MaisOddsDialog extends DialogFragment {
     }
 
 
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        parent.requestPartidas();
+        super.onDismiss(dialog);
+    }
+
+
+
+    public void setParent(PartidasFragment parent) {
+        this.parent = parent;
+    }
+
+
 
     public void setPartida(Partida partida) {
         this.partida = partida;
@@ -170,7 +189,6 @@ public class MaisOddsDialog extends DialogFragment {
         if (context != null) {
 
             contentOdds.removeAllViews();
-
             partida.display(getView());
 
             if (partida.resultado != null) {
@@ -201,6 +219,11 @@ public class MaisOddsDialog extends DialogFragment {
             if (partida.golsMaisMenos != null) {
                 GolsMaisMenosView golsMaisMenos = new GolsMaisMenosView(context, partida.golsMaisMenos).create().build();
                 contentOdds.addView(golsMaisMenos.getRootView());
+            }
+
+            if (partida.placaresCasa != null && partida.placaresEmpate != null && partida.placaresFora != null) {
+                PlacarView placar = new PlacarView(context, partida.placaresCasa, partida.placaresEmpate, partida.placaresFora).create();
+                contentOdds.addView(placar.getRootView());
             }
 
             if (partida.parOuImpar != null) {

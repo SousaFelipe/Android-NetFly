@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_16"
+        android:paddingTop="@dimen/padding_8"
+        android:paddingEnd="@dimen/padding_16"
+        android:paddingBottom="@dimen/padding_8"
+        android:background="@color/textColorDisabled"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/text_14"
+        android:textStyle="italic"
+        android:text="@string/odd_placar_extato"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_11"
+                android:text="@string/lb_casa"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_11"
+                android:text="@string/lb_empate"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_11"
+                android:text="@string/lb_fora"/>
+
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColorDisabled"/>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/table_placares"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2">
+
+        <TableRow
+            android:id="@+id/row_0">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_0"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_0"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_1">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_2">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_3">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_3"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_3"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_4">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_4"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_4"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_5">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_5"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_5"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8"
+                android:paddingBottom="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_6">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_6"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_6"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_7">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_7"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_7"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <!---->
+
+        <TableRow
+            android:id="@+id/row_8">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_8"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_8"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_9">
+
+            <LinearLayout
+                android:id="@+id/layout_casa_ganha_row_9"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_casa_ganha_odds_row_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empate_row_9"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_empate_odds_row_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/layout_fora_ganha_row_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_11" />
+
+                <TextView
+                    android:id="@+id/txv_fora_ganha_odds_row_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:background="#DBDBDB"/>
+
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

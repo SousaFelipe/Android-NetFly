@@ -41,9 +41,14 @@ public class ResultadoPView extends BaseOddsView {
     @Override
     public ResultadoPView create() {
 
-        wgtCasa = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_casa_pt), resultadoP.casa);
-        wgtEmpate = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_empate_pt), resultadoP.empate);
-        wgtFora = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_fora_pt), resultadoP.fora);
+        wgtCasa = new Widget(getAposta("C"), getRootView().findViewById(R.id.layout_odd_casa_pt), resultadoP.casa);
+        wgtCasa.setTitulo("1° Tempo - Casa");
+
+        wgtEmpate = new Widget(getAposta("E"), getRootView().findViewById(R.id.layout_odd_empate_pt), resultadoP.empate);
+        wgtEmpate.setTitulo("1° Tempo - Empate");
+
+        wgtFora = new Widget(getAposta("F"), getRootView().findViewById(R.id.layout_odd_fora_pt), resultadoP.fora);
+        wgtFora.setTitulo("1° Tempo - Fora");
 
         txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa);
         txvOddEmpate = getRootView().findViewById(R.id.txv_odd_empate);

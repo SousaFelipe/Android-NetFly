@@ -15,11 +15,12 @@ public class Helper extends SQLiteOpenHelper {
 
 
     public static final String CAMBISTAS    = "cambistas";
+    public static final String PERFIS       = "perfis";
     public static final String IMPRESSORAS  = "impressoras";
 
 
 
-    public Helper(Context context){
+    Helper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -41,6 +42,17 @@ public class Helper extends SQLiteOpenHelper {
         );
 
         db.execSQL(
+                "CREATE TABLE IF NOT EXISTS " + PERFIS + " ("
+                        +"_id               INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                        +"gerente           TEXT    NOT NULL, "
+                        +"nome              TEXT    NOT NULL, "
+                        +"limite            DOUBLE  NOT NULL, "
+                        +"limite_apostas    INTEGER NOT NULL, "
+                        +"xp                DOUBLE, "
+                        +"xp_maximo         DOUBLE );"
+        );
+
+        db.execSQL(
                 "CREATE TABLE IF NOT EXISTS " + IMPRESSORAS + " (" +
                         "_id        INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                         "nome       TEXT    NOT NULL, " +
@@ -53,6 +65,7 @@ public class Helper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         db.execSQL("DROP TABLE IF EXISTS " + CAMBISTAS      + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + PERFIS         + ";");
         db.execSQL("DROP TABLE IF EXISTS " + IMPRESSORAS    + ";");
 
         onCreate(db);

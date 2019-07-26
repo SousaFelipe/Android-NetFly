@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class AmbasMarcamS extends AmbasMarcam {
 
-    public static final String TIPO = "st_ambas_marcam";
+    public static final String TIPO = "st:ambas_marcam";
 
 
 

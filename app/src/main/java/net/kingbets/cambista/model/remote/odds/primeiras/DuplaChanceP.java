@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class DuplaChanceP extends DuplaChance {
 
-    public static final String TIPO = "pt_dupla_chance";
+    public static final String TIPO = "pt:dupla_chance";
 
 
 

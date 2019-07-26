@@ -12,7 +12,6 @@ public class CampeonatoPartidas {
     public long             id;
     public String           bandeira;
     public String           titulo;
-    public String           serie;
     public List<Partida>    partidas;
 
 

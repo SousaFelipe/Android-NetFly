@@ -38,8 +38,12 @@ public class EmpateAnulaApostaView extends BaseOddsView {
     @Override
     public EmpateAnulaApostaView create() {
 
-        wgtCasa = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_casa_ou_anula), empateAnulaAposta.casaOuAnula);
-        wgtFora = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_fora_ou_anula), empateAnulaAposta.foraOuAnula);
+        wgtCasa = new Widget(getAposta("C"), getRootView().findViewById(R.id.layout_odd_casa_ou_anula), empateAnulaAposta.casaOuAnula);
+        wgtCasa.setTitulo("Casa ou Anula Aposta");
+
+        wgtFora = new Widget(getAposta("F"), getRootView().findViewById(R.id.layout_odd_fora_ou_anula), empateAnulaAposta.foraOuAnula);
+        wgtFora.setTitulo("Fora ou Anula Aposta");
+
 
         txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa_ou_anula);
         txvOddFora = getRootView().findViewById(R.id.txv_odd_fora_ou_anula);

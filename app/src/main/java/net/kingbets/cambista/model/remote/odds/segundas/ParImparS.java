@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class ParImparS extends ParImpar {
 
-    public static final String TIPO = "st_par_ou_impar";
+    public static final String TIPO = "st:par_ou_impar";
 
 
 

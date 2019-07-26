@@ -22,8 +22,7 @@ public abstract class URL {
     public static String ODDS           = FUTEBOL;
 
 
-    public static String CAMBISTAS      = FUTEBOL;
-    public static String CLIENTES       = FUTEBOL;
+    public static String CAMBISTAS      = SISTEMA;
 
 
 
@@ -53,6 +52,5 @@ public abstract class URL {
         ODDS        = PARTIDAS      + "odds/";
 
         CAMBISTAS   = SISTEMA       + "cambistas/";
-        CLIENTES    = SISTEMA       + "clientes/";
     }
 }

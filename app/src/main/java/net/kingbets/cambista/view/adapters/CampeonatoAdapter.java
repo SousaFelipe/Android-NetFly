@@ -40,12 +40,9 @@ public class CampeonatoAdapter extends RecyclerView.Adapter<CampeonatoAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Campeonato campeonato = campeonatos.get(position);
-        String titulo = campeonato.titulo + " Série " + campeonato.serie;
-
         holder.imgBandeira.setImageResource( Img.getResourceId(context, campeonato.getRoundFlag()) );
-        holder.txvTitulo.setText(titulo);
+        holder.txvTitulo.setText(campeonato.titulo);
         holder.txvFim.setText(campeonato.fim);
         holder.txvPartidas.setText( campeonato.partidas > 0 ? String.valueOf(campeonato.partidas) : "0" );
     }

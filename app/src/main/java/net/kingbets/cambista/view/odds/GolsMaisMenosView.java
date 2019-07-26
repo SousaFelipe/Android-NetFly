@@ -59,18 +59,36 @@ public class GolsMaisMenosView extends BaseOddsView {
     @Override
     public GolsMaisMenosView create() {
 
-        wgtMais_05 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_05), golsMaisMenos.mais_05);
-        wgtMenos_05 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_05), golsMaisMenos.menos_05);
-        wgtMais_15 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_15), golsMaisMenos.mais_15);
-        wgtMenos_15 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_15), golsMaisMenos.menos_15);
-        wgtMais_25 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_25), golsMaisMenos.mais_25);
-        wgtMenos_25 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_25), golsMaisMenos.menos_25);
-        wgtMais_35 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_35), golsMaisMenos.mais_35);
-        wgtMenos_35 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_35), golsMaisMenos.menos_35);
-        wgtMais_45 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_45), golsMaisMenos.mais_45);
-        wgtMenos_45 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_45), golsMaisMenos.menos_45);
-        wgtMais_55 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_55), golsMaisMenos.mais_55);
-        wgtMenos_55 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_55), golsMaisMenos.menos_55);
+        wgtMais_05 = new Widget(getAposta("+;0.5"), getRootView().findViewById(R.id.layout_odd_mais_05), golsMaisMenos.mais_05);
+        wgtMais_05.setTitulo("Mais de 0.5 Gol");
+        wgtMenos_05 = new Widget(getAposta("-;0.5"), getRootView().findViewById(R.id.layout_odd_menos_05), golsMaisMenos.menos_05);
+        wgtMenos_05.setTitulo("Menos de 0.5 Gol");
+
+        wgtMais_15 = new Widget(getAposta("+;1.5"), getRootView().findViewById(R.id.layout_odd_mais_15), golsMaisMenos.mais_15);
+        wgtMais_15.setTitulo("Mais de 1.5 Gol");
+        wgtMenos_15 = new Widget(getAposta("-;1.5"), getRootView().findViewById(R.id.layout_odd_menos_15), golsMaisMenos.menos_15);
+        wgtMenos_15.setTitulo("Menos de 1.5 Gol");
+
+        wgtMais_25 = new Widget(getAposta("+;2.5"), getRootView().findViewById(R.id.layout_odd_mais_25), golsMaisMenos.mais_25);
+        wgtMais_25.setTitulo("Mais de 2.5 Gols");
+        wgtMenos_25 = new Widget(getAposta("-;2.5"), getRootView().findViewById(R.id.layout_odd_menos_25), golsMaisMenos.menos_25);
+        wgtMenos_25.setTitulo("Menos de 2.5 Gols");
+
+        wgtMais_35 = new Widget(getAposta("+;3.5"), getRootView().findViewById(R.id.layout_odd_mais_35), golsMaisMenos.mais_35);
+        wgtMais_35.setTitulo("Mais de 3.5 Gols");
+        wgtMenos_35 = new Widget(getAposta("-;3.5"), getRootView().findViewById(R.id.layout_odd_menos_35), golsMaisMenos.menos_35);
+        wgtMenos_35.setTitulo("Menos de 3.5 Gols");
+
+        wgtMais_45 = new Widget(getAposta("+;4.5"), getRootView().findViewById(R.id.layout_odd_mais_45), golsMaisMenos.mais_45);
+        wgtMais_45.setTitulo("Mais de 4.5 Gols");
+        wgtMenos_45 = new Widget(getAposta("-;4.5"), getRootView().findViewById(R.id.layout_odd_menos_45), golsMaisMenos.menos_45);
+        wgtMenos_45.setTitulo("Mais de 4.5 Gols");
+
+        wgtMais_55 = new Widget(getAposta("+;5.5"), getRootView().findViewById(R.id.layout_odd_mais_55), golsMaisMenos.mais_55);
+        wgtMais_55.setTitulo("Mais de 5.5 Gols");
+        wgtMenos_55 = new Widget(getAposta("-;5.5"), getRootView().findViewById(R.id.layout_odd_menos_55), golsMaisMenos.menos_55);
+        wgtMenos_55.setTitulo("Menos de 5.5 Gols");
+
 
         txvOddMais_05 = getRootView().findViewById(R.id.txv_odd_mais_05);
         txvOddMenos_05 = getRootView().findViewById(R.id.txv_odd_menos_05);

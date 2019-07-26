@@ -1,25 +1,28 @@
 <resources>
 
 
-
     <string name="dominio">192.168.1.102</string>
+    <string name="dominio_upper">KINGBETS.NET</string>
 
 
-    <string name="app_name">Bets</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="app_name">King Bets</string>
+    <string name="app_name_upper">KING BETS</string>
     <string name="login_activity">Bolão</string>
 
 
+    <string name="x">x</string>
+    <string name="verifica_perfil">Verificando dados do perfil&#8230;</string>
+    <string name="validando_status">Validadndo o status perfil&#8230;</string>
+
 
     <!-- Drawer Actions -->
+    <string name="action_cancelar">CANCELAR</string>
+    <string name="action_imprimir">IMPRIMIR</string>
     <string name="action_https">HTTPS</string>
     <string name="action_refresh">Atualizar</string>
     <string name="action_autologin">Login automático</string>
     <string name="action_close">Fechar</string>
     <string name="action_exit">Sair</string>
-
 
 
     <!-- Activity Login -->
@@ -32,6 +35,8 @@
     <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
     <string name="lb_nenhuma_partida">NENHUMA PARTIDA ENCONTRADA</string>
     <string name="lb_nenhuma_aposta">NENHUMA APOSTA ENCONTRADA</string>
+    <string name="lb_visualizar_cupom">VISUALIZAR CUPOM</string>
+    <string name="lb_salvar_cupom">SALVAR CUMPOM</string>
 
     <string name="lb_vs">VS</string>
     <string name="lb_casa">CASA</string>
@@ -42,7 +47,6 @@
     <string name="lb_1_2_tempo">1°/2° TEMPO</string>
 
 
-
     <string name="odd_resultado_final">RESULTADO FINAL</string>
     <string name="odd_dupla_chance">DUPLA CHANCE</string>
     <string name="odd_ambas_marcam">AMBAS MARCAM</string>
@@ -50,8 +54,8 @@
     <string name="odd_intervalo_final">INTERVALO - FINAL</string>
     <string name="odd_gols_par_ou_impar">TOTAL DE GOLS - PAR OU ÍMPAR</string>
     <string name="odd_gols_mais_ou_menos">TOTAL DE GOLS - MAIS OU MENOS</string>
+    <string name="odd_placar_extato">PLACAR EXATO</string>
     <string name="odd_empate_anula_aposta">EMPATE ANULA APOSTA</string>
-
 
 
     <string name="odd_resultado_p">1° TEMPO - RESULTADO</string>
@@ -64,7 +68,7 @@
     <string name="odd_gols_par_ou_impar_s">2° TEMPO - PAR OU ÍMPAR</string>
     <string name="odd_gols_mais_ou_menos_p">1° TEMPO - GOLS MAIS OU MENOS</string>
     <string name="odd_gols_mais_ou_menos_s">2° TEMPO - GOLS MAIS OU MENOS</string>
-
+    <string name="odd_placar_extato_p">1° TEMPO - PLACAR EXATO</string>
 
 
     <string name="lb_odd_casa_ou_empate">CASA OU EMPATE</string>
@@ -111,11 +115,9 @@
     <string name="lb_odd_fora_ou_anula">FORA OU ANULA</string>
 
 
-
     <string name="menu_partidas">PARTIDAS</string>
     <string name="menu_campeonatos">CAMPEONATOS</string>
     <string name="menu_financeiro">FINANCEIRO</string>
-
 
 
     <!-- Buttons -->
@@ -129,10 +131,10 @@
     <string name="btn_internacionais">INTERNACIONAIS</string>
 
 
-
     <string name="email">Email</string>
     <string name="senha">Senha</string>
-
+    <string name="valor">Valor</string>
+    <string name="apostador">Apostador</string>
 
 
     <!-- Content Descriptions -->
@@ -144,13 +146,24 @@
     <string name="img_odd_mais">Icone que leva o usuário a todas as ODDS de uma partida.</string>
 
 
-
     <!-- Mensagens de erro -->
     <string name="no_conn_error_title">Sem conexão com a internet!</string>
     <string name="no_conn_error_body">
         Verifique se o Wi-fi ou Dados Módeis estão ligados!
         Você pode ir até as configurações para tivá-los, caso necessário!
     </string>
+
+    <string name="bloqueio_error_title">Bloqueio!</string>
+    <string name="bloqueio_error_body">
+        Sua conta foi bloquada. Por favor, entre em contato com seu gerente!
+    </string>
+
+    <string name="deposito_error_title">Depósito pendente!</string>
+    <string name="deposito_error_body">
+        Se você já tiver efetuado o pagamento, entre em contato com o seu gerente e envie uma foto do comprovante!
+    </string>
+
+
 
     <string name="cod_000_title">Erro desconhecido!</string>
     <string name="cod_000_body">
@@ -173,7 +186,6 @@
     </string>
 
 
-
     <!-- Alertas de Toast -->
     <string name="alert_http_response_empty">O servidor não enviou nenhuma resposta.</string>
     <string name="alert_http_000">O servidor não enviou nenhuma resposta.</string>
@@ -189,6 +201,24 @@
     <string name="alert_password_empty">É necessário fornecer uma senha de 6 dígitos!</string>
     <string name="alert_invalid_credentials">Credenciais inválidas!</string>
 
+
+
+    <string name="cupom_fake_dashes">--------------------------------------------------------------------------------</string>
+    <string name="cupom_aposta">APOSTA</string>
+    <string name="cupom_aposta_cotacao">COTACAO</string>
+    <string name="cupom_aposta_info">INFORMACOES DA APOSTA</string>
+    <string name="cupom_codigo">CODIGO DO CUPOM:</string>
+    <string name="cupom_data_hora">DATA DA APOSTA:</string>
+    <string name="cupom_cambista">CAMBISTA:</string>
+    <string name="cupom_contato">CONTATO:</string>
+    <string name="cupom_apostador">APOSTADOR:</string>
+    <string name="cupom_quant_jogos">QUANTIDADE DE JOGOS:</string>
+    <string name="cupom_cotacao">COTACAO:</string>
+    <string name="cupom_status">STATUS:</string>
+    <string name="cupom_total_apostado">TOTAL APOSTADO:</string>
+    <string name="cupom_possivel_retorno">POSSIVEL RETORNO:</string>
+    <string name="cupom_regras">REGRAS - SUGESTOES - RECLAMACOES</string>
+    <string name="cupom_acesse">ACESSE: WWW.KINGBETS.NET</string>
 
 
 </resources>

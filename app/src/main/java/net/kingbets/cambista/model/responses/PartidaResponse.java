@@ -1,4 +1,4 @@
-package net.kingbets.cambista.model.remote.responses;
+package net.kingbets.cambista.model.responses;
 
 
 import android.support.annotation.NonNull;

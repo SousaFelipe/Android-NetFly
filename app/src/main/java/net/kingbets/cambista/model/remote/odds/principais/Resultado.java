@@ -9,7 +9,8 @@ import org.json.JSONObject;
 
 public class Resultado extends BaseODD {
 
-    public static final String TIPO = "tt_resultado";
+
+    public static final String TIPO     = "tt:resultado_final";
 
 
 

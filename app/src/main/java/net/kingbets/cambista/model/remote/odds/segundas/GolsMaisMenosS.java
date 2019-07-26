@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class GolsMaisMenosS extends GolsMaisMenosP {
 
-    public static final String TIPO = "st_gols_mais_menos";
+    public static final String TIPO = "st:gols_mais_menos";
 
 
 

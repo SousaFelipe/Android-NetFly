@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class DuplaChance extends BaseODD {
 
-    public static final String TIPO = "tt_dupla_chance";
+    public static final String TIPO = "tt:dupla_chance";
 
 
 

@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class ParImpar extends BaseODD {
 
-    public static final String TIPO = "tt_par_ou_impar";
+    public static final String TIPO = "tt:par_ou_impar";
 
 
 

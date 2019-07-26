@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class EmpateAnulaAposta extends BaseODD {
 
-    public static final String TIPO = "tt_empate_anula_aposta";
+    public static final String TIPO = "tt:empate_anula_aposta";
 
 
 

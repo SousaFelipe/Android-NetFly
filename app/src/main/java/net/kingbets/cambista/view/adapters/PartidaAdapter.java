@@ -1,39 +1,32 @@
 package net.kingbets.cambista.view.adapters;
 
 
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
+import net.kingbets.cambista.model.remote.apostas.Aposta;
 import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.model.remote.odds.principais.Resultado;
 import net.kingbets.cambista.utils.Format;
-import net.kingbets.cambista.view.dialogs.MaisOddsDialog;
+import net.kingbets.cambista.view.fragments.PartidasFragment;
+import net.kingbets.cambista.view.widgets.MaisOddsWidget;
+import net.kingbets.cambista.view.widgets.Widget;
 
 import java.util.List;
-import java.util.Locale;
 
 
 public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHolder> {
 
 
 
-    private Context context;
     private List<Partida> partidas;
-    private FragmentManager fragmentManager;
+    private PartidasFragment parent;
 
-
-
-    PartidaAdapter(Context context) {
-        this.context = context;
-    }
 
     @NonNull
     @Override
@@ -52,15 +45,14 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
         holder.txvCasa.setText(partida.casa);
         holder.txvFora.setText(partida.fora);
 
-        holder.txvCasaOdd.setText( String.format(Locale.getDefault(), "%.2f", partida.resultado.casa) );
-        holder.txvEmpateOdd.setText( String.format(Locale.getDefault(), "%.2f", partida.resultado.empate) );
-        holder.txvForaOdd.setText( String.format(Locale.getDefault(), "%.2f", partida.resultado.fora) );
+        criaCasaWidgets(holder, position);
+        criaEmpateWidgets(holder, position);
+        criaForaWidgets(holder, position);
 
-        holder.btnOddMais.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                MaisOddsDialog.display(fragmentManager, partida);
-            }
-        });
+        holder.wgtMaisOdds.setBackgroundResource(R.drawable.bg_odd_red_right);
+        holder.wgtMaisOdds.setPartida(partida);
+        holder.wgtMaisOdds.verificaSelecao();
+        holder.wgtMaisOdds.setParent(parent);
     }
 
 
@@ -77,8 +69,43 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
 
 
 
-    public void setFragmentManager(FragmentManager fragmentManager) {
-        this.fragmentManager = fragmentManager;
+    void setParent(PartidasFragment parent) {
+        this.parent = parent;
+    }
+
+
+
+    private void criaCasaWidgets(ViewHolder holder, int position) {
+        Partida partida = partidas.get( position );
+
+        holder.wgtCasa.setAposta(new Aposta(Resultado.TIPO).withPartida(partida));
+        holder.wgtCasa.setBackgroundResource(R.drawable.bg_odd_red_left);
+        holder.wgtCasa.setCotacao(partida.resultado.casa);
+        holder.wgtCasa.setTitulo("Casa");
+        holder.wgtCasa.mostraCotacao();
+        holder.wgtCasa.verificaSelecao();
+    }
+
+    private void criaEmpateWidgets(ViewHolder holder, int position) {
+        Partida partida = partidas.get( position );
+
+        holder.wgtEmpate.setAposta(new Aposta(Resultado.TIPO).withPartida(partida));
+        holder.wgtEmpate.setBackgroundResource(R.drawable.bg_odd_red_mid);
+        holder.wgtEmpate.setCotacao(partida.resultado.empate);
+        holder.wgtEmpate.setTitulo("Empate");
+        holder.wgtEmpate.mostraCotacao();
+        holder.wgtEmpate.verificaSelecao();
+    }
+
+    private void criaForaWidgets(ViewHolder holder, int position) {
+        Partida partida = partidas.get( position );
+
+        holder.wgtFora.setAposta(new Aposta(Resultado.TIPO).withPartida(partida));
+        holder.wgtFora.setBackgroundResource(R.drawable.bg_odd_red_mid);
+        holder.wgtFora.setCotacao(partida.resultado.fora);
+        holder.wgtFora.setTitulo("Fora");
+        holder.wgtFora.mostraCotacao();
+        holder.wgtFora.verificaSelecao();
     }
 
 
@@ -95,20 +122,14 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder {
 
 
-
         TextView txvHora;
         TextView txvCasa;
         TextView txvFora;
 
-        LinearLayout btnOddCasa;
-        LinearLayout btnOddEmpate;
-        LinearLayout btnOddFora;
-        FrameLayout btnOddMais;
-
-        TextView txvCasaOdd;
-        TextView txvEmpateOdd;
-        TextView txvForaOdd;
-
+        Widget wgtCasa;
+        Widget wgtEmpate;
+        Widget wgtFora;
+        MaisOddsWidget wgtMaisOdds;
 
 
         ViewHolder(View view) {
@@ -118,14 +139,10 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
             txvCasa = view.findViewById(R.id.txv_casa);
             txvFora = view.findViewById(R.id.txv_fora);
 
-            btnOddCasa = view.findViewById(R.id.btn_odd_casa);
-            btnOddEmpate = view.findViewById(R.id.btn_odd_empate);
-            btnOddFora = view.findViewById(R.id.btn_odd_fora);
-            btnOddMais = view.findViewById(R.id.btn_odd_mais);
-
-            txvCasaOdd = view.findViewById(R.id.txv_casa_odd);
-            txvEmpateOdd = view.findViewById(R.id.txv_empate_odd);
-            txvForaOdd = view.findViewById(R.id.txv_fora_odd);
+            wgtCasa = new Widget(view.findViewById(R.id.layout_odd_casa));
+            wgtEmpate = new Widget(view.findViewById(R.id.layout_odd_empate));
+            wgtFora = new Widget(view.findViewById(R.id.layout_odd_fora));
+            wgtMaisOdds = new MaisOddsWidget(view.findViewById(R.id.layout_mais_odds));
         }
     }
 }

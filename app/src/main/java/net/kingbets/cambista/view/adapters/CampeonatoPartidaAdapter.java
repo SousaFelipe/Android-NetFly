@@ -3,7 +3,6 @@ package net.kingbets.cambista.view.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.remote.futebol.CampeonatoPartidas;
 import net.kingbets.cambista.utils.Img;
+import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
 
 
     private Context context;
-    private FragmentManager fragmentManager;
+    private PartidasFragment parent;
     private List<CampeonatoPartidas> campeonatoPartidas;
 
 
@@ -45,21 +45,20 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
     public void onBindViewHolder(@NonNull CampeonatoPartidaAdapter.ViewHolder holder, int position) {
         CampeonatoPartidas campeonatoPartidas = this.campeonatoPartidas.get( position );
 
-        holder.adapter = new PartidaAdapter(context);
-        holder.adapter.setFragmentManager( fragmentManager );
 
         if (campeonatoPartidas.partidas.size() > 0) {
 
-            String titulo = campeonatoPartidas.titulo + " Série " + campeonatoPartidas.serie;
-
+            holder.adapter = new PartidaAdapter();
             holder.imgBandeira.setImageResource(Img.getSquareResourceId(context, campeonatoPartidas.getFlag()) );
-            holder.txvTitulo.setText(titulo);
+            holder.txvTitulo.setText(campeonatoPartidas.titulo);
             holder.txvTotalPartidas.setText( String.valueOf( campeonatoPartidas.partidas.size() ) );
 
+            holder.adapter.setParent(parent);
             holder.adapter.setDataList(campeonatoPartidas.partidas);
+
             holder.recycler.setLayoutManager(new LinearLayoutManager( context ));
             holder.recycler.setAdapter(holder.adapter);
-            holder.recycler.smoothScrollToPosition(0);
+            holder.recycler.scrollTo(0, 0);
         }
         else {
             holder.adapter.clear();
@@ -79,9 +78,8 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
     }
 
 
-
-    public void setFragmentManager(FragmentManager fragmentManager) {
-        this.fragmentManager = fragmentManager;
+    public void setParent(PartidasFragment parent) {
+        this.parent = parent;
     }
 
 

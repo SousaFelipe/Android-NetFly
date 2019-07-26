@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import net.kingbets.cambista.R;
+import net.kingbets.cambista.model.remote.apostas.Single;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.fragments.CampeonatosFragmnet;
 import net.kingbets.cambista.view.fragments.PartidasFragment;

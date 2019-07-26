@@ -21,7 +21,7 @@ import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.local.Cambista;
 import net.kingbets.cambista.utils.Connection;
 import net.kingbets.cambista.utils.URL;
-import net.kingbets.cambista.model.remote.responses.CambistaResponse;
+import net.kingbets.cambista.model.responses.CambistaResponse;
 
 import java.io.IOException;
 
@@ -171,7 +171,7 @@ public class LoginActivity extends BaseActivity {
             if (local.isClean()) {
 
                 if (contract.insert( response.body )) {
-                    main();
+                    check();
                 }
                 else {
                     setLoaderVisibility(false);
@@ -180,7 +180,7 @@ public class LoginActivity extends BaseActivity {
 
             }
             else {
-                main();
+                check();
             }
         }
         else {
@@ -191,8 +191,8 @@ public class LoginActivity extends BaseActivity {
 
 
 
-    private void main() {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+    private void check() {
+        startActivity(new Intent(LoginActivity.this, CheckActivity.class));
         finish();
     }
 

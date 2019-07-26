@@ -52,14 +52,25 @@ public class GolsMaisMenosPView extends BaseOddsView {
     @Override
     public GolsMaisMenosPView create() {
 
-        wgtMais_05 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_05_pt), golsMaisMenosP.mais_05);
-        wgtMenos_05 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_05_pt), golsMaisMenosP.menos_05);
-        wgtMais_15 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_15_pt), golsMaisMenosP.mais_15);
-        wgtMenos_15 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_15_pt), golsMaisMenosP.menos_15);
-        wgtMais_25 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_25_pt), golsMaisMenosP.mais_25);
-        wgtMenos_25 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_25_pt), golsMaisMenosP.menos_25);
-        wgtMais_35 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_mais_35_pt), golsMaisMenosP.mais_35);
-        wgtMenos_35 = new Widget(getAposta(), getRootView().findViewById(R.id.layout_odd_menos_35_pt), golsMaisMenosP.menos_35);
+        wgtMais_05 = new Widget(getAposta("+;0.5"), getRootView().findViewById(R.id.layout_odd_mais_05_pt), golsMaisMenosP.mais_05);
+        wgtMais_05.setTitulo("1° Tempo - Mais de 0.5 Gol");
+        wgtMenos_05 = new Widget(getAposta("-;0.5"), getRootView().findViewById(R.id.layout_odd_menos_05_pt), golsMaisMenosP.menos_05);
+        wgtMenos_05.setTitulo("1° Tempo - Menos de 0.5 Gol");
+
+        wgtMais_15 = new Widget(getAposta("+;1.5"), getRootView().findViewById(R.id.layout_odd_mais_15_pt), golsMaisMenosP.mais_15);
+        wgtMais_15.setTitulo("1° Tempo - Mais de 1.5 Gol");
+        wgtMenos_15 = new Widget(getAposta("-;1.5"), getRootView().findViewById(R.id.layout_odd_menos_15_pt), golsMaisMenosP.menos_15);
+        wgtMenos_15.setTitulo("1° Tempo - Menos de 1.5 Gol");
+
+        wgtMais_25 = new Widget(getAposta("+;2.5"), getRootView().findViewById(R.id.layout_odd_mais_25_pt), golsMaisMenosP.mais_25);
+        wgtMais_25.setTitulo("1° Tempo - Mais de 2.5 Gols");
+        wgtMenos_25 = new Widget(getAposta("-;2.5"), getRootView().findViewById(R.id.layout_odd_menos_25_pt), golsMaisMenosP.menos_25);
+        wgtMenos_25.setTitulo("1° Tempo - Menos de 2.5 Gols");
+
+        wgtMais_35 = new Widget(getAposta("+;3.5"), getRootView().findViewById(R.id.layout_odd_mais_35_pt), golsMaisMenosP.mais_35);
+        wgtMais_35.setTitulo("1° Tempo - Mais de 3.5 Gols");
+        wgtMenos_35 = new Widget(getAposta("-;3.5"), getRootView().findViewById(R.id.layout_odd_menos_35_pt), golsMaisMenosP.menos_35);
+        wgtMenos_35.setTitulo("1° Tempo - Menos de 3.5 Gols");
 
         txvOddMais_05   = getRootView().findViewById(R.id.txv_odd_mais_05);
         txvOddMenos_05  = getRootView().findViewById(R.id.txv_odd_menos_05);

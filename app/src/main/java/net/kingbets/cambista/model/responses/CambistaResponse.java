@@ -1,19 +1,19 @@
-package net.kingbets.cambista.model.remote.responses;
+package net.kingbets.cambista.model.responses;
 
 
 import android.support.annotation.NonNull;
 
+import net.kingbets.cambista.model.BaseResponse;
 import net.kingbets.cambista.model.local.Cambista;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class CambistaResponse {
+public class CambistaResponse extends BaseResponse {
 
 
 
-    public int code;
     public Cambista body;
 
 
@@ -31,10 +31,11 @@ public class CambistaResponse {
         try {
 
             JSONObject json = new JSONObject(bodyString);
-            JSONObject body = json.getJSONObject("body");
             response.code = json.getInt("code");
 
             if (response.code == 200) {
+                JSONObject body = json.getJSONObject("body");
+
                 response.body.clean = 0;
                 response.body.nome = body.getString("nome");
                 response.body.email = body.getString("email");

@@ -1,4 +1,4 @@
-package net.kingbets.cambista.model.remote.responses;
+package net.kingbets.cambista.model.responses;
 
 
 import android.support.annotation.NonNull;
@@ -48,7 +48,6 @@ public class CampeonatoResponse extends BaseResponse {
                     campeonato.id = body.getJSONObject( i ).getInt("id");
                     campeonato.bandeira = body.getJSONObject( i ).getString("bandeira");
                     campeonato.titulo = body.getJSONObject( i ).getString("titulo");
-                    campeonato.serie = body.getJSONObject( i ).getString("serie");
                     campeonato.partidas = body.getJSONObject( i ).getInt("partidas_registradas");
                     campeonato.fim = body.getJSONObject( i ).getString("fim");
 

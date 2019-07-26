@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class IntervaloFinal extends BaseODD {
 
-    public static final String TIPO = "tt_intervalo_final";
+    public static final String TIPO = "tt:intervalo_final";
 
 
 

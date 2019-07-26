@@ -58,4 +58,11 @@ public abstract class BaseOddsView {
     public Aposta getAposta() {
         return aposta;
     }
+
+
+
+    public Aposta getAposta(String sentenca) {
+        aposta.sentenca = sentenca;
+        return aposta;
+    }
 }
