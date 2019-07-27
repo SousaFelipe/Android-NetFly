@@ -7,9 +7,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.model.remote.apostas.Single;
-import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.model.local.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Single;
+import net.kingbets.cambista.model.local.futebol.Partida;
 import net.kingbets.cambista.model.remote.odds.principais.Resultado;
 import net.kingbets.cambista.view.dialogs.MaisOddsDialog;
 import net.kingbets.cambista.view.fragments.PartidasFragment;

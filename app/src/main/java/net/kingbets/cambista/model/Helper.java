@@ -34,6 +34,7 @@ public class Helper extends SQLiteOpenHelper {
                         +"_id           INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
                         +"clean         INTEGER NOT NULL, "
                         +"nome          INTEGER NOT NULL, "
+                        +"contato       TEXT    NOT NULL, "
                         +"email         TEXT    NOT NULL, "
                         +"senha         TEXT    NOT NULL, "
                         +"token         TEXT    NOT NULL, "
@@ -44,7 +45,7 @@ public class Helper extends SQLiteOpenHelper {
         db.execSQL(
                 "CREATE TABLE IF NOT EXISTS " + PERFIS + " ("
                         +"_id               INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-                        +"gerente           TEXT    NOT NULL, "
+                        +"gerente           TEXT, "
                         +"nome              TEXT    NOT NULL, "
                         +"limite            DOUBLE  NOT NULL, "
                         +"limite_apostas    INTEGER NOT NULL, "

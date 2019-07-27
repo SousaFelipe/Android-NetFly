@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.segundas.ParImparS;
 import net.kingbets.cambista.view.odds.BaseOddsView;
 import net.kingbets.cambista.view.widgets.Widget;
@@ -30,7 +30,7 @@ public class ParOuImparSView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_par_ou_impar_st, null, false));
 
         setContext(context);
-        setAposta(new Aposta(ParImparS.TIPO).withPartida(parOuImparS.partida));
+        setAposta(new Aposta(ParImparS.TIPO).partida(parOuImparS.partida));
 
         this.parOuImparS = parOuImparS;
     }

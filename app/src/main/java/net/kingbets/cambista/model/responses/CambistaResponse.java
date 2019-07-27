@@ -36,11 +36,12 @@ public class CambistaResponse extends BaseResponse {
             if (response.code == 200) {
                 JSONObject body = json.getJSONObject("body");
 
-                response.body.clean = 0;
-                response.body.nome = body.getString("nome");
-                response.body.email = body.getString("email");
-                response.body.senha = body.getString("senha");
-                response.body.token = body.getString("token");
+                response.body.clean     = 0;
+                response.body.nome      = body.getString("nome");
+                response.body.contato   = body.getString("contato");
+                response.body.email     = body.getString("email");
+                response.body.senha     = body.getString("senha");
+                response.body.token     = body.getString("token");
             }
         }
         catch (JSONException e) {

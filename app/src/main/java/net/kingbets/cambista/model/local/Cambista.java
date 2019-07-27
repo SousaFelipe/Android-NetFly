@@ -24,6 +24,7 @@ public class Cambista extends BaseModel {
 
     public int clean;
     public String nome;
+    public String contato;
     public String email;
     public String senha;
     public String token;

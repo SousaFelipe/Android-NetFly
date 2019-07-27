@@ -1,6 +1,8 @@
 package net.kingbets.cambista.model.remote.futebol;
 
 
+import net.kingbets.cambista.model.local.futebol.Partida;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.model.local.apostas.Aposta;
+import net.kingbets.cambista.model.local.futebol.Partida;
 import net.kingbets.cambista.model.remote.odds.principais.Resultado;
 import net.kingbets.cambista.utils.Format;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
@@ -78,7 +78,7 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     private void criaCasaWidgets(ViewHolder holder, int position) {
         Partida partida = partidas.get( position );
 
-        holder.wgtCasa.setAposta(new Aposta(Resultado.TIPO).withPartida(partida));
+        holder.wgtCasa.setAposta(new Aposta(Resultado.TIPO).partida(partida).sentenca("C"));
         holder.wgtCasa.setBackgroundResource(R.drawable.bg_odd_red_left);
         holder.wgtCasa.setCotacao(partida.resultado.casa);
         holder.wgtCasa.setTitulo("Casa");
@@ -89,7 +89,7 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     private void criaEmpateWidgets(ViewHolder holder, int position) {
         Partida partida = partidas.get( position );
 
-        holder.wgtEmpate.setAposta(new Aposta(Resultado.TIPO).withPartida(partida));
+        holder.wgtEmpate.setAposta(new Aposta(Resultado.TIPO).partida(partida).sentenca("E"));
         holder.wgtEmpate.setBackgroundResource(R.drawable.bg_odd_red_mid);
         holder.wgtEmpate.setCotacao(partida.resultado.empate);
         holder.wgtEmpate.setTitulo("Empate");
@@ -100,7 +100,7 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     private void criaForaWidgets(ViewHolder holder, int position) {
         Partida partida = partidas.get( position );
 
-        holder.wgtFora.setAposta(new Aposta(Resultado.TIPO).withPartida(partida));
+        holder.wgtFora.setAposta(new Aposta(Resultado.TIPO).partida(partida).sentenca("F"));
         holder.wgtFora.setBackgroundResource(R.drawable.bg_odd_red_mid);
         holder.wgtFora.setCotacao(partida.resultado.fora);
         holder.wgtFora.setTitulo("Fora");

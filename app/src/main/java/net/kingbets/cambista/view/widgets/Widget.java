@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.PerfilContract;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.model.remote.apostas.Single;
+import net.kingbets.cambista.model.local.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Single;
 
 import java.util.Locale;
 
@@ -24,14 +24,11 @@ public class Widget implements View.OnClickListener {
 
     protected Context context;
 
-    protected String titulo;
     protected Aposta aposta;
     protected LinearLayout layout;
 
     protected TextView txvTitle;
-    protected TextView txvOdd;
-
-    private double cotacao;
+              TextView txvOdd;
 
     private int backgroundResource;
 
@@ -53,9 +50,11 @@ public class Widget implements View.OnClickListener {
     public Widget(Aposta aposta, View container, double cotacao) {
 
         this.context = container.getContext();
+
         this.aposta = aposta;
+        this.aposta.cotacao = cotacao;
+
         this.layout = (LinearLayout) container;
-        this.cotacao = cotacao;
 
         this.txvTitle = (TextView) this.layout.getChildAt(0);
         this.txvOdd = (TextView) this.layout.getChildAt(1);
@@ -80,11 +79,11 @@ public class Widget implements View.OnClickListener {
 
 
     public String getTitulo() {
-        return titulo;
+        return aposta.titulo;
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        this.aposta.titulo = titulo;
     }
 
 
@@ -100,15 +99,15 @@ public class Widget implements View.OnClickListener {
 
 
     public String getTextCotacao() {
-        return String.format(Locale.getDefault(), "%.2f", cotacao) ;
+        return String.format(Locale.getDefault(), "%.2f", aposta.cotacao) ;
     }
 
     public double getCotacao() {
-        return cotacao;
+        return aposta.cotacao;
     }
 
     public void setCotacao(double cotacao) {
-        this.cotacao = cotacao;
+        this.aposta.cotacao = cotacao;
     }
 
 

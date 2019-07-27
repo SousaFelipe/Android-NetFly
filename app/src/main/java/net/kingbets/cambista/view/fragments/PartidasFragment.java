@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.remote.apostas.Single;
+import net.kingbets.cambista.model.local.apostas.Single;
 import net.kingbets.cambista.model.responses.CampeonatoPartidasResponse;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CampeonatoPartidaAdapter;
-import net.kingbets.cambista.view.dialogs.CupomDialog;
+import net.kingbets.cambista.view.dialogs.CriaCupomDialog;
 
 import java.io.IOException;
 
@@ -113,7 +113,7 @@ public class PartidasFragment extends BaseFragment {
 
 
     private void mostrarCupom() {
-        CupomDialog.display(this);
+        CriaCupomDialog.display(this);
     }
 
 

@@ -5,8 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.principais.Placar;
 import net.kingbets.cambista.view.widgets.WidgetPlacar;
 
@@ -56,7 +55,7 @@ public class PlacarView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_placar_exatato, null, false));
 
         setContext(context);
-        setAposta(new Aposta(Placar.TIPO).withPartida( placaresCasa.get(0).partida ));
+        setAposta(new Aposta(Placar.TIPO).partida( placaresCasa.get(0).partida ));
 
         this.placaresCasa = placaresCasa;
         this.placaresEmpate = placaresEmpate;

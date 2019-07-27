@@ -4,7 +4,7 @@ package net.kingbets.cambista.model.responses;
 import android.support.annotation.NonNull;
 
 import net.kingbets.cambista.model.BaseResponse;
-import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.model.local.futebol.Partida;
 
 import org.json.JSONArray;
 import org.json.JSONException;

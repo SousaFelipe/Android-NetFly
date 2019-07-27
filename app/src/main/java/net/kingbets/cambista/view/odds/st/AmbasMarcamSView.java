@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.segundas.AmbasMarcamS;
 import net.kingbets.cambista.view.odds.BaseOddsView;
 import net.kingbets.cambista.view.widgets.Widget;
@@ -32,7 +32,7 @@ public class AmbasMarcamSView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_ambas_marcam_st, null, false));
 
         setContext(context);
-        setAposta(new Aposta(AmbasMarcamS.TIPO).withPartida(ambasMarcamS.partida));
+        setAposta(new Aposta(AmbasMarcamS.TIPO).partida(ambasMarcamS.partida));
 
         this.ambasMarcamS = ambasMarcamS;
     }

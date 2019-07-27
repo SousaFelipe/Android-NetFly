@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.primeiras.ResultadoP;
 import net.kingbets.cambista.view.odds.BaseOddsView;
 import net.kingbets.cambista.view.widgets.Widget;
@@ -32,7 +32,7 @@ public class ResultadoPView extends BaseOddsView {
         super( LayoutInflater.from(context).inflate(R.layout.odds_principal_pt, null, false));
 
         setContext(context);
-        setAposta(new Aposta(ResultadoP.TIPO).withPartida(resultadoP.partida));
+        setAposta(new Aposta(ResultadoP.TIPO).partida(resultadoP.partida));
 
         this.resultadoP = resultadoP;
     }

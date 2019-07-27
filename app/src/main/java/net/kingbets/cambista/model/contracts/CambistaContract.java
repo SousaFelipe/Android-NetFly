@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-import android.support.annotation.NonNull;
 
 import net.kingbets.cambista.model.BaseContract;
 import net.kingbets.cambista.model.Helper;
@@ -16,7 +15,7 @@ public class CambistaContract extends BaseContract {
 
 
 
-    public CambistaContract(@NonNull Context context) {
+    public CambistaContract(Context context) {
         super(context);
     }
 
@@ -38,6 +37,7 @@ public class CambistaContract extends BaseContract {
 
             values.put("clean",      Cambista.CLEAN);
             values.put("nome",       "nome");
+            values.put("contato",    "contato");
             values.put("email",      "email");
             values.put("senha",      "senha");
             values.put("token",      "token");
@@ -64,13 +64,14 @@ public class CambistaContract extends BaseContract {
             Cambista old = first(true);
             ContentValues values = new ContentValues();
 
-            values.put("clean", cambista.clean);
-            values.put("nome", cambista.nome);
-            values.put("email", cambista.email);
-            values.put("senha", cambista.senha);
-            values.put("token", cambista.token);
-            values.put("auto_login", old.auto_login);
-            values.put("https_on", old.https_on);
+            values.put("clean",     cambista.clean);
+            values.put("nome",      cambista.nome);
+            values.put("contato",   cambista.contato);
+            values.put("email",     cambista.email);
+            values.put("senha",     cambista.senha);
+            values.put("token",     cambista.token);
+            values.put("auto_login",old.auto_login);
+            values.put("https_on",  old.https_on);
 
             return connection.update(Helper.CAMBISTAS, values, "_id=?", new String[] { String.valueOf( old.id ) }) > 0;
         }
@@ -142,11 +143,12 @@ public class CambistaContract extends BaseContract {
             cambista.id  = cursor.getLong(0);
             cambista.clean = cursor.getInt(1);
             cambista.nome = cursor.getString(2);
-            cambista.email = cursor.getString(3);
-            cambista.senha = cursor.getString(4);
-            cambista.token = cursor.getString(5);
-            cambista.auto_login = cursor.getInt(6);
-            cambista.https_on = cursor.getInt(7);
+            cambista.contato = cursor.getString(3);
+            cambista.email = cursor.getString(4);
+            cambista.senha = cursor.getString(5);
+            cambista.token = cursor.getString(6);
+            cambista.auto_login = cursor.getInt(7);
+            cambista.https_on = cursor.getInt(8);
         }
 
         cursor.close();

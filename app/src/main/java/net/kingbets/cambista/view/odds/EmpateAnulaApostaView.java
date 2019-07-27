@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.principais.EmpateAnulaAposta;
 import net.kingbets.cambista.view.widgets.Widget;
 
@@ -29,7 +29,7 @@ public class EmpateAnulaApostaView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_empate_anula_aposta, null, false));
 
         setContext(context);
-        setAposta(new Aposta(EmpateAnulaAposta.TIPO).withPartida(empateAnulaAposta.partida));
+        setAposta(new Aposta(EmpateAnulaAposta.TIPO).partida(empateAnulaAposta.partida));
 
         this.empateAnulaAposta = empateAnulaAposta;
     }

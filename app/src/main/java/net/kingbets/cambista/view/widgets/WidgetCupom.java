@@ -8,17 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.model.remote.apostas.Single;
+import net.kingbets.cambista.model.local.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Single;
 import net.kingbets.cambista.utils.DateTime;
-import net.kingbets.cambista.view.dialogs.CupomDialog;
+import net.kingbets.cambista.view.dialogs.CriaCupomDialog;
 
 
 public class WidgetCupom {
 
 
 
-    private CupomDialog parent;
+    private CriaCupomDialog parent;
     private View rootView;
     private Widget widget;
 
@@ -72,7 +72,7 @@ public class WidgetCupom {
 
 
 
-    public void setParent(CupomDialog parent) {
+    public void setParent(CriaCupomDialog parent) {
         this.parent = parent;
     }
 

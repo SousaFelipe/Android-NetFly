@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.primeiras.DuplaChanceP;
 import net.kingbets.cambista.view.odds.BaseOddsView;
 import net.kingbets.cambista.view.widgets.Widget;
@@ -33,7 +33,7 @@ public class DuplaChancePView extends BaseOddsView {
         super( LayoutInflater.from(context).inflate(R.layout.odds_dupla_chance_pt, null, false) );
 
         setContext(context);
-        setAposta(new Aposta(DuplaChanceP.TIPO).withPartida(duplaChanceP.partida));
+        setAposta(new Aposta(DuplaChanceP.TIPO).partida(duplaChanceP.partida));
 
         this.duplaChanceP = duplaChanceP;
     }

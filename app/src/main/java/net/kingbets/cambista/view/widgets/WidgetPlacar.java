@@ -3,7 +3,7 @@ package net.kingbets.cambista.view.widgets;
 
 import android.view.View;
 
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.principais.Placar;
 
 

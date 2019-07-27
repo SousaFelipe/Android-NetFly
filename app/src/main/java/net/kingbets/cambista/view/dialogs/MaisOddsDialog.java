@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.futebol.Partida;
+import net.kingbets.cambista.model.local.futebol.Partida;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 import net.kingbets.cambista.view.odds.AmbasMarcamView;
 import net.kingbets.cambista.view.odds.DuplaChanceView;

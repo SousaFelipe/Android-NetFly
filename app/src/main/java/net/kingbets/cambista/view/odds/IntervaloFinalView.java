@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.principais.IntervaloFinal;
 import net.kingbets.cambista.view.widgets.Widget;
 
@@ -43,7 +43,7 @@ public class IntervaloFinalView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_intervalo_final, null, false));
 
         setContext(context);
-        setAposta(new Aposta(IntervaloFinal.TIPO).withPartida(intervaloFinal.partida));
+        setAposta(new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida));
 
         this.intervaloFinal = intervaloFinal;
     }

@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
+import net.kingbets.cambista.model.local.apostas.Aposta;
 import net.kingbets.cambista.model.remote.odds.segundas.GolsMaisMenosS;
 import net.kingbets.cambista.view.odds.BaseOddsView;
 import net.kingbets.cambista.view.widgets.Widget;
@@ -42,7 +42,7 @@ public class GolsMaisMenosSView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_gols_mais_menos_st, null, false));
 
         setContext(context);
-        setAposta(new Aposta(GolsMaisMenosS.TIPO).withPartida(golsMaisMenosS.partida));
+        setAposta(new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida));
 
         this.golsMaisMenosS = golsMaisMenosS;
     }

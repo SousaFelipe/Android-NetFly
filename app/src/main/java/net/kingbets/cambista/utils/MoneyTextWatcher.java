@@ -5,8 +5,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-import net.kingbets.cambista.model.remote.apostas.Single;
-import net.kingbets.cambista.view.dialogs.CupomDialog;
+import net.kingbets.cambista.model.local.apostas.Single;
+import net.kingbets.cambista.view.dialogs.CriaCupomDialog;
 
 import java.text.NumberFormat;
 
@@ -15,14 +15,14 @@ public class MoneyTextWatcher implements TextWatcher {
 
 
 
-    private CupomDialog parent;
+    private CriaCupomDialog parent;
     private EditText editText;
 
     private String lastAmount = "";
 
 
 
-    public MoneyTextWatcher(CupomDialog parent, EditText editText) {
+    public MoneyTextWatcher(CriaCupomDialog parent, EditText editText) {
         super();
         this.parent = parent;
         this.editText = editText;
