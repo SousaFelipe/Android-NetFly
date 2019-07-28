@@ -2,9 +2,11 @@ package net.kingbets.cambista.view.dialogs;
 
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.local.Cambista;
+import net.kingbets.cambista.model.local.apostas.Single;
 import net.kingbets.cambista.model.remote.apostas.Aposta;
 import net.kingbets.cambista.model.responses.CupomResponse;
 import net.kingbets.cambista.utils.DateTime;
@@ -24,6 +27,7 @@ import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,7 +37,7 @@ import okhttp3.Response;
 
 
 public class VerCupomDialog extends BaseDialog {
-    public static final String TAG = "CDIALOG_VER_CUPOM";
+    public static final String TAG = "DIALOG_VER_CUPOM";
 
 
 
@@ -64,6 +68,18 @@ public class VerCupomDialog extends BaseDialog {
             proccessCupom(response);
         }
     };
+
+
+
+    public static void display(FragmentManager manager, String codigo) {
+
+        VerCupomDialog dialog = new VerCupomDialog();
+        dialog.setCurrentCupom(codigo);
+
+        if (manager != null) {
+            dialog.show(manager, TAG);
+        }
+    }
 
 
 
@@ -140,10 +156,24 @@ public class VerCupomDialog extends BaseDialog {
     }
 
 
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        Single.instance().clear();
+
+        if (parent != null) {
+            parent.request();
+        }
+
+        super.onDismiss(dialog);
+    }
+
+
 
     public void setParent(PartidasFragment parent) {
         this.parent = parent;
     }
+
+
 
     public void setCurrentCupom(String currentCupom) {
         this.currentCupom = currentCupom;
@@ -186,7 +216,6 @@ public class VerCupomDialog extends BaseDialog {
 
     private void proccessCupom(Response response) throws IOException {
         if (response.isSuccessful()) {
-
             if (response.body() != null) {
                 mostrarCupom( CupomResponse.receive(response.body().string()) );
             }
@@ -195,7 +224,6 @@ public class VerCupomDialog extends BaseDialog {
                     @Override public void onClick(View v) { buscarCupom(); }
                 });
             }
-
         }
         else {
             alert("Erro ao buscar cupom.", new View.OnClickListener() {
@@ -209,31 +237,38 @@ public class VerCupomDialog extends BaseDialog {
     private void  mostrarCupom(CupomResponse response) {
         setLoaderVisibility(false);
 
-        Cambista cambista = new CambistaContract(getContext()).first();
+        final CupomResponse finalResponse = response;
 
-        String data = DateTime.getInlineDate(DateTime.getDateFromString(response.body.data), "dd/MM/yyyy");
-        String hora = DateTime.compact(response.body.hora);
-        String dataHora = data + " às " + hora;
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override public void run() {
 
-        txvCodigo.setText( response.body.codigo );
-        txvDataHora.setText( dataHora );
-        txvCambista.setText( Str.nomeResumido(cambista.nome) );
-        txvContato.setText( Str.mask(cambista.contato, "(##) # ####-####") );
-        txvApostador.setText( response.body.apostador );
+                    Cambista cambista = new CambistaContract(getContext()).first();
 
-        mostrarApostas(response.body.apostas);
+                    String data = DateTime.getInlineDate(DateTime.getDateFromString(finalResponse.body.data), "dd/MM/yyyy");
+                    String hora = DateTime.compact(finalResponse.body.hora);
+                    String dataHora = data + " às " + hora;
 
-        txvQuantJogos.setText( String.valueOf(response.body.quantApostas) );
-        txvCotacao.setText( Str.getCurrency(response.body.cotacao) );
-        txvTotalApostado.setText( Str.getCurrency(response.body.valorApostado ) );
-        txvPossivelRetorno.setText( Str.getCurrency(response.body.possivelRetorno) );
+                    txvCodigo.setText( finalResponse.body.codigo );
+                    txvDataHora.setText( dataHora );
+                    txvCambista.setText( Str.nomeResumido(cambista.nome) );
+                    txvContato.setText( Str.mask(cambista.contato, "(##) # ####-####") );
+                    txvApostador.setText( finalResponse.body.apostador );
+
+                    mostrarApostas(finalResponse.body.apostas);
+
+                    txvQuantJogos.setText( String.valueOf(finalResponse.body.quantApostas) );
+                    txvCotacao.setText( Str.getCurrency(finalResponse.body.cotacao) );
+                    txvTotalApostado.setText( Str.getCurrency(finalResponse.body.valorApostado ) );
+                    txvPossivelRetorno.setText( Str.getCurrency(finalResponse.body.possivelRetorno) );
+                }
+            });
+        }
     }
 
 
 
     private void mostrarApostas(List<Aposta> apostas) {
-
-
         for (Aposta aposta : apostas) {
 
             View view = LayoutInflater.from(getContext()).inflate(R.layout.item_cupom_aposta, null, false);
@@ -243,7 +278,7 @@ public class VerCupomDialog extends BaseDialog {
             TextView txvCampeonato = view.findViewById(R.id.txv_cupom_campeonato);
             TextView txvEquipes = view.findViewById(R.id.txv_cupom_equipes);
             TextView txvTitulo = view.findViewById(R.id.txv_cupom_titulo_aposta);
-            TextView txvCotacao = view.findViewById(R.id.txv_cupom_cotacao);
+            TextView txvCotacao = view.findViewById(R.id.txv_cupom_aposta_cotacao);
             TextView txvStatus = view.findViewById(R.id.txv_cupom_aposta_status);
 
             String data = DateTime.getInlineDate(DateTime.getDateFromString(aposta.partida.data), "dd/MM/yyyy");
@@ -255,10 +290,24 @@ public class VerCupomDialog extends BaseDialog {
             txvCampeonato.setText( aposta.partida.campeonato );
             txvEquipes.setText( equipes );
             txvTitulo.setText( aposta.titulo );
-            txvCotacao.setText( Str.getCurrency(aposta.cotacao) );
-            txvStatus.setText( aposta.status );
+            txvCotacao.setText( String.format(Locale.getDefault(), "%.2f", aposta.cotacao) );
+            txvStatus.setText( getStatus(aposta.status) );
 
             layoutContentApostas.addView(view);
         }
+    }
+
+
+
+    private String getStatus(String status) {
+
+        if (status.equals("G")) {
+            return "Ganhou";
+        }
+        else if (status.equals("P")) {
+            return "Perdeu";
+        }
+
+        return "Aberto";
     }
 }

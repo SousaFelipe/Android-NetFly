@@ -31,6 +31,10 @@ public abstract class BaseFragment extends Fragment {
 
 
 
+    public abstract void request();
+
+
+
     protected void selecionarWidget(CardView widget) {
 
         if (lastWidget != null) {

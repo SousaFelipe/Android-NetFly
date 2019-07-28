@@ -52,25 +52,23 @@ public class GolsMaisMenosSView extends BaseOddsView {
     @Override
     public GolsMaisMenosSView create() {
 
-        wgtMais_05 = new Widget(getAposta("+;0.5"), getRootView().findViewById(R.id.layout_odd_mais_05_st), golsMaisMenosS.mais_05);
-        wgtMais_05.setTitulo("2° Tempo - Mais de 0.5 Gol");
-        wgtMenos_05 = new Widget(getAposta("-;0.5"), getRootView().findViewById(R.id.layout_odd_menos_05_st), golsMaisMenosS.menos_05);
-        wgtMenos_05.setTitulo("2° Tempo - Menos de 0.5 Gol");
+        Aposta mais05 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Mais de 0.5 Gols").sentenca("+;0.5").cotacao(golsMaisMenosS.mais_05);
+        Aposta menos05 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Menos de 0.5 Gols").sentenca("-;0.5").cotacao(golsMaisMenosS.menos_05);
+        Aposta mais15 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Mais de 1.5 Gols").sentenca("+;1.5").cotacao(golsMaisMenosS.mais_15);
+        Aposta menos15 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Menos de 1.5 Gols").sentenca("-;1.5").cotacao(golsMaisMenosS.menos_15);
+        Aposta mais25 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Mais de 2.5 Gols").sentenca("+;2.5").cotacao(golsMaisMenosS.mais_25);
+        Aposta menos25 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Menos de 2.5 Gols").sentenca("-;2.5").cotacao(golsMaisMenosS.menos_25);
+        Aposta mais35 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Mais de 3.5 Gols").sentenca("+;3.5").cotacao(golsMaisMenosS.mais_35);
+        Aposta menos35 = new Aposta(GolsMaisMenosS.TIPO).partida(golsMaisMenosS.partida).titulo("2° Tempo - Menos de 3.5 Gols").sentenca("-;3.5").cotacao(golsMaisMenosS.menos_35);
 
-        wgtMais_15 = new Widget(getAposta("+;1.5"), getRootView().findViewById(R.id.layout_odd_mais_15_st), golsMaisMenosS.mais_15);
-        wgtMais_15.setTitulo("2° Tempo - Mais de 1.5 Gol");
-        wgtMenos_15 = new Widget(getAposta("-;1.5"), getRootView().findViewById(R.id.layout_odd_menos_15_st), golsMaisMenosS.menos_15);
-        wgtMenos_15.setTitulo("2° Tempo - Menos de 1.5 Gol");
-
-        wgtMais_25 = new Widget(getAposta("+;2.5"), getRootView().findViewById(R.id.layout_odd_mais_25_st), golsMaisMenosS.mais_25);
-        wgtMais_25.setTitulo("2° Tempo - Mais de 2.5 Gols");
-        wgtMenos_25 = new Widget(getAposta("-;2.5"), getRootView().findViewById(R.id.layout_odd_menos_25_st), golsMaisMenosS.menos_25);
-        wgtMenos_25.setTitulo("2° Tempo - Menos de 2.5 Gols");
-
-        wgtMais_35 = new Widget(getAposta("+;3.5"), getRootView().findViewById(R.id.layout_odd_mais_35_st), golsMaisMenosS.mais_35);
-        wgtMais_35.setTitulo("2° Tempo - Mais de 3.5 Gols");
-        wgtMenos_35 = new Widget(getAposta("-;3.5"), getRootView().findViewById(R.id.layout_odd_menos_35_st), golsMaisMenosS.menos_35);
-        wgtMenos_35.setTitulo("2° Tempo - Menos de 3.5 Gols");
+        wgtMais_05 = new Widget(mais05, getRootView().findViewById(R.id.layout_odd_mais_05_st));
+        wgtMenos_05 = new Widget(menos05, getRootView().findViewById(R.id.layout_odd_menos_05_st));
+        wgtMais_15 = new Widget(mais15, getRootView().findViewById(R.id.layout_odd_mais_15_st));
+        wgtMenos_15 = new Widget(menos15, getRootView().findViewById(R.id.layout_odd_menos_15_st));
+        wgtMais_25 = new Widget(mais25, getRootView().findViewById(R.id.layout_odd_mais_25_st));
+        wgtMenos_25 = new Widget(menos25, getRootView().findViewById(R.id.layout_odd_menos_25_st));
+        wgtMais_35 = new Widget(mais35, getRootView().findViewById(R.id.layout_odd_mais_35_st));
+        wgtMenos_35 = new Widget(menos35, getRootView().findViewById(R.id.layout_odd_menos_35_st));
 
         txvOddMais_05   = getRootView().findViewById(R.id.txv_odd_mais_05);
         txvOddMenos_05  = getRootView().findViewById(R.id.txv_odd_menos_05);

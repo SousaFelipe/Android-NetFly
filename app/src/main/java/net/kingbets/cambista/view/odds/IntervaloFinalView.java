@@ -52,32 +52,25 @@ public class IntervaloFinalView extends BaseOddsView {
     @Override
     public IntervaloFinalView create() {
 
-        wgtCasaCasa = new Widget(getAposta("C;C"), getRootView().findViewById(R.id.layout_odd_casa_casa), intervaloFinal.casaCasa);
-        wgtCasaCasa.setTitulo("Casa x Casa");
+        Aposta cc = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Casa x Casa").sentenca("C;C").cotacao(intervaloFinal.casaCasa);
+        Aposta ce = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Casa x Empate").sentenca("C;E").cotacao(intervaloFinal.casaEmpate);
+        Aposta cf = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Casa x Fora").sentenca("C;F").cotacao(intervaloFinal.casaFora);
+        Aposta ec = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Empate x Casa").sentenca("E;C").cotacao(intervaloFinal.empateCasa);
+        Aposta ee = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Empate x Empate").sentenca("E;E").cotacao(intervaloFinal.empateEmpate);
+        Aposta ef = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Empate x Fora").sentenca("E;F").cotacao(intervaloFinal.empateFora);
+        Aposta fc = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Fora x Casa").sentenca("F;C").cotacao(intervaloFinal.foraCasa);
+        Aposta fe = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Fora x Empate").sentenca("F;E").cotacao(intervaloFinal.foraEmpate);
+        Aposta ff = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Fora x Fora").sentenca("F;F").cotacao(intervaloFinal.foraFora);
 
-        wgtCasaEmpate = new Widget(getAposta("C;E"), getRootView().findViewById(R.id.layout_odd_casa_empate), intervaloFinal.casaEmpate);
-        wgtCasaEmpate.setTitulo("Casa x Empate");
-
-        wgtCasaFora = new Widget(getAposta("C;F"), getRootView().findViewById(R.id.layout_odd_casa_fora), intervaloFinal.casaFora);
-        wgtCasaFora.setTitulo("Casa x Fora");
-
-        wgtEmpateCasa = new Widget(getAposta("E;C"), getRootView().findViewById(R.id.layout_odd_empate_casa), intervaloFinal.empateCasa);
-        wgtEmpateCasa.setTitulo("Empate x Casa");
-
-        wgtEmpateEmpate = new Widget(getAposta("E;E"), getRootView().findViewById(R.id.layout_odd_empate_empate), intervaloFinal.empateEmpate);
-        wgtEmpateEmpate.setTitulo("Empate x Empate");
-
-        wgtEmpateFora = new Widget(getAposta("E;F"), getRootView().findViewById(R.id.layout_odd_empate_fora), intervaloFinal.empateFora);
-        wgtEmpateFora.setTitulo("Empate x Fora");
-
-        wgtForaCasa = new Widget(getAposta("F;C"), getRootView().findViewById(R.id.layout_odd_fora_casa), intervaloFinal.foraCasa);
-        wgtForaCasa.setTitulo("Fora x Casa");
-
-        wgtForaEmpate = new Widget(getAposta("F;E"), getRootView().findViewById(R.id.layout_odd_fora_empate), intervaloFinal.foraEmpate);
-        wgtForaEmpate.setTitulo("Fora x Empate");
-
-        wgtForaFora = new Widget(getAposta("F;F"), getRootView().findViewById(R.id.layout_odd_fora_fora), intervaloFinal.foraFora);
-        wgtForaFora.setTitulo("Fora x Fora");
+        wgtCasaCasa = new Widget(cc, getRootView().findViewById(R.id.layout_odd_casa_casa));
+        wgtCasaEmpate = new Widget(ce, getRootView().findViewById(R.id.layout_odd_casa_empate));
+        wgtCasaFora = new Widget(cf, getRootView().findViewById(R.id.layout_odd_casa_fora));
+        wgtEmpateCasa = new Widget(ec, getRootView().findViewById(R.id.layout_odd_empate_casa));
+        wgtEmpateEmpate = new Widget(ee, getRootView().findViewById(R.id.layout_odd_empate_empate));
+        wgtEmpateFora = new Widget(ef, getRootView().findViewById(R.id.layout_odd_empate_fora));
+        wgtForaCasa = new Widget(fc, getRootView().findViewById(R.id.layout_odd_fora_casa));
+        wgtForaEmpate = new Widget(fe, getRootView().findViewById(R.id.layout_odd_fora_empate));
+        wgtForaFora = new Widget(ff, getRootView().findViewById(R.id.layout_odd_fora_fora));
 
 
         txvCasaCasa = getRootView().findViewById(R.id.txv_odd_casa_casa);

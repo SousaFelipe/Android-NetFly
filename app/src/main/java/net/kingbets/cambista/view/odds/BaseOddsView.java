@@ -66,6 +66,8 @@ public abstract class BaseOddsView {
         return aposta;
     }
 
+
+    
     public Aposta getAposta(String titulo, String sentenca, double cotacao) {
         Aposta copy = aposta;
         copy.titulo = titulo;

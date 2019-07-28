@@ -29,10 +29,7 @@ public class ResultadoView extends BaseOddsView {
 
     public ResultadoView(Context context, Resultado resultado) {
         super( LayoutInflater.from(context).inflate(R.layout.odds_principal, null, false));
-
         setContext(context);
-        setAposta(new Aposta(Resultado.TIPO).partida(resultado.partida));
-
         this.resultado = resultado;
     }
 
@@ -40,14 +37,13 @@ public class ResultadoView extends BaseOddsView {
     @Override
     public ResultadoView create() {
 
-        wgtCasa = new Widget(getAposta("C"), getRootView().findViewById(R.id.layout_odd_casa), resultado.casa);
-        wgtCasa.setTitulo("Casa");
+        Aposta casa = new Aposta(Resultado.TIPO).partida(resultado.partida).titulo("Casa").sentenca("C").cotacao(resultado.casa);
+        Aposta empate = new Aposta(Resultado.TIPO).partida(resultado.partida).titulo("Empate").sentenca("E").cotacao(resultado.empate);
+        Aposta fora = new Aposta(Resultado.TIPO).partida(resultado.partida).titulo("Fora").sentenca("F").cotacao(resultado.fora);
 
-        wgtEmpate = new Widget(getAposta("E"), getRootView().findViewById(R.id.layout_odd_empate), resultado.empate);
-        wgtEmpate.setTitulo("Empate");
-
-        wgtFora = new Widget(getAposta("F"), getRootView().findViewById(R.id.layout_odd_fora), resultado.fora);
-        wgtFora.setTitulo("Fora");
+        wgtCasa = new Widget(casa, getRootView().findViewById(R.id.layout_odd_casa));
+        wgtEmpate = new Widget(empate, getRootView().findViewById(R.id.layout_odd_empate));
+        wgtFora = new Widget(fora, getRootView().findViewById(R.id.layout_odd_fora));
 
         txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa);
         txvOddEmpate = getRootView().findViewById(R.id.txv_odd_empate);

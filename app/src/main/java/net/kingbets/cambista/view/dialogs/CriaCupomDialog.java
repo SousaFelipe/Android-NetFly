@@ -43,7 +43,7 @@ import okhttp3.Response;
 
 
 public class CriaCupomDialog extends BaseDialog {
-    public static final String TAG = "CDIALOG_CRIA_CUPOM";
+    public static final String TAG = "DIALOG_CRIA_CUPOM";
 
 
 
@@ -155,7 +155,7 @@ public class CriaCupomDialog extends BaseDialog {
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        parent.requestPartidas();
+        parent.request();
         super.onDismiss(dialog);
     }
 
@@ -290,48 +290,31 @@ public class CriaCupomDialog extends BaseDialog {
 
     private void proccessApostas(Response response) throws IOException {
         if (response.isSuccessful()) {
-
             if (response.body() != null) {
 
-                if (response.body().string().equals("error")) {
+                String codigo = response.body().string();
+
+                if (codigo.equals("error")) {
                     alert("Erro [500] ao salvar as apostas.", new View.OnClickListener() {
                         @Override public void onClick(View v) { salvarCupom(); }
                     });
                 }
                 else {
-                    visualizarCupom(response.body().string());
+                    ((PartidasFragment)parent).mostrarCupom(codigo);
+                    dismiss();
                 }
-
             }
             else {
                alert("Erro [204] ao salvar as apostas.", new View.OnClickListener() {
                    @Override public void onClick(View v) { salvarCupom(); }
                });
             }
-
         }
         else {
             alert(response.message(), new View.OnClickListener() {
                 @Override public void onClick(View v) { salvarCupom(); }
             });
         }
-    }
-
-
-
-    private void visualizarCupom(String codigo) {
-
-        final String fnCodigo = codigo;
-
-        if (getActivity() != null) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override public void run() {
-                    VerCupomDialog.display(parent, fnCodigo);
-                }
-            });
-        }
-
-        dismiss();
     }
 
 

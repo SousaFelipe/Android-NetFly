@@ -126,5 +126,7 @@ public class Cupom extends BaseModel {
         status = AGUARDANDO;
         data = null;
         hora = null;
+        widgets.clear();
+        widgets = new ArrayList<>();
     }
 }

@@ -42,11 +42,11 @@ public class AmbasMarcamSView extends BaseOddsView {
     @Override
     public AmbasMarcamSView create() {
 
-        wgtSim = new Widget(getAposta("N"), getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim_st), ambasMarcamS.sim);
-        wgtSim.setTitulo("2° Tempo - Ambas Marcam");
+        Aposta sim = new Aposta(AmbasMarcamS.TIPO).partida(ambasMarcamS.partida).titulo("2° Tempo - Ambas Marcam: SIM").sentenca("S").cotacao(ambasMarcamS.sim);
+        Aposta nao = new Aposta(AmbasMarcamS.TIPO).partida(ambasMarcamS.partida).titulo("2° Tempo - Ambas Marcam: NAO").sentenca("N").cotacao(ambasMarcamS.nao);
 
-        wgtNao = new Widget(getAposta("N"), getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao_st), ambasMarcamS.nao);
-        wgtNao.setTitulo("2° Tempo - Ninguem Marca");
+        wgtSim = new Widget(sim, getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim_st));
+        wgtNao = new Widget(nao, getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao_st));
 
         txvOddSim = getRootView().findViewById(R.id.txv_odd_ambas_marcam_sim);
         txvOddNao = getRootView().findViewById(R.id.txv_odd_ambas_marcam_nao);

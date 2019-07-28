@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import net.kingbets.cambista.view.fragments.BaseFragment;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 
@@ -14,7 +15,7 @@ public abstract class BaseDialog extends DialogFragment {
 
 
 
-    protected PartidasFragment parent;
+    protected BaseFragment parent;
     protected LinearLayout layoutContentApostas;
     protected int loader;
 

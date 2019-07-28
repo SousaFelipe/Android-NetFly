@@ -12,8 +12,8 @@
         android:title="@string/menu_campeonatos" />
 
     <item
-        android:id="@+id/bottom_nav_financeiro"
-        android:icon="@drawable/ic_financeiro"
-        android:title="@string/menu_financeiro" />
+        android:id="@+id/bottom_nav_conta"
+        android:icon="@drawable/ic_conta"
+        android:title="@string/menu_conta" />
 
 </menu>

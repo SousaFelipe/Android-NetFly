@@ -42,14 +42,13 @@ public class DuplaChancePView extends BaseOddsView {
     @Override
     public DuplaChancePView create() {
 
-        wgtCasaEmpate = new Widget(getAposta("C;E"), getRootView().findViewById(R.id.layout_odd_casa_empate_pt), duplaChanceP.casaEmpate);
-        wgtCasaEmpate.setTitulo("1° Tempo - Casa ou Empate");
+        Aposta casaE = new Aposta(DuplaChanceP.TIPO).partida(duplaChanceP.partida).titulo("1° Tempo - Casa ou Empate").sentenca("C;E").cotacao(duplaChanceP.casaEmpate);
+        Aposta foraE = new Aposta(DuplaChanceP.TIPO).partida(duplaChanceP.partida).titulo("1° Tempo - Fora ou Empate").sentenca("F;E").cotacao(duplaChanceP.foraEmpate);
+        Aposta casaF = new Aposta(DuplaChanceP.TIPO).partida(duplaChanceP.partida).titulo("1° Tempo - Casa ou Fora").sentenca("C;F").cotacao(duplaChanceP.casaFora);
 
-        wgtForaEmpate = new Widget(getAposta("F;E"), getRootView().findViewById(R.id.layout_odd_fora_empate_pt), duplaChanceP.foraEmpate);
-        wgtForaEmpate.setTitulo("1° Tempo - Fora ou Empate");
-
-        wgtCasaFora = new Widget(getAposta("C;F"), getRootView().findViewById(R.id.layout_odd_casa_fora_pt), duplaChanceP.casaFora);
-        wgtCasaFora.setTitulo("1° Tempo - Casa ou Fora");
+        wgtCasaEmpate = new Widget(casaE, getRootView().findViewById(R.id.layout_odd_casa_empate_pt));
+        wgtForaEmpate = new Widget(foraE, getRootView().findViewById(R.id.layout_odd_fora_empate_pt));
+        wgtCasaFora = new Widget(casaF, getRootView().findViewById(R.id.layout_odd_casa_fora_pt));
 
         txvOddCasaEmpate = getRootView().findViewById(R.id.txv_odd_casa_empate);
         txvOddForaEmpate = getRootView().findViewById(R.id.txv_odd_fora_empate);

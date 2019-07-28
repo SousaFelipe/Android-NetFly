@@ -91,12 +91,23 @@
     <dimen name="img_square_size">24dp</dimen>
     <dimen name="img_square_size_large">36dp</dimen>
 
+    <dimen name="imv_cupom_status_size">40dp</dimen>
+    <dimen name="imv_cupom_status_size_large">68dp</dimen>
+
 
 
     <dimen name="fab_cupom_roud">19dp</dimen>
     <dimen name="fab_cupom_height">54dp</dimen>
     <dimen name="fab_cupom_hmargin">72dp</dimen>
     <dimen name="fab_cupom_vmargin">14dp</dimen>
+
+
+
+    <dimen name="spinner_width">160dp</dimen>
+    <dimen name="spinner_width_large">200dp</dimen>
+
+    <dimen name="spinner_height">34dp</dimen>
+    <dimen name="spinner_height_large">46dp</dimen>
 
 
 

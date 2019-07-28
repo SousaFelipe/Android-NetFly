@@ -25,7 +25,7 @@
     <string name="action_exit">Sair</string>
 
 
-    <!-- Activity Login -->
+
     <string name="lb_login">Login</string>
     <string name="lb_jogos">PARTIDAS</string>
     <string name="lb_campeonatos">CAMPEONATOS</string>
@@ -34,9 +34,15 @@
     <string name="lb_mais_odds">MAIS OPÇÕES</string>
     <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
     <string name="lb_nenhuma_partida">NENHUMA PARTIDA ENCONTRADA</string>
-    <string name="lb_nenhuma_aposta">NENHUMA APOSTA ENCONTRADA</string>
+    <string name="lb_nenhum_cupom">NENHUMA CUPOM ENCONTRADA</string>
     <string name="lb_visualizar_cupom">VISUALIZAR CUPOM</string>
     <string name="lb_salvar_cupom">SALVAR CUMPOM</string>
+    <string name="lb_email">EMAIL</string>
+    <string name="lb_contato">CONTATO</string>
+    <string name="lb_limite">LIMITE</string>
+    <string name="lb_cupons">CUPONS</string>
+    <string name="lb_caixa">CAIXA</string>
+    <string name="lb_pontos">Pontos:</string>
 
     <string name="lb_vs">VS</string>
     <string name="lb_casa">CASA</string>
@@ -117,7 +123,7 @@
 
     <string name="menu_partidas">PARTIDAS</string>
     <string name="menu_campeonatos">CAMPEONATOS</string>
-    <string name="menu_financeiro">FINANCEIRO</string>
+    <string name="menu_conta">MINHA CONTA</string>
 
 
     <!-- Buttons -->
@@ -164,7 +170,6 @@
     </string>
 
 
-
     <string name="cod_000_title">Erro desconhecido!</string>
     <string name="cod_000_body">
         O servidor retornou um código de erro que não pode ser processado pelo dispositivo!
@@ -202,7 +207,6 @@
     <string name="alert_invalid_credentials">Credenciais inválidas!</string>
 
 
-
     <string name="cupom_fake_dashes">--------------------------------------------------------------------------------</string>
     <string name="cupom_aposta">APOSTA</string>
     <string name="cupom_aposta_cotacao">COTACAO</string>
@@ -219,6 +223,12 @@
     <string name="cupom_possivel_retorno">POSSIVEL RETORNO:</string>
     <string name="cupom_regras">REGRAS - SUGESTOES - RECLAMACOES</string>
     <string name="cupom_acesse">ACESSE: WWW.KINGBETS.NET</string>
+
+    <string-array name="spnn_periodo_array">
+        <item>HOJE</item>
+        <item>ESTA SEMANA</item>
+        <item>ESTE MÊS</item>
+    </string-array>
 
 
 </resources>

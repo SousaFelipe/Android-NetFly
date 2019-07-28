@@ -37,22 +37,8 @@ public class CupomResponse extends BaseResponse {
             response.code = json.getInt("code");
 
             if (response.code == 200) {
-
                 JSONObject body = json.getJSONObject("body");
-                JSONObject cupom = body.getJSONObject("cupom");
-
-                response.body.id = cupom.getLong("id");
-                response.body.codigo = cupom.getString("codigo");
-                response.body.cambista = cupom.getLong("cambista");
-                response.body.apostador = cupom.getString("apostador");
-                response.body.cotacao = cupom.getDouble("cotacao");
-                response.body.quantApostas = cupom.getInt("quant_apostas");
-                response.body.valorApostado = cupom.getDouble("valor_apostado");
-                response.body.possivelRetorno = cupom.getDouble("possivel_retorno");
-                response.body.comissao = cupom.getDouble("comissao");
-                response.body.status = cupom.getString("status");
-                response.body.data = cupom.getString("data");
-                response.body.hora = cupom.getString("hora");
+                response.body = getCupom(body.getJSONObject("cupom"));
                 response.body.apostas = getApostas( body.getJSONArray("apostas") );
             }
         }
@@ -65,20 +51,70 @@ public class CupomResponse extends BaseResponse {
 
 
 
+    public static List<Cupom> receiveAll(String bodyString) {
+        List<Cupom> cupons = new ArrayList<>();
+
+        try {
+
+            JSONObject json = new JSONObject(bodyString);
+            int code = json.getInt("code");
+
+            if (code == 200) {
+
+                JSONArray body = json.getJSONArray("body");
+
+                for (int i = 0; i < body.length(); i++) {
+                    Cupom cupom = getCupom( body.getJSONObject( i ) );
+                    cupom.apostas = getApostas( body.getJSONObject( i ).getJSONArray("apostas") );
+                    cupons.add(cupom);
+                }
+            }
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return cupons;
+    }
+
+
+
+    private static Cupom getCupom(JSONObject JSONCupom) throws JSONException {
+
+        Cupom cupom = new Cupom();
+
+        cupom.id = JSONCupom.getLong("id");
+        cupom.codigo = JSONCupom.getString("codigo");
+        cupom.cambista = JSONCupom.getLong("cambista");
+        cupom.apostador = JSONCupom.getString("apostador");
+        cupom.cotacao = JSONCupom.getDouble("cotacao");
+        cupom.quantApostas = JSONCupom.getInt("quant_apostas");
+        cupom.valorApostado = JSONCupom.getDouble("valor_apostado");
+        cupom.possivelRetorno = JSONCupom.getDouble("possivel_retorno");
+        cupom.comissao = JSONCupom.getDouble("comissao");
+        cupom.status = JSONCupom.getString("status");
+        cupom.data = JSONCupom.getString("data");
+        cupom.hora = JSONCupom.getString("hora");
+
+        return cupom;
+    }
+
+
+
     private static List<Aposta> getApostas(JSONArray JSONApostas) throws JSONException {
         List<Aposta> apostas = new ArrayList<>();
 
         for (int i = 0; i < JSONApostas.length(); i++) {
 
             Aposta aposta = new Aposta();
-            aposta.id = JSONApostas.getJSONObject(i).getLong("id");
-            aposta.cupom = JSONApostas.getJSONObject(i).getLong("cupom");
-            aposta.partida = getPartida(JSONApostas.getJSONObject(i).getJSONObject("partida"));
-            aposta.titulo = JSONApostas.getJSONObject(i).getString("titulo");
-            aposta.tipo = JSONApostas.getJSONObject(i).getString("tipo");
-            aposta.sentenca = JSONApostas.getJSONObject(i).getString("sentenca");
-            aposta.cotacao = JSONApostas.getJSONObject(i).getDouble("cotacao");
-            aposta.status = JSONApostas.getJSONObject(i).getString("status");
+            aposta.id = JSONApostas.getJSONObject( i ).getLong("id");
+            aposta.cupom = JSONApostas.getJSONObject( i ).getLong("cupom");
+            aposta.partida = getPartida(JSONApostas.getJSONObject( i ).getJSONObject("partida"));
+            aposta.titulo = JSONApostas.getJSONObject( i ).getString("titulo");
+            aposta.tipo = JSONApostas.getJSONObject( i ).getString("tipo");
+            aposta.sentenca = JSONApostas.getJSONObject( i ).getString("sentenca");
+            aposta.cotacao = JSONApostas.getJSONObject( i ).getDouble("cotacao");
+            aposta.status = JSONApostas.getJSONObject( i ).getString("status");
 
             apostas.add(aposta);
         }

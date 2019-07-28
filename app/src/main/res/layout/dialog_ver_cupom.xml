@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/textColorPrimary">
@@ -37,7 +38,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_32">
 
             <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
@@ -50,40 +52,40 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
                     android:layout_marginTop="@dimen/margin_16"
                     android:layout_marginEnd="@dimen/margin_16"
-                    android:layout_marginBottom="@dimen/margin_16">
+                    android:layout_marginBottom="@dimen/margin_16"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:text="@string/app_name_upper"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/text_21"
-                        android:textStyle="bold"
-                        android:text="@string/app_name_upper"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/cupom_fake_dashes"/>
+                        android:text="@string/cupom_fake_dashes" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/cupom_aposta_info"/>
+                        android:text="@string/cupom_aposta_info" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/cupom_fake_dashes"/>
+                        android:text="@string/cupom_fake_dashes" />
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -94,15 +96,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_codigo"/>
+                            android:text="@string/cupom_codigo"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_codigo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -115,15 +117,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_data_hora"/>
+                            android:text="@string/cupom_data_hora"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_data_hora"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -136,15 +138,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_cambista"/>
+                            android:text="@string/cupom_cambista"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_cambista"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -157,15 +159,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_contato"/>
+                            android:text="@string/cupom_contato"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_contato"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -178,15 +180,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_apostador"/>
+                            android:text="@string/cupom_apostador"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_apostador"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -194,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/cupom_fake_dashes"/>
+                        android:text="@string/cupom_fake_dashes" />
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -205,29 +207,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_aposta"/>
+                            android:text="@string/cupom_aposta"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_aposta_cotacao"/>
+                            android:text="@string/cupom_aposta_cotacao"
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
                     <LinearLayout
                         android:id="@+id/layout_cupom_content_apostas"
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/cupom_fake_dashes"/>
+                        android:text="@string/cupom_fake_dashes" />
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -238,15 +240,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_quant_jogos"/>
+                            android:text="@string/cupom_quant_jogos"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_quant_jogos"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -259,15 +261,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_cotacao"/>
+                            android:text="@string/cupom_cotacao"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_cotacao"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -280,15 +282,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_total_apostado"/>
+                            android:text="@string/cupom_total_apostado"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_total_apostado"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -301,15 +303,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:textSize="@dimen/text_14"
-                            android:text="@string/cupom_possivel_retorno"/>
+                            android:text="@string/cupom_possivel_retorno"
+                            android:textSize="@dimen/text_14" />
 
                         <TextView
                             android:id="@+id/txv_cupom_possivel_retorno"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:textSize="@dimen/text_14"/>
+                            android:textSize="@dimen/text_14" />
 
                     </FrameLayout>
 
@@ -317,21 +319,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/cupom_fake_dashes"/>
+                        android:text="@string/cupom_fake_dashes" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="@dimen/text_11"
-                        android:text="@string/cupom_regras"/>
+                        android:text="@string/cupom_regras"
+                        android:textSize="@dimen/text_11" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="@dimen/text_11"
-                        android:text="@string/cupom_acesse"/>
+                        android:text="@string/cupom_acesse"
+                        android:textSize="@dimen/text_11" />
 
                 </LinearLayout>
 

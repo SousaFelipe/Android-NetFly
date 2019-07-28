@@ -21,6 +21,7 @@ import net.kingbets.cambista.model.responses.CampeonatoPartidasResponse;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CampeonatoPartidaAdapter;
 import net.kingbets.cambista.view.dialogs.CriaCupomDialog;
+import net.kingbets.cambista.view.dialogs.VerCupomDialog;
 
 import java.io.IOException;
 
@@ -95,7 +96,7 @@ public class PartidasFragment extends BaseFragment {
             CardView btnViewCupom = getView().findViewById(R.id.btn_view_cupom);
             btnViewCupom.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    mostrarCupom();
+                    criarCupom();
                 }
             });
 
@@ -107,12 +108,18 @@ public class PartidasFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        requestPartidas();
+        request();
     }
 
 
 
-    private void mostrarCupom() {
+    public void mostrarCupom(String codigo) {
+        VerCupomDialog.display(this, codigo);
+    }
+
+
+
+    private void criarCupom() {
         CriaCupomDialog.display(this);
     }
 
@@ -125,7 +132,7 @@ public class PartidasFragment extends BaseFragment {
             @Override public void onClick(View v) {
                 PERIODO = HOJE;
                 selecionarWidget(hoje);
-                requestPartidas();
+                request();
             }
         });
 
@@ -134,7 +141,7 @@ public class PartidasFragment extends BaseFragment {
             @Override public void onClick(View v) {
                 PERIODO = AMANHA;
                 selecionarWidget(amanha);
-                requestPartidas();
+                request();
             }
         });
 
@@ -143,7 +150,7 @@ public class PartidasFragment extends BaseFragment {
             @Override public void onClick(View v) {
                 PERIODO = PROXIMOS;
                 selecionarWidget(proximos);
-                requestPartidas();
+                request();
             }
         });
     }
@@ -157,8 +164,8 @@ public class PartidasFragment extends BaseFragment {
     }
 
 
-
-    public void requestPartidas() {
+    @Override
+    public void request() {
 
         setLoaderVisibility(true);
         setInfoVisibility(false);

@@ -41,11 +41,11 @@ public class AmbasMarcamView extends BaseOddsView {
     @Override
     public AmbasMarcamView create() {
 
-        wgtSim = new Widget(getAposta("S"), getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim), ambasMarcam.sim);
-        wgtSim.setTitulo("Ambas Marcam");
+        Aposta sim = new Aposta(AmbasMarcam.TIPO).partida(ambasMarcam.partida).titulo("Ambas Marcam: SIM").sentenca("S").cotacao(ambasMarcam.sim);
+        Aposta nao = new Aposta(AmbasMarcam.TIPO).partida(ambasMarcam.partida).titulo("Ambas Marcam: NAO").sentenca("N").cotacao(ambasMarcam.nao);
 
-        wgtNao = new Widget(getAposta("N"), getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao), ambasMarcam.nao);
-        wgtNao.setTitulo("Ninguem Marca");
+        wgtSim = new Widget(sim, getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim));
+        wgtNao = new Widget(nao, getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao));
 
         txvOddSim = getRootView().findViewById(R.id.txv_odd_ambas_marcam_sim);
         txvOddNao = getRootView().findViewById(R.id.txv_odd_ambas_marcam_nao);

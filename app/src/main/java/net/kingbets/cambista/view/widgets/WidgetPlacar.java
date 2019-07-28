@@ -15,9 +15,8 @@ public class WidgetPlacar extends Widget implements View.OnClickListener {
 
 
 
-    public WidgetPlacar(Aposta aposta, View container, double cotacao) {
-        super(aposta, container, cotacao);
-
+    public WidgetPlacar(View container) {
+        super(container);
         enable = true;
     }
 

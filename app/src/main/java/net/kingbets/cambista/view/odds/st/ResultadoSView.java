@@ -41,14 +41,13 @@ public class ResultadoSView extends BaseOddsView {
     @Override
     public ResultadoSView create() {
 
-        wgtCasa = new Widget(getAposta("C"), getRootView().findViewById(R.id.layout_odd_casa_st), resultadoS.casa);
-        wgtCasa.setTitulo("2° Tempo - Casa");
+        Aposta casa = new Aposta(ResultadoS.TIPO).partida(resultadoS.partida).titulo("2° Tempo - Casa").sentenca("C").cotacao(resultadoS.casa);
+        Aposta empate = new Aposta(ResultadoS.TIPO).partida(resultadoS.partida).titulo("2° Tempo - Empate").sentenca("E").cotacao(resultadoS.empate);
+        Aposta fora = new Aposta(ResultadoS.TIPO).partida(resultadoS.partida).titulo("2° Tempo - Fora").sentenca("F").cotacao(resultadoS.fora);
 
-        wgtEmpate = new Widget(getAposta("E"), getRootView().findViewById(R.id.layout_odd_empate_st), resultadoS.empate);
-        wgtEmpate.setTitulo("2° Tempo - Empate");
-
-        wgtFora = new Widget(getAposta("F"), getRootView().findViewById(R.id.layout_odd_fora_st), resultadoS.fora);
-        wgtFora.setTitulo("2° Tempo - Fora");
+        wgtCasa = new Widget(casa, getRootView().findViewById(R.id.layout_odd_casa_st));
+        wgtEmpate = new Widget(empate, getRootView().findViewById(R.id.layout_odd_empate_st));
+        wgtFora = new Widget(fora, getRootView().findViewById(R.id.layout_odd_fora_st));
 
         txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa);
         txvOddEmpate = getRootView().findViewById(R.id.txv_odd_empate);

@@ -3,6 +3,7 @@ package net.kingbets.cambista.model.local.apostas;
 
 import net.kingbets.cambista.model.BaseModel;
 import net.kingbets.cambista.model.local.futebol.Partida;
+import net.kingbets.cambista.model.remote.odds.principais.Placar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,8 +38,16 @@ public class Aposta extends BaseModel {
 
 
 
+
     public Aposta partida(Partida partida) {
         this.partida  = partida;
+        return this;
+    }
+
+
+
+    public Aposta titulo(String titulo) {
+        this.titulo = titulo;
         return this;
     }
 
@@ -47,6 +56,25 @@ public class Aposta extends BaseModel {
     public Aposta sentenca(String sentenca) {
         this.sentenca = sentenca;
         return this;
+    }
+
+
+
+    public Aposta cotacao(double cotacao) {
+        this.cotacao = cotacao;
+        return this;
+    }
+
+
+
+    public void setTitulo(Placar placar) {
+        this.titulo = "Placar - Casa: " + placar.casa + " x Fora: " + placar.fora;
+    }
+
+
+
+    public void setSentenca(String prefixo, Placar placar) {
+        this.sentenca =  prefixo + ":" + placar.casa + ";" + placar.fora;
     }
 
 
@@ -72,5 +100,23 @@ public class Aposta extends BaseModel {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj != null) {
+
+            Aposta outra = ((Aposta) obj);
+
+            return (
+                    (this.titulo    != null && this.titulo.equals( outra.titulo ))  &&
+                    (this.tipo      != null && this.tipo.equals( outra.tipo ))      &&
+                    (this.sentenca  != null && this.sentenca.equals( outra.sentenca ))
+            );
+        }
+
+        return false;
     }
 }

@@ -125,7 +125,7 @@ public class MaisOddsDialog extends DialogFragment {
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        parent.requestPartidas();
+        parent.request();
         super.onDismiss(dialog);
     }
 
@@ -222,7 +222,7 @@ public class MaisOddsDialog extends DialogFragment {
             }
 
             if (partida.placaresCasa != null && partida.placaresEmpate != null && partida.placaresFora != null) {
-                PlacarView placar = new PlacarView(context, partida.placaresCasa, partida.placaresEmpate, partida.placaresFora).create();
+                PlacarView placar = new PlacarView(context, partida.placaresCasa, partida.placaresEmpate, partida.placaresFora).create().build();
                 contentOdds.addView(placar.getRootView());
             }
 

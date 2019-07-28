@@ -46,23 +46,19 @@ public class VencedorAmbasMarcamView extends BaseOddsView {
     @Override
     public VencedorAmbasMarcamView create() {
 
-        wgtCasaSim = new Widget(getAposta("C;S"), getRootView().findViewById(R.id.layout_odd_casa_sim), vencedorAmbasMarcam.casaSim);
-        wgtCasaSim.setTitulo("Casa x Ambas Marcam");
+        Aposta casaS = new Aposta(VencedorAmbasMarcam.TIPO).partida(vencedorAmbasMarcam.partida).titulo("Casa x Ambas Marcam: SIM").sentenca("C;S").cotacao(vencedorAmbasMarcam.casaSim);
+        Aposta casaN = new Aposta(VencedorAmbasMarcam.TIPO).partida(vencedorAmbasMarcam.partida).titulo("Casa x Ambas Marcam: NAO").sentenca("C;N").cotacao(vencedorAmbasMarcam.casaNao);
+        Aposta foraS = new Aposta(VencedorAmbasMarcam.TIPO).partida(vencedorAmbasMarcam.partida).titulo("Fora x Ambas Marcam: SIM").sentenca("F;S").cotacao(vencedorAmbasMarcam.foraSim);
+        Aposta foraN = new Aposta(VencedorAmbasMarcam.TIPO).partida(vencedorAmbasMarcam.partida).titulo("Fora x Ambas Marcam: NAO").sentenca("F;N").cotacao(vencedorAmbasMarcam.foraNao);
+        Aposta empaS = new Aposta(VencedorAmbasMarcam.TIPO).partida(vencedorAmbasMarcam.partida).titulo("Empate x Ambas Marcam: SIM").sentenca("E;S").cotacao(vencedorAmbasMarcam.empateSim);
+        Aposta empaN = new Aposta(VencedorAmbasMarcam.TIPO).partida(vencedorAmbasMarcam.partida).titulo("Empate x Ambas Marcam: NAO").sentenca("E;N").cotacao(vencedorAmbasMarcam.empateNao);
 
-        wgtCasaNao = new Widget(getAposta("C;N"), getRootView().findViewById(R.id.layout_odd_casa_nao), vencedorAmbasMarcam.casaNao);
-        wgtCasaNao.setTitulo("Casa x Ninguem Marca");
-
-        wgtForaSim = new Widget(getAposta("F;S"), getRootView().findViewById(R.id.layout_odd_fora_sim), vencedorAmbasMarcam.foraSim);
-        wgtForaSim.setTitulo("Fora x Ambas Marcam");
-
-        wgtForaNao = new Widget(getAposta("F;N"), getRootView().findViewById(R.id.layout_odd_fora_nao), vencedorAmbasMarcam.foraNao);
-        wgtForaNao.setTitulo("Fora x Ninguem Marca");
-
-        wgtEmpateSim = new Widget(getAposta("E;S"), getRootView().findViewById(R.id.layout_odd_empate_sim), vencedorAmbasMarcam.empateSim);
-        wgtEmpateSim.setTitulo("Empate x Ambas Marcam");
-
-        wgtEmpateNao = new Widget(getAposta("E;N"), getRootView().findViewById(R.id.layout_odd_empate_nao), vencedorAmbasMarcam.empateNao);
-        wgtEmpateNao.setTitulo("Empate x Ninguem Marca");
+        wgtCasaSim = new Widget(casaS, getRootView().findViewById(R.id.layout_odd_casa_sim));
+        wgtCasaNao = new Widget(casaN, getRootView().findViewById(R.id.layout_odd_casa_nao));
+        wgtForaSim = new Widget(foraS, getRootView().findViewById(R.id.layout_odd_fora_sim));
+        wgtForaNao = new Widget(foraN, getRootView().findViewById(R.id.layout_odd_fora_nao));
+        wgtEmpateSim = new Widget(empaS, getRootView().findViewById(R.id.layout_odd_empate_sim));
+        wgtEmpateNao = new Widget(empaN, getRootView().findViewById(R.id.layout_odd_empate_nao));
 
         txvOddCasaSim = getRootView().findViewById(R.id.txv_odd_casa_sim);
         txvOddCasaNao = getRootView().findViewById(R.id.txv_odd_casa_nao);

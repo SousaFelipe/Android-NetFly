@@ -87,7 +87,7 @@ public class CampeonatosFragmnet extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        requestCampeonatos();
+        request();
     }
 
 
@@ -98,7 +98,7 @@ public class CampeonatosFragmnet extends BaseFragment {
         nacionais.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 NACIONALIDADE = NACIONAL;
-                requestCampeonatos();
+                request();
                 selecionarWidget(nacionais);
             }
         });
@@ -107,7 +107,7 @@ public class CampeonatosFragmnet extends BaseFragment {
         internacionais.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 NACIONALIDADE = INTERNACIONAL;
-                requestCampeonatos();
+                request();
                 selecionarWidget(internacionais);
             }
         });
@@ -121,8 +121,8 @@ public class CampeonatosFragmnet extends BaseFragment {
     }
 
 
-
-    private void requestCampeonatos() {
+    @Override
+    public void request() {
 
         setLoaderVisibility(true);
         setInfoVisibility(false);

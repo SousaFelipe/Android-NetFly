@@ -13,10 +13,15 @@ import android.view.Menu;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.fragments.CampeonatosFragmnet;
+import net.kingbets.cambista.view.fragments.MinhaContaFragment;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+
+
+    private Fragment lastFragment = null;
 
 
     @Override
@@ -100,8 +105,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 fragment = CampeonatosFragmnet.newInstance(this);
                 break;
 
-            case R.id.bottom_nav_financeiro:
-                fragment = null;
+            case R.id.bottom_nav_conta:
+                fragment = MinhaContaFragment.newInstance(this);
                 break;
         }
 
@@ -112,13 +117,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private boolean loadFragment(Fragment fragment) {
 
-        if (fragment != null) {
-
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.content_fragments, fragment)
-                    .commit();
-
+        if (fragment != null && lastFragment != fragment) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragments, fragment).commit();
+            lastFragment = fragment;
             return true;
         }
 

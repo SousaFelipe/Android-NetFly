@@ -45,7 +45,13 @@ public class Widget implements View.OnClickListener {
         this.backgroundResource = -1;
     }
 
-
+    public Widget(Aposta aposta, View container) {
+        this(aposta, container, aposta.cotacao);
+        setCotacao(aposta.cotacao);
+        setTitulo(aposta.titulo);
+        mostraCotacao();
+        verificaSelecao();
+    }
 
     public Widget(Aposta aposta, View container, double cotacao) {
 
@@ -181,9 +187,8 @@ public class Widget implements View.OnClickListener {
             Widget out = ((Widget) obj);
 
             return (
-                    aposta.id == out.getAposta().id &&
-                    layout.getId() == out.layout.getId() &&
-                    aposta.partida.equals(out.getAposta().partida)
+                    (aposta.id == out.getAposta().id) && (layout.getId() == out.layout.getId()) &&
+                    (aposta.equals(out.getAposta()) ) && (aposta.partida.equals(out.getAposta().partida))
             );
         }
 

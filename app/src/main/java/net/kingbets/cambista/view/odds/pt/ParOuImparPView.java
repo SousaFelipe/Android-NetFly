@@ -40,11 +40,11 @@ public class ParOuImparPView extends BaseOddsView {
     @Override
     public ParOuImparPView create() {
 
-        wgtPar = new Widget(getAposta("P"), getRootView().findViewById(R.id.layout_odd_par_pt), parOuImparP.par);
-        wgtPar.setTitulo("1° Tempo - Par");
+        Aposta par = new Aposta(ParImparP.TIPO).partida(parOuImparP.partida).titulo("1° Tempo: Par").sentenca("P").cotacao(parOuImparP.par);
+        Aposta imp = new Aposta(ParImparP.TIPO).partida(parOuImparP.partida).titulo("1° Tempo: Impar").sentenca("I").cotacao(parOuImparP.impar);
 
-        wgtImpar = new Widget(getAposta("I"), getRootView().findViewById(R.id.layout_odd_impar_pt), parOuImparP.impar);
-        wgtImpar.setTitulo("1° Tempo - Impar");
+        wgtPar = new Widget(par, getRootView().findViewById(R.id.layout_odd_par_pt));
+        wgtImpar = new Widget(imp, getRootView().findViewById(R.id.layout_odd_impar_pt));
 
         txvOddPar = getRootView().findViewById(R.id.txv_odd_par);
         txvOddImpar = getRootView().findViewById(R.id.txv_odd_impar);
