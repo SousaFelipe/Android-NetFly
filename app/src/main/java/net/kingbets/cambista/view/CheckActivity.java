@@ -63,7 +63,6 @@ public class CheckActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        URL.build(this);
         requestStatus();
     }
 

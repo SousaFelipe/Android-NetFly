@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="0dp"
+                app:elevation="0dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:id="@+id/content_loader"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"/>
+
+        </FrameLayout>
+
+        <Spinner
+            android:id="@+id/spnn_periodo"
+            android:layout_width="@dimen/spinner_width_large"
+            android:layout_height="@dimen/spinner_height_large"
+            android:layout_marginStart="@dimen/margin_21"
+            android:layout_marginTop="@dimen/margin_21"
+            android:background="@drawable/bg_spinner" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginTop="@dimen/margin_16"
+            android:background="#DBDBDB" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_32"
+            android:layout_marginEnd="@dimen/margin_32">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/layout_apostas"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/card_hpadding"
+                android:layout_marginTop="@dimen/card_hpadding"
+                android:layout_marginEnd="@dimen/card_hpadding"
+                android:focusable="true"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding_21"
+                    android:paddingTop="@dimen/padding_16"
+                    android:paddingEnd="@dimen/padding_16"
+                    android:paddingBottom="@dimen/padding_16">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_24"
+                            android:text="@string/lb_qtd_apostas"/>
+
+                        <TextView
+                            android:id="@+id/txv_quant_apostas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="@dimen/text_24"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18"
+                            android:text="@string/lb_total_apurado"/>
+
+                        <TextView
+                            android:id="@+id/txv_total_apurado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="@dimen/text_18"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18"
+                            android:text="@string/lb_comissao"/>
+
+                        <TextView
+                            android:id="@+id/txv_comissao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="@dimen/text_18"/>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/layout_premios"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/card_hpadding"
+                android:layout_marginTop="@dimen/card_hpadding"
+                android:layout_marginEnd="@dimen/card_hpadding"
+                android:focusable="true"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/card_hpadding"
+                    android:paddingTop="@dimen/card_hpadding"
+                    android:paddingEnd="@dimen/card_hpadding"
+                    android:paddingBottom="@dimen/card_hpadding">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_24"
+                            android:text="@string/lb_qtd_premios"/>
+
+                        <TextView
+                            android:id="@+id/txv_quant_premios"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="@dimen/text_24"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txv_nome_cambista_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18"/>
+
+                        <TextView
+                            android:id="@+id/txv_total_pago_cambista"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18"
+                            android:text="@string/lb_total_pago_kingbets"/>
+
+                        <TextView
+                            android:id="@+id/txv_total_pago_fortunna"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_18"
+                            android:text="@string/lb_total_pago"/>
+
+                        <TextView
+                            android:id="@+id/txv_total_pago"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="@dimen/text_18" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/layout_dapositar"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/card_hpadding"
+                android:layout_marginTop="@dimen/card_hpadding"
+                android:layout_marginEnd="@dimen/card_hpadding"
+                android:focusable="true"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/card_hpadding"
+                    android:paddingTop="@dimen/card_hpadding"
+                    android:paddingEnd="@dimen/card_hpadding"
+                    android:paddingBottom="@dimen/card_hpadding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/text_24"
+                        android:text="@string/lb_depositar"/>
+
+                    <TextView
+                        android:id="@+id/txv_depositar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/text_24"/>
+
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

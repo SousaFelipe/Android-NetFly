@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.CheckActivity">
+
+    <FrameLayout
+        android:id="@+id/content_bloqueado"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_orange">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/card_hmargin"
+            android:layout_marginEnd="@dimen/card_hmargin"
+            android:padding="@dimen/card_hpadding"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_lock"
+                android:contentDescription="@string/img_wifi_off"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_vmargin"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/bloqueio_error_title"
+                android:textSize="@dimen/text_18"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_vmargin"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/bloqueio_error_body"
+                android:textSize="@dimen/text_14"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/content_deposito"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_red">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/card_hmargin"
+            android:layout_marginEnd="@dimen/card_hmargin"
+            android:padding="@dimen/card_hpadding"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_money_off"
+                android:contentDescription="@string/img_wifi_off"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_vmargin"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/deposito_error_title"
+                android:textSize="@dimen/text_18"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txv_deposito_valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_vmargin"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/text_18"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_vmargin"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/deposito_error_body"
+                android:textSize="@dimen/text_14"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/content_loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_dark">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txv_status_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/textColorSecondaryInverse"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

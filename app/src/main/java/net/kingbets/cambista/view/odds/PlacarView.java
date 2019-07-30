@@ -136,7 +136,6 @@ public class PlacarView extends BaseOddsView {
             Placar placar   = placaresCasa.get(i);
             Aposta aposta   = new Aposta(Placar.TIPO).partida( placar.partida );
             aposta.setTitulo(placar);
-            aposta.setSentenca("C", placar);
             aposta.cotacao  = placar.odds;
 
             WidgetPlacar widget = wgtPlacaresCasa.get( i );
@@ -154,7 +153,6 @@ public class PlacarView extends BaseOddsView {
             Placar placar = placaresEmpate.get(i);
             Aposta aposta   = new Aposta(Placar.TIPO).partida( placar.partida );
             aposta.setTitulo(placar);
-            aposta.setSentenca("E", placar);
             aposta.cotacao  = placar.odds;
 
             WidgetPlacar widget = wgtPlacaresEmpate.get( i );
@@ -172,7 +170,6 @@ public class PlacarView extends BaseOddsView {
             Placar placar = placaresFora.get(i);
             Aposta aposta = new Aposta(Placar.TIPO).partida( placar.partida );
             aposta.setTitulo(placar);
-            aposta.setSentenca("F", placar);
             aposta.cotacao  = placar.odds;
 
             WidgetPlacar widget = wgtPlacaresFora.get( i );

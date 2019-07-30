@@ -33,6 +33,14 @@ public class Cambista extends BaseModel {
 
 
 
+
+    public String firstName() {
+        String[] names = this.nome.split(" ");
+        return  names[0];
+    }
+
+
+
     public String getWebToken() {
         return token.replace("/", ";barra;");
     }

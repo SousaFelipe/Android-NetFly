@@ -8,13 +8,13 @@
 
     <!-- Activity Login -->
     <dimen name="bg_icon_login_size">64dp</dimen>
-    <dimen name="bg_icon_login_size_large">128dp</dimen>
+    <dimen name="bg_icon_login_size_large">84dp</dimen>
 
     <dimen name="icon_login_size">24dp</dimen>
     <dimen name="icon_login_size_large">48dp</dimen>
 
     <dimen name="card_top_margin">32dp</dimen>
-    <dimen name="card_top_margin_large">64dp</dimen>
+    <dimen name="card_top_margin_large">48dp</dimen>
 
     <dimen name="btn_top_margin">10dp</dimen>
     <dimen name="btn_top_margin_large">14dp</dimen>
@@ -97,9 +97,17 @@
 
 
     <dimen name="fab_cupom_roud">19dp</dimen>
+    <dimen name="fab_cupom_roud_large">27dp</dimen>
+
     <dimen name="fab_cupom_height">54dp</dimen>
+    <dimen name="fab_cupom_height_large">68dp</dimen>
+
     <dimen name="fab_cupom_hmargin">72dp</dimen>
+    <dimen name="fab_cupom_hmargin_large">86dp</dimen>
+
     <dimen name="fab_cupom_vmargin">14dp</dimen>
+    <dimen name="fab_cupom_vmargin_large">16dp</dimen>
+
 
 
 

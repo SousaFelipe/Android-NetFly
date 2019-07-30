@@ -1,18 +1,18 @@
 <resources>
 
 
-    <string name="dominio">192.168.1.102</string>
+    <string name="dominio">www.kingbets.net</string>
     <string name="dominio_upper">KINGBETS.NET</string>
 
 
     <string name="app_name">King Bets</string>
     <string name="app_name_upper">KING BETS</string>
-    <string name="login_activity">Bolão</string>
+    <string name="login_activity">KING BETS</string>
 
 
     <string name="x">x</string>
-    <string name="verifica_perfil">Verificando dados do perfil&#8230;</string>
-    <string name="validando_status">Validadndo o status perfil&#8230;</string>
+    <string name="verifica_perfil">Baixando dados do perfil&#8230;</string>
+    <string name="validando_status">Validando o acesso&#8230;</string>
 
 
     <!-- Drawer Actions -->
@@ -25,6 +25,15 @@
     <string name="action_exit">Sair</string>
 
 
+    <string name="lb_qtd_apostas">Qtd. apostas:</string>
+    <string name="lb_total_apurado">Total apurado:</string>
+    <string name="lb_comissao">Comissão:</string>
+    <string name="lb_depositar">Deposito:</string>
+    <string name="lb_qtd_premios">Qtd. prêmios:</string>
+    <string name="lb_total_pago_kingbets">KingBets:</string>
+    <string name="lb_total_pago">Total:</string>
+    <string name="lb_premio">Prêmio</string>
+
 
     <string name="lb_login">Login</string>
     <string name="lb_jogos">PARTIDAS</string>
@@ -34,13 +43,13 @@
     <string name="lb_mais_odds">MAIS OPÇÕES</string>
     <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
     <string name="lb_nenhuma_partida">NENHUMA PARTIDA ENCONTRADA</string>
-    <string name="lb_nenhum_cupom">NENHUMA CUPOM ENCONTRADA</string>
-    <string name="lb_visualizar_cupom">VISUALIZAR CUPOM</string>
-    <string name="lb_salvar_cupom">SALVAR CUMPOM</string>
+    <string name="lb_nenhum_cupom">NENHUM BILHETE ENCONTRADO</string>
+    <string name="lb_visualizar_cupom">VISUALIZAR BILHETE</string>
+    <string name="lb_salvar_cupom">SALVAR BILHETE</string>
     <string name="lb_email">EMAIL</string>
     <string name="lb_contato">CONTATO</string>
     <string name="lb_limite">LIMITE</string>
-    <string name="lb_cupons">CUPONS</string>
+    <string name="lb_cupons">BILHETES</string>
     <string name="lb_caixa">CAIXA</string>
     <string name="lb_pontos">Pontos:</string>
 
@@ -117,8 +126,8 @@
     <string name="lb_odd_impar">ÍMPAR</string>
     <string name="lb_odd_par">PAR</string>
 
-    <string name="lb_odd_casa_ou_anula">CASA OU ANULA</string>
-    <string name="lb_odd_fora_ou_anula">FORA OU ANULA</string>
+    <string name="lb_odd_casa_ou_anula">CASA</string>
+    <string name="lb_odd_fora_ou_anula">FORA</string>
 
 
     <string name="menu_partidas">PARTIDAS</string>
@@ -207,11 +216,16 @@
     <string name="alert_invalid_credentials">Credenciais inválidas!</string>
 
 
+
     <string name="cupom_fake_dashes">--------------------------------------------------------------------------------</string>
+    <string name="cupom_header_dashes">------------------------------------------</string>
+    <string name="cupom_header_dashes_large">----------------------------------------------</string>
+
+
     <string name="cupom_aposta">APOSTA</string>
     <string name="cupom_aposta_cotacao">COTACAO</string>
     <string name="cupom_aposta_info">INFORMACOES DA APOSTA</string>
-    <string name="cupom_codigo">CODIGO DO CUPOM:</string>
+    <string name="cupom_codigo">CODIGO DO BILHETE:</string>
     <string name="cupom_data_hora">DATA DA APOSTA:</string>
     <string name="cupom_cambista">CAMBISTA:</string>
     <string name="cupom_contato">CONTATO:</string>
@@ -229,6 +243,9 @@
         <item>ESTA SEMANA</item>
         <item>ESTE MÊS</item>
     </string-array>
+
+
+    <string name="aguarde">AGUARDE A IMPRESSÃO DO BILHETE</string>
 
 
 </resources>

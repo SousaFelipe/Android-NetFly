@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:paddingEnd="@dimen/padding_16"
-            android:paddingStart="6dp"
+            android:paddingStart="@dimen/padding_6"
             app:contentInsetStartWithNavigation="0dp"
             app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel" />
 

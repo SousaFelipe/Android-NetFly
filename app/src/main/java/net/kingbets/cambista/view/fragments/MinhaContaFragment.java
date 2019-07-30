@@ -23,6 +23,7 @@ import net.kingbets.cambista.model.local.Cambista;
 import net.kingbets.cambista.model.local.Perfil;
 import net.kingbets.cambista.utils.Str;
 import net.kingbets.cambista.view.CuponsActivity;
+import net.kingbets.cambista.view.FinanceiroActivity;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -142,6 +143,14 @@ public class MinhaContaFragment extends BaseFragment {
             @Override public void onClick(View v) {
                 if (getActivity() != null) {
                     getActivity().startActivity(new Intent(getContext(), CuponsActivity.class));
+                }
+            }
+        });
+
+        cardCaixa.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                if (getActivity() != null) {
+                    getActivity().startActivity(new Intent(getContext(), FinanceiroActivity.class));
                 }
             }
         });

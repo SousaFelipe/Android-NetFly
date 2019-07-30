@@ -21,6 +21,7 @@ import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.contracts.PerfilContract;
 import net.kingbets.cambista.model.local.Cambista;
+import net.kingbets.cambista.model.local.Perfil;
 import net.kingbets.cambista.model.local.apostas.Single;
 import net.kingbets.cambista.utils.MoneyTextWatcher;
 import net.kingbets.cambista.utils.Str;
@@ -128,10 +129,6 @@ public class CriaCupomDialog extends BaseDialog {
     @Override
     public void onStart() {
         super.onStart();
-
-        if (getContext() != null) {
-            URL.build(getContext());
-        }
 
         Dialog dialog = getDialog();
 
@@ -300,8 +297,7 @@ public class CriaCupomDialog extends BaseDialog {
                     });
                 }
                 else {
-                    ((PartidasFragment)parent).mostrarCupom(codigo);
-                    dismiss();
+                    sair(codigo);
                 }
             }
             else {
@@ -356,5 +352,30 @@ public class CriaCupomDialog extends BaseDialog {
 
         txvTotalApostado.setText( formatter.format(single.valorApostado)  );
         txvPossivelRetorno.setText( formatter.format(single.possivelRetorno)  );
+    }
+
+
+
+    public void sair(String codigo) {
+
+        final String fnCodigo = codigo;
+
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override public void run() {
+
+                    Single single = Single.instance();
+                    Perfil perfil = new PerfilContract(getContext()).first();
+
+                    single.clear();
+                    single.update( perfil.limiteApostas );
+
+                    ((PartidasFragment)parent).mostrarCupom(fnCodigo);
+
+                    dismiss();
+
+                }
+            });
+        }
     }
 }

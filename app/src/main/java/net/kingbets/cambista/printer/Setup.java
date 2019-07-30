@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 
+import net.kingbets.cambista.R;
+
 
 public abstract class Setup {
 
@@ -36,16 +38,16 @@ public abstract class Setup {
         Resources res = context.getResources();
 
         if (config == Config.NORMAL) {
-//            contentLength = 41;
-//            fontSize = Commands.FontSize.F12;
-//            dashes = res.getString(R.string.cupom_header_dashes);
-//            borders = new byte[] { 32 };
+            contentLength = 41;
+            fontSize = Commands.FontSize.F12;
+            dashes = res.getString(R.string.cupom_header_dashes);
+            borders = new byte[] { 32 };
         }
         else {
-//            contentLength = 44;
-//            fontSize = Commands.FontSize.F16;
-//            dashes = res.getString(R.string.cupom_header_dashes_large);
-//            borders = new byte[] { 32, 32 };
+            contentLength = 44;
+            fontSize = Commands.FontSize.F16;
+            dashes = res.getString(R.string.cupom_header_dashes_large);
+            borders = new byte[] { 32, 32 };
         }
     }
 

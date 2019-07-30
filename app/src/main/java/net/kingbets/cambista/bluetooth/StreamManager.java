@@ -85,49 +85,36 @@ public class StreamManager {
 
 
 
-    public void printImage(int resource, int breakLines) {
-
-        try {
-            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resource);
-
-            if (bitmap != null) {
-                byte[] bytemap = Utils.decodeBitmap(bitmap);
-                printText(bytemap, Commands.Alignment.CENTER, breakLines);
-            }
-            else {
-                Toast.makeText(context, "Erro na impressão da imagem!", Toast.LENGTH_SHORT).show();
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void printText(String message, Commands.Alignment alignment, int breakLines, boolean borders) {
+        printText(message, alignment, Commands.FontSize.F0, breakLines, borders);
     }
 
 
 
-    public void printText(String message, Commands.Alignment alignment, int breakLines, boolean borders) {
+    public void printText(String message, Commands.Alignment alignment, Commands.FontSize fontSize, int breakLines, boolean borders) {
 
         if (borders) {
-            printText(Setup.borders, alignment, breakLines);
+            printText(Setup.borders, alignment, fontSize, breakLines);
         }
 
-        printText(message.getBytes(), alignment, breakLines);
+        printText(message.getBytes(), alignment, fontSize, breakLines);
     }
+
+
 
 
 
     public void printText(byte[] message, Commands.Alignment alignment, int breakLines) {
+        printText(message, alignment, Commands.FontSize.F0, breakLines);
+    }
+
+
+
+    public void printText(byte[] message, Commands.Alignment alignment, Commands.FontSize fontSize, int breakLines) {
 
         try {
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        try {
-
-            defineFontSize();
+            defineFontSize(fontSize);
             setAlignment(alignment);
 
             stream.write(message);
@@ -154,18 +141,25 @@ public class StreamManager {
 
 
 
-    private void defineFontSize() {
+    private void defineFontSize(Commands.FontSize fontSize) {
+
+        Commands.FontSize size = (fontSize == Commands.FontSize.F0) ? Setup.fontSize : fontSize;
+
         try {
-            switch (Setup.fontSize) {
+            switch (size) {
+
                 case F12:
                     stream.write(new byte[] { 0x1B, 0x21, 0x03 });
                     break;
+
                 case F16:
                     stream.write(new byte[] { 0x1B, 0x21, 0x08 });
                     break;
+
                 case F20:
                     stream.write(new byte[] { 0x1B, 0x21, 0x20 });
                     break;
+
                 case F24:
                     stream.write(new byte[] { 0x1B, 0x21, 0x10 });
                     break;

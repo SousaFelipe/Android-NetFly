@@ -63,13 +63,6 @@ public class CuponsActivity extends BaseActivity {
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        URL.build(this);
-    }
-
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
@@ -162,7 +155,9 @@ public class CuponsActivity extends BaseActivity {
             @Override public void run() {
 
                 CupomAdapter adapter = new CupomAdapter(fnCupons);
+                adapter.setContext(CuponsActivity.this);
                 adapter.setFragmentManager( getSupportFragmentManager() );
+
                 RecyclerView recycler = findViewById(R.id.recycler_cupons);
 
                 if (fnCupons.size() > 0) {

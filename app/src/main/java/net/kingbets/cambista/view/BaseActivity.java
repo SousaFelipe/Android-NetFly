@@ -210,7 +210,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         alert(context, alert);
-        URL.build(context);
     }
 
 

@@ -6,7 +6,7 @@ public class Commands {
 
 
     public enum Alignment { LEFT, CENTER, RIGHT }
-    public enum FontSize { F12, F16, F20, F24 }
+    public enum FontSize { F0, F12, F16, F20, F24 }
 
 
     /*

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_hmargin"
-        android:layout_marginBottom="@dimen/margin_8"
+        android:layout_marginBottom="@dimen/margin_4"
         android:layout_marginEnd="@dimen/card_hmargin"
         android:focusable="true"
         app:cardBackgroundColor="@android:color/white"

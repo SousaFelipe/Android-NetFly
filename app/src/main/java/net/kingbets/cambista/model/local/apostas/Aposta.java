@@ -69,12 +69,7 @@ public class Aposta extends BaseModel {
 
     public void setTitulo(Placar placar) {
         this.titulo = "Placar - Casa: " + placar.casa + " x Fora: " + placar.fora;
-    }
-
-
-
-    public void setSentenca(String prefixo, Placar placar) {
-        this.sentenca =  prefixo + ":" + placar.casa + ";" + placar.fora;
+        this.sentenca =  placar.casa + ";" + placar.fora;
     }
 
 

@@ -59,6 +59,19 @@
                 android:value=".view.MainActivity" />
         </activity>
 
+        <activity
+            android:name=".view.FinanceiroActivity"
+            android:parentActivityName=".view.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".view.ImpressaoActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

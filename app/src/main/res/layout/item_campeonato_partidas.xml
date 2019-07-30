@@ -21,7 +21,6 @@
                 android:id="@+id/img_bandeira"
                 android:layout_width="@dimen/img_flag_size"
                 android:layout_height="@dimen/img_flag_size"
-                android:src="@drawable/img_brasil_square"
                 android:contentDescription="@string/img_campeonato_flag"/>
 
             <TextView
@@ -54,7 +53,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_partidas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/padding_40"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

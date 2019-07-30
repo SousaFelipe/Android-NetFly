@@ -40,13 +40,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        URL.build(this);
-    }
-
-
-    @Override
     protected void onResume() {
         super.onResume();
         loadFragment(PartidasFragment.newInstance(this));

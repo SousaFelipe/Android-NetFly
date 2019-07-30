@@ -2,7 +2,9 @@ package net.kingbets.cambista.view.dialogs;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -23,6 +25,7 @@ import net.kingbets.cambista.model.responses.CupomResponse;
 import net.kingbets.cambista.utils.DateTime;
 import net.kingbets.cambista.utils.Str;
 import net.kingbets.cambista.utils.URL;
+import net.kingbets.cambista.view.ImpressaoActivity;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 import java.io.IOException;
@@ -57,6 +60,8 @@ public class VerCupomDialog extends BaseDialog {
     private TextView txvTotalApostado;
     private TextView txvPossivelRetorno;
 
+    private Intent mainIntent;
+
 
 
     private Callback callback = new Callback() {
@@ -71,10 +76,10 @@ public class VerCupomDialog extends BaseDialog {
 
 
 
-    public static void display(FragmentManager manager, String codigo) {
+    public static void display(Context context, FragmentManager manager, String codigo) {
 
         VerCupomDialog dialog = new VerCupomDialog();
-        dialog.setCurrentCupom(codigo);
+        dialog.setIntent(context, codigo);
 
         if (manager != null) {
             dialog.show(manager, TAG);
@@ -87,13 +92,12 @@ public class VerCupomDialog extends BaseDialog {
 
         VerCupomDialog dialog = new VerCupomDialog();
         dialog.setParent(parent);
-        dialog.setCurrentCupom(codigo);
+        dialog.setIntent(parent.getContext(), codigo);
 
         if (parent.getFragmentManager() != null) {
             dialog.show(parent.getFragmentManager(), TAG);
         }
     }
-
 
 
     @Override
@@ -134,10 +138,6 @@ public class VerCupomDialog extends BaseDialog {
     public void onStart() {
         super.onStart();
 
-        if (getContext() != null) {
-            URL.build(getContext());
-        }
-
         Dialog dialog = getDialog();
 
         if (dialog != null) {
@@ -175,8 +175,10 @@ public class VerCupomDialog extends BaseDialog {
 
 
 
-    public void setCurrentCupom(String currentCupom) {
+    public void setIntent(Context context, String currentCupom) {
         this.currentCupom = currentCupom;
+        this.mainIntent = new Intent(context, ImpressaoActivity.class);
+        this.mainIntent.putExtra("BILHETE", currentCupom);
     }
 
 
@@ -191,7 +193,7 @@ public class VerCupomDialog extends BaseDialog {
 
         txvImprimir.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-
+                startActivity(mainIntent);
             }
         });
     }
@@ -301,13 +303,19 @@ public class VerCupomDialog extends BaseDialog {
 
     private String getStatus(String status) {
 
-        if (status.equals("G")) {
-            return "Ganhou";
-        }
-        else if (status.equals("P")) {
-            return "Perdeu";
-        }
+        switch (status) {
 
-        return "Aberto";
+            case "G":
+                return "Ganhou";
+
+            case "P":
+                return "Perdeu";
+
+            case "N":
+                return "Anulada";
+
+            default:
+                return "Aguardando";
+        }
     }
 }

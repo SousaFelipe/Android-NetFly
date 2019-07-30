@@ -73,8 +73,6 @@ public class LoginActivity extends BaseActivity {
             String alert = contract.createFirst() ? "Criando banco de dados..." : "Erro no banco de dados!";
             alert(this, alert);
         }
-
-        URL.build(this);
     }
 
 

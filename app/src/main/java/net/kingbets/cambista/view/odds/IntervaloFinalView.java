@@ -52,15 +52,15 @@ public class IntervaloFinalView extends BaseOddsView {
     @Override
     public IntervaloFinalView create() {
 
-        Aposta cc = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Casa x Casa").sentenca("C;C").cotacao(intervaloFinal.casaCasa);
-        Aposta ce = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Casa x Empate").sentenca("C;E").cotacao(intervaloFinal.casaEmpate);
-        Aposta cf = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Casa x Fora").sentenca("C;F").cotacao(intervaloFinal.casaFora);
-        Aposta ec = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Empate x Casa").sentenca("E;C").cotacao(intervaloFinal.empateCasa);
-        Aposta ee = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Empate x Empate").sentenca("E;E").cotacao(intervaloFinal.empateEmpate);
-        Aposta ef = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Empate x Fora").sentenca("E;F").cotacao(intervaloFinal.empateFora);
-        Aposta fc = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Fora x Casa").sentenca("F;C").cotacao(intervaloFinal.foraCasa);
-        Aposta fe = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Fora x Empate").sentenca("F;E").cotacao(intervaloFinal.foraEmpate);
-        Aposta ff = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Fora x Fora").sentenca("F;F").cotacao(intervaloFinal.foraFora);
+        Aposta cc = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Casa x Final: Casa").sentenca("C;C").cotacao(intervaloFinal.casaCasa);
+        Aposta ce = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Casa x Final: Empate").sentenca("C;E").cotacao(intervaloFinal.casaEmpate);
+        Aposta cf = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Casa x Final: Fora").sentenca("C;F").cotacao(intervaloFinal.casaFora);
+        Aposta ec = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Empate x Final: Casa").sentenca("E;C").cotacao(intervaloFinal.empateCasa);
+        Aposta ee = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Empate x Final: Empate").sentenca("E;E").cotacao(intervaloFinal.empateEmpate);
+        Aposta ef = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Empate x Final: Fora").sentenca("E;F").cotacao(intervaloFinal.empateFora);
+        Aposta fc = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Fora x Final: Casa").sentenca("F;C").cotacao(intervaloFinal.foraCasa);
+        Aposta fe = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Fora x Final: Empate").sentenca("F;E").cotacao(intervaloFinal.foraEmpate);
+        Aposta ff = new Aposta(IntervaloFinal.TIPO).partida(intervaloFinal.partida).titulo("Intervalo: Fora x Final: Fora").sentenca("F;F").cotacao(intervaloFinal.foraFora);
 
         wgtCasaCasa = new Widget(cc, getRootView().findViewById(R.id.layout_odd_casa_casa));
         wgtCasaEmpate = new Widget(ce, getRootView().findViewById(R.id.layout_odd_casa_empate));
