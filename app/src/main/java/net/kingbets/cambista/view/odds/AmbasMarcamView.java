@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.principais.AmbasMarcam;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.principais.AmbasMarcam;
+import net.kingbets.cambista.view.fragments.BaseFragment;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
 
 public class AmbasMarcamView extends BaseOddsView {
@@ -18,8 +19,8 @@ public class AmbasMarcamView extends BaseOddsView {
     private AmbasMarcam ambasMarcam;
 
 
-    private Widget wgtSim;
-    private Widget wgtNao;
+    private WidgetOdd wgtSim;
+    private WidgetOdd wgtNao;
 
 
     private TextView txvOddSim;
@@ -29,23 +30,21 @@ public class AmbasMarcamView extends BaseOddsView {
 
     public AmbasMarcamView(Context context, AmbasMarcam ambasMarcam) {
         super(LayoutInflater.from(context).inflate(R.layout.odds_ambas_marcam, null, false));
-
         setContext(context);
-        setAposta(new Aposta(AmbasMarcam.TIPO).partida(ambasMarcam.partida));
-
         this.ambasMarcam = ambasMarcam;
     }
 
 
 
     @Override
-    public AmbasMarcamView create() {
+    public AmbasMarcamView create(BaseFragment parent) {
 
-        Aposta sim = new Aposta(AmbasMarcam.TIPO).partida(ambasMarcam.partida).titulo("Ambas Marcam: SIM").sentenca("S").cotacao(ambasMarcam.sim);
-        Aposta nao = new Aposta(AmbasMarcam.TIPO).partida(ambasMarcam.partida).titulo("Ambas Marcam: NAO").sentenca("N").cotacao(ambasMarcam.nao);
+        Bet sim = new Bet(AmbasMarcam.TIPO).odd(ambasMarcam.id).partida(ambasMarcam.partida).titulo("Ambas Marcam: SIM").sentenca("S").cotacao(ambasMarcam.sim);
+        Bet nao = new Bet(AmbasMarcam.TIPO).odd(ambasMarcam.id).partida(ambasMarcam.partida).titulo("Ambas Marcam: NAO").sentenca("N").cotacao(ambasMarcam.nao);
 
-        wgtSim = new Widget(sim, getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim));
-        wgtNao = new Widget(nao, getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao));
+
+        wgtSim = new WidgetOdd(sim, getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim), parent);
+        wgtNao = new WidgetOdd(nao, getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao), parent);
 
         txvOddSim = getRootView().findViewById(R.id.txv_odd_ambas_marcam_sim);
         txvOddNao = getRootView().findViewById(R.id.txv_odd_ambas_marcam_nao);
@@ -57,8 +56,13 @@ public class AmbasMarcamView extends BaseOddsView {
 
     @Override
     public AmbasMarcamView build() {
-        txvOddSim.setText( wgtSim.getTextCotacao() );
-        txvOddNao.setText( wgtNao.getTextCotacao() );
+
+        txvOddSim.setText(wgtSim.getTextOdd());
+        txvOddNao.setText(wgtNao.getTextOdd());
+
+        wgtSim.refresh();
+        wgtNao.refresh();
+
         return this;
     }
 

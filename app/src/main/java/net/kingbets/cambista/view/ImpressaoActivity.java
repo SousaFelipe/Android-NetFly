@@ -23,19 +23,19 @@ import android.util.Log;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.bluetooth.BluetoothManager;
 import net.kingbets.cambista.bluetooth.StreamManager;
+import net.kingbets.cambista.http.models.apostas.Bet;
 import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.model.remote.apostas.Cupom;
-import net.kingbets.cambista.model.responses.CupomResponse;
+import net.kingbets.cambista.model.Cambista;
+import net.kingbets.cambista.model.apostas.Cupom;
+import net.kingbets.cambista.http.responses.CupomResponse;
 import net.kingbets.cambista.printer.Printer;
 import net.kingbets.cambista.printer.Setup;
+import net.kingbets.cambista.utils.Connection;
 import net.kingbets.cambista.utils.DateTime;
 import net.kingbets.cambista.utils.Str;
 import net.kingbets.cambista.utils.URL;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 
 import okhttp3.Call;
@@ -49,8 +49,8 @@ public class ImpressaoActivity extends BaseActivity {
 
 
 
-    private static final int        REQUEST_ENABLE_BT           = 1;
-    private static final int        REQUEST_COARSE_LOCATION     = 2;
+    private static final int REQUEST_ENABLE_BT           = 1;
+    private static final int REQUEST_COARSE_LOCATION     = 2;
 
 
     private BluetoothManager bluetoothManager;
@@ -96,7 +96,6 @@ public class ImpressaoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_impressao);
-        setLoader(R.id.content_loader);
 
         Intent intent = getIntent();
         Bundle args = intent.getExtras();
@@ -154,13 +153,10 @@ public class ImpressaoActivity extends BaseActivity {
 
     private void buscarCupom() {
 
-        setLoaderVisibility(true);
-
-        Cambista cambista = new CambistaContract(this).first();
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = Connection.getClientWithAuthHeader(this);
 
         Request request = new Request.Builder()
-                .url( URL.CUPONS + "buscar/" + cambista.getWebToken() + "/" + BILHETE)
+                .url( URL.CUPONS + "buscar/" + BILHETE)
                 .build();
 
         client.newCall(request).enqueue(callback);
@@ -171,10 +167,11 @@ public class ImpressaoActivity extends BaseActivity {
     private void proccessCupom(Response response) throws IOException {
         if (response.isSuccessful()) {
             if (response.body() != null) {
-                CupomResponse cupomResponse = CupomResponse.receive(response.body().string());
+
+                CupomResponse cupomResponse = CupomResponse.receiveOne(response.body().string());
                 CUPOM = cupomResponse.body;
-                setLoaderVisibility(false);
                 print();
+
             }
             else {
                 alert(this, "Erro ao buscar cupom.");
@@ -243,9 +240,6 @@ public class ImpressaoActivity extends BaseActivity {
                     showConnectionErrorDialog();
                 }
             }
-            catch (NullPointerException e) {
-                showConnectionErrorDialog();
-            }
             catch (IOException e) {
                 showConnectionErrorDialog();
             }
@@ -273,22 +267,24 @@ public class ImpressaoActivity extends BaseActivity {
         printer.printCambistaInfo( Str.nomeResumido(cambista.nome), Str.mask(cambista.contato, "(##) # ####-####") );
         printer.printApostador( Str.removeAcentos(CUPOM.apostador) );
 
-        for (Aposta aposta: CUPOM.apostas) {
+        for (Bet bet: CUPOM.bets) {
 
-            String data = DateTime.getInlineDate(DateTime.getDateFromString(aposta.partida.data), "dd/MM/yyyy");
-            String inicio = DateTime.compact(aposta.partida.inicio);
+            String data = DateTime.getInlineDate(DateTime.getDateFromString(bet.partida.data), "dd/MM/yyyy");
+            String inicio = DateTime.compact(bet.partida.inicio);
             String futebol = "Futebol - " + data + " às " + inicio;
-            String equipes = aposta.partida.casa + " x " + aposta.partida.fora;
+            String equipes = bet.partida.casa + " x " + bet.partida.fora;
 
             printer.printAposta(
-                    aposta, Str.removeAcentos(futebol), Str.removeAcentos(" "+aposta.partida.campeonato), Str.removeAcentos(" "+equipes)
+                    bet, Str.removeAcentos(futebol),
+                    Str.removeAcentos(" "+bet.partida.campeonato),
+                    Str.removeAcentos(" "+equipes)
             );
         }
 
         printer.printQuantJogos( String.valueOf(CUPOM.quantApostas) );
-        printer.printCotacao( Str.getCurrency(CUPOM.cotacao)  );
-        printer.printTotalApostado( Str.getCurrency(CUPOM.valorApostado) );
-        printer.printPossivelRetorno( Str.getCurrency(CUPOM.possivelRetorno) );
+        printer.printCotacao( String.format(Locale.getDefault(), "%.2f", CUPOM.cotacao)  );
+        printer.printTotalApostado( String.format(Locale.getDefault(), "%.2f", CUPOM.valorApostado) );
+        printer.printPossivelRetorno( String.format(Locale.getDefault(), "%.2f", CUPOM.possivelRetorno) );
         printer.printRodape();
 
         startActivity(new Intent(ImpressaoActivity.this, MainActivity.class));

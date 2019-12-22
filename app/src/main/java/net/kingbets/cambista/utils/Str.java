@@ -1,6 +1,8 @@
 package net.kingbets.cambista.utils;
 
 
+import android.support.annotation.NonNull;
+
 import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -10,7 +12,7 @@ public abstract class Str {
 
 
 
-    public static String mask(String text, String mask) {
+    public static String mask(@NonNull String text, @NonNull String mask) {
 
         String masked = "";
         int k = 0;
@@ -44,7 +46,7 @@ public abstract class Str {
 
 
 
-    public static String nomeResumido(String completeName) {
+    public static String nomeResumido(@NonNull String completeName) {
 
         String[] array = completeName.split(" ");
         String inlineName = array[0] + " ";
@@ -57,8 +59,8 @@ public abstract class Str {
     }
 
 
-
-    public static String removeAcentos(String acentuado) {
+    @NonNull
+    public static String removeAcentos(@NonNull String acentuado) {
         return Normalizer.normalize(acentuado, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
     }
 }

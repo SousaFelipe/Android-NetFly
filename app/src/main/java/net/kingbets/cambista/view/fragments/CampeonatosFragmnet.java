@@ -13,9 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.responses.CampeonatoResponse;
+import net.kingbets.cambista.http.responses.CampeonatoResponse;
+import net.kingbets.cambista.utils.Connection;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CampeonatoAdapter;
 
@@ -123,15 +122,13 @@ public class CampeonatosFragmnet extends BaseFragment {
 
     @Override
     public void request() {
-
         setLoaderVisibility(true);
         setInfoVisibility(false);
 
-        Cambista local = new CambistaContract(context).first();
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = Connection.getClientWithAuthHeader(getContext());
 
         Request request = new Request.Builder()
-                .url(URL.CAMPEONATOS + "listar/" + local.getWebToken() + "/" + NACIONALIDADE)
+                .url(URL.CAMPEONATOS + "listar/" + NACIONALIDADE)
                 .build();
 
         client.newCall(request).enqueue(callback);
@@ -143,7 +140,16 @@ public class CampeonatosFragmnet extends BaseFragment {
 
         if (response.isSuccessful()) {
             if (response.body() != null) {
-                onSuccessResponse( CampeonatoResponse.receive(response.body().string()) );
+
+                final String fnBodyString = response.body().string();
+
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            onSuccessResponse(CampeonatoResponse.receive(fnBodyString));
+                        }
+                    });
+                }
             }
             else {
                 alert(R.string.alert_http_response_empty);
@@ -160,24 +166,12 @@ public class CampeonatosFragmnet extends BaseFragment {
 
     public void onSuccessResponse(CampeonatoResponse response) {
         if (response.body.size() > 0) {
-
             adapter.setDataList(response.body);
-
-            if (getActivity() != null) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override public void run() {
-                        recycler.setLayoutManager(new LinearLayoutManager( context ));
-                        recycler.setAdapter(adapter);
-                    }
-                });
-            }
+            recycler.setLayoutManager(new LinearLayoutManager( context ));
+            recycler.setAdapter(adapter);
         }
         else if (getActivity() != null) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override public void run() {
-                    adapter.clear();
-                }
-            });
+            adapter.clear();
             setInfoVisibility(true);
         }
     }

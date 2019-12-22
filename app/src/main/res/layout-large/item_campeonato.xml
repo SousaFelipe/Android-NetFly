@@ -36,35 +36,23 @@
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@string/img_campeonato_flag"/>
 
-                <LinearLayout
-                    android:orientation="vertical"
+                <TextView
+                    android:id="@+id/txv_titulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_16">
-
-                    <TextView
-                        android:id="@+id/txv_titulo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_18" />
-
-                    <TextView
-                        android:id="@+id/txv_fim"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_16" />
-
-                </LinearLayout>
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_18" />
 
             </LinearLayout>
 
             <FrameLayout
+                android:id="@+id/bg_total_partidas"
                 android:layout_width="@dimen/badge_size_large"
                 android:layout_height="@dimen/badge_size_large"
-                android:layout_gravity="end|center_vertical"
-                android:background="@drawable/bg_badge_dark">
+                android:layout_gravity="end|center_vertical">
 
                 <TextView
                     android:id="@+id/txv_partidas"

@@ -11,14 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.Spinner;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.remote.apostas.Cupom;
-import net.kingbets.cambista.model.responses.CupomResponse;
+import net.kingbets.cambista.model.apostas.Cupom;
+import net.kingbets.cambista.http.responses.CupomResponse;
+import net.kingbets.cambista.utils.Connection;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CupomAdapter;
 
@@ -116,7 +114,7 @@ public class CuponsActivity extends BaseActivity {
 
                 if (item != null) {
                     OPERATION = item.toString();
-                    requestCupons();
+                    request();
                 }
             }
         });
@@ -124,78 +122,62 @@ public class CuponsActivity extends BaseActivity {
         spinner.setSelection(0);
     }
 
-
-
     private void inflateToolbar(int count) {
 
-        final int fnCount = count;
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Apostas ("+ count +")" );
+        setSupportActionBar(toolbar);
 
-        runOnUiThread(new Runnable() {
-            @Override public void run() {
-
-                Toolbar toolbar = findViewById(R.id.toolbar);
-                toolbar.setTitle("Apostas ("+ fnCount +")" );
-                setSupportActionBar(toolbar);
-
-                if (getSupportActionBar() != null) {
-                    getSupportActionBar().setHomeButtonEnabled(true);
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                }
-            }
-        });
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
-
-
 
     private void inflateRecyclerView(List<Cupom> cupons) {
 
-        final List<Cupom> fnCupons = cupons;
+        CupomAdapter adapter = new CupomAdapter(cupons);
+        adapter.setContext(CuponsActivity.this);
+        adapter.setFragmentManager( getSupportFragmentManager() );
 
-        runOnUiThread(new Runnable() {
-            @Override public void run() {
+        RecyclerView recycler = findViewById(R.id.recycler_cupons);
 
-                CupomAdapter adapter = new CupomAdapter(fnCupons);
-                adapter.setContext(CuponsActivity.this);
-                adapter.setFragmentManager( getSupportFragmentManager() );
-
-                RecyclerView recycler = findViewById(R.id.recycler_cupons);
-
-                if (fnCupons.size() > 0) {
-                    recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    recycler.setAdapter(adapter);
-                }
-                else {
-                    adapter.clear();
-                }
-            }
-        });
+        if (cupons.size() > 0) {
+            recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            recycler.setAdapter(adapter);
+        }
+        else {
+            adapter.clear();
+        }
     }
 
 
 
-    private void requestCupons() {
-
+    private void request() {
         setLoaderVisibility(true);
 
-        Cambista cambista = new CambistaContract(this).first();
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = Connection.getClientWithAuthHeader(this);
 
         Request request = new Request.Builder()
-                .url( URL.CUPONS + "listar/" + cambista.getWebToken() + "/" + getPeriodo() )
+                .url(URL.CUPONS + "listar/" + getPeriodo())
                 .build();
 
         client.newCall(request).enqueue(callback);
     }
 
-
-
     private void proccessResponse(Response response) throws IOException {
         if (response.isSuccessful()) {
             if (response.body() != null) {
-                List<Cupom> cupons = CupomResponse.receiveAll(response.body().string());
-                inflateToolbar(cupons.size());
-                inflateRecyclerView(cupons);
-                setInfoVisibility( cupons.size() <= 0 );
+
+                final List<Cupom> fnCupons = CupomResponse.receiveMany(response.body().string());
+
+                runOnUiThread(new Runnable() {
+                    @Override public void run() {
+                        inflateToolbar(fnCupons.size());
+                        inflateRecyclerView(fnCupons);
+                        setInfoVisibility(fnCupons.size() <= 0);
+                    }
+                });
             }
             else {
                 alert(CuponsActivity.this, R.string.alert_http_response_empty);
@@ -225,13 +207,6 @@ public class CuponsActivity extends BaseActivity {
 
 
     private void setInfoVisibility(boolean visible) {
-
-        final boolean fnVisible = visible;
-
-        runOnUiThread(new Runnable() {
-            @Override public void run() {
-                findViewById(R.id.content_info_empty).setVisibility( fnVisible ? View.VISIBLE : View.GONE );
-            }
-        });
+        findViewById(R.id.content_info_empty).setVisibility( visible ? View.VISIBLE : View.GONE );
     }
 }

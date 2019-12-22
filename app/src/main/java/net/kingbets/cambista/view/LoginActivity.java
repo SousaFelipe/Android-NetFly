@@ -18,10 +18,10 @@ import okhttp3.Response;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
+import net.kingbets.cambista.model.Cambista;
 import net.kingbets.cambista.utils.Connection;
 import net.kingbets.cambista.utils.URL;
-import net.kingbets.cambista.model.responses.CambistaResponse;
+import net.kingbets.cambista.http.responses.CambistaResponse;
 
 import java.io.IOException;
 
@@ -67,10 +67,10 @@ public class LoginActivity extends BaseActivity {
         super.onStart();
 
         Connection.check(this);
-        CambistaContract contract = new CambistaContract(this);
+        CambistaContract cambista = new CambistaContract(this);
 
-        if (contract.isEmpty()) {
-            String alert = contract.createFirst() ? "Criando banco de dados..." : "Erro no banco de dados!";
+        if ( !cambista.isNotEmpty() ) {
+            String alert = cambista.createFirst() ? "Criando banco de dados..." : "Erro no banco de dados!";
             alert(this, alert);
         }
     }
@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity {
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId())
         {
@@ -114,7 +114,7 @@ public class LoginActivity extends BaseActivity {
 
 
 
-    private void proccessResponse(Response response) throws IOException {
+    private void proccessResponse(@NonNull Response response) throws IOException {
         if (response.isSuccessful()) {
             if (response.body() != null) {
                 login(CambistaResponse.receive(response.body().string()));
@@ -159,7 +159,7 @@ public class LoginActivity extends BaseActivity {
 
 
 
-    private void login(CambistaResponse response) {
+    private void login(@NonNull CambistaResponse response) {
 
         if (response.code == 200) {
 

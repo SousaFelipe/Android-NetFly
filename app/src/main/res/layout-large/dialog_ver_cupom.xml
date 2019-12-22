@@ -26,14 +26,32 @@
                 android:layout_marginStart="@dimen/margin_16"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"/>
 
-            <TextView
-                android:id="@+id/txv_imprimir"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:textColor="@color/textColorPrimaryInverse"
-                android:textSize="@dimen/text_16"
-                android:text="@string/action_imprimir" />
+                android:layout_height="match_parent"
+                android:layout_gravity="end">
+
+                <TextView
+                    android:id="@+id/txv_compartilhar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/card_hpadding"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="@dimen/text_16"
+                    android:text="@string/action_compartilhar" />
+
+                <TextView
+                    android:id="@+id/txv_imprimir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="@dimen/text_16"
+                    android:text="@string/action_imprimir" />
+
+            </LinearLayout>
 
         </FrameLayout>
 
@@ -345,7 +363,7 @@
 
     <FrameLayout
         android:visibility="gone"
-        android:id="@+id/content_loader"
+        android:id="@+id/content_loader_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient_dark">

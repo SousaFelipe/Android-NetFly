@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_21"
+        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginEnd="@dimen/margin_21" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txv_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_21"
+                android:layout_marginBottom="@dimen/margin_21"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_32"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_32"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:background="#DBDBDB"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_32"
+                android:paddingTop="@dimen/padding_8"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:paddingBottom="@dimen/padding_4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:textColor="@color/textColorTertiary"
+                    android:textSize="@dimen/text_18"
+                    android:text="@string/lb_contato"/>
+
+                <TextView
+                    android:id="@+id/txv_contato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_18"/>
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_32"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:background="#DBDBDB"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_32"
+                android:paddingTop="@dimen/padding_8"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:paddingBottom="@dimen/padding_4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:textColor="@color/textColorTertiary"
+                    android:textSize="@dimen/text_18"
+                    android:text="@string/lb_codigo"/>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/imb_mostrar_codigo"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:src="@drawable/ic_visibility" />
+
+                    <ImageButton
+                        android:visibility="gone"
+                        android:id="@+id/imb_esconder_codigo"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:src="@drawable/ic_visibility_off" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txv_codigo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_18"/>
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_32"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:background="#DBDBDB"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_32"
+            android:layout_marginEnd="@dimen/margin_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_gravity="start|center_vertical"
+                android:textSize="@dimen/text_16"
+                android:text="Cartão em uso"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:background="@drawable/bg_widget_container" >
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/txv_no_current_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/textColorTertiary"
+                    android:textSize="@dimen/text_16"
+                    android:text="NENHUM CARTÃO EM USO NO MOMENTO" />
+
+                <LinearLayout
+                    android:id="@+id/layout_cartao_atual"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/textColorTertiary"
+                                android:textSize="@dimen/text_16"
+                                android:text="SALDO ATUAL"/>
+
+                            <TextView
+                                android:id="@+id/txv_saldo_atual"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/textColorPrimary"
+                                android:textSize="@dimen/text_32"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:textColor="@color/textColorTertiary"
+                                android:textSize="@dimen/text_14"
+                                android:text="VALIDADE"/>
+
+                            <TextView
+                                android:id="@+id/txv_validade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:textColor="@color/textColorSecondary"
+                                android:textSize="@dimen/text_14" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_16">
+
+                        <TextView
+                            android:id="@+id/txv_quant_bilhetes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|bottom"
+                            android:textColor="@color/textColorTertiary"
+                            android:textSize="@dimen/text_16" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:textColor="@color/textColorTertiary"
+                                android:textSize="@dimen/text_14"
+                                android:text="SALDO INICIAL"/>
+
+                            <TextView
+                                android:id="@+id/txv_saldo_inicial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:textColor="@color/textColorPrimary"
+                                android:textSize="@dimen/text_18"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_32"
+            android:layout_marginEnd="@dimen/margin_16">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:textSize="@dimen/text_16"
+                android:text="Últimos cartões"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8" >
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/txv_last_cards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/textColorTertiary"
+                    android:textSize="@dimen/text_14"
+                    android:text="NENHUM CARTÃO ENCONTRADO" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/content_loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_dark">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+</FrameLayout>

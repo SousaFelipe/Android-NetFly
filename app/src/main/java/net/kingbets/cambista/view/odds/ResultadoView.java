@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.principais.Resultado;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.principais.Resultado;
+import net.kingbets.cambista.view.fragments.BaseFragment;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
 
 public class ResultadoView extends BaseOddsView {
@@ -17,9 +18,9 @@ public class ResultadoView extends BaseOddsView {
 
     private Resultado resultado;
 
-    private Widget wgtCasa;
-    private Widget wgtEmpate;
-    private Widget wgtFora;
+    private WidgetOdd wgtCasa;
+    private WidgetOdd wgtEmpate;
+    private WidgetOdd wgtFora;
 
     private TextView txvOddCasa;
     private TextView txvOddEmpate;
@@ -35,19 +36,19 @@ public class ResultadoView extends BaseOddsView {
 
 
     @Override
-    public ResultadoView create() {
+    public ResultadoView create(BaseFragment parent) {
 
-        Aposta casa = new Aposta(Resultado.TIPO).partida(resultado.partida).titulo("Casa").sentenca("C").cotacao(resultado.casa);
-        Aposta empate = new Aposta(Resultado.TIPO).partida(resultado.partida).titulo("Empate").sentenca("E").cotacao(resultado.empate);
-        Aposta fora = new Aposta(Resultado.TIPO).partida(resultado.partida).titulo("Fora").sentenca("F").cotacao(resultado.fora);
+        Bet casa    = new Bet(Resultado.TIPO).odd(resultado.id).partida(resultado.partida).titulo("Casa").sentenca("C").cotacao(resultado.casa);
+        Bet empate  = new Bet(Resultado.TIPO).odd(resultado.id).partida(resultado.partida).titulo("Empate").sentenca("E").cotacao(resultado.empate);
+        Bet fora    = new Bet(Resultado.TIPO).odd(resultado.id).partida(resultado.partida).titulo("Fora").sentenca("F").cotacao(resultado.fora);
 
-        wgtCasa = new Widget(casa, getRootView().findViewById(R.id.layout_odd_casa));
-        wgtEmpate = new Widget(empate, getRootView().findViewById(R.id.layout_odd_empate));
-        wgtFora = new Widget(fora, getRootView().findViewById(R.id.layout_odd_fora));
+        wgtCasa     = new WidgetOdd(casa, getRootView().findViewById(R.id.layout_odd_casa), parent);
+        wgtEmpate   = new WidgetOdd(empate, getRootView().findViewById(R.id.layout_odd_empate), parent);
+        wgtFora     = new WidgetOdd(fora, getRootView().findViewById(R.id.layout_odd_fora), parent);
 
-        txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa);
-        txvOddEmpate = getRootView().findViewById(R.id.txv_odd_empate);
-        txvOddFora = getRootView().findViewById(R.id.txv_odd_fora);
+        txvOddCasa      = getRootView().findViewById(R.id.txv_odd_casa);
+        txvOddEmpate    = getRootView().findViewById(R.id.txv_odd_empate);
+        txvOddFora      = getRootView().findViewById(R.id.txv_odd_fora);
 
         return this;
     }
@@ -55,9 +56,15 @@ public class ResultadoView extends BaseOddsView {
 
     @Override
     public ResultadoView build() {
-        txvOddCasa.setText( wgtCasa.getTextCotacao() );
-        txvOddEmpate.setText( wgtEmpate.getTextCotacao() );
-        txvOddFora.setText( wgtFora.getTextCotacao() );
+
+        txvOddCasa.setText( wgtCasa.getTextOdd() );
+        txvOddEmpate.setText( wgtEmpate.getTextOdd() );
+        txvOddFora.setText( wgtFora.getTextOdd() );
+
+        wgtCasa.refresh();
+        wgtEmpate.refresh();
+        wgtFora.refresh();
+
         return this;
     }
 

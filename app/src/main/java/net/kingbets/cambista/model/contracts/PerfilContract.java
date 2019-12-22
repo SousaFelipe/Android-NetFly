@@ -7,9 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
-import net.kingbets.cambista.model.BaseContract;
 import net.kingbets.cambista.model.Helper;
-import net.kingbets.cambista.model.local.Perfil;
+import net.kingbets.cambista.model.Perfil;
 
 
 public class PerfilContract extends BaseContract {
@@ -22,8 +21,8 @@ public class PerfilContract extends BaseContract {
 
 
 
-    public boolean isEmpty() {
-        return super.isEmpty(Helper.PERFIS);
+    public boolean isNotEmpty() {
+        return super.isNotEmpty(Helper.PERFIS);
     }
 
 
@@ -40,7 +39,7 @@ public class PerfilContract extends BaseContract {
             values.put("xp",             perfil.xp);
             values.put("xp_maximo",      perfil.xpMaximo);
 
-            if (isEmpty()) {
+            if ( !isNotEmpty() ) {
                 connect();
                 connection.insertOrThrow(Helper.PERFIS, null, values);
             }

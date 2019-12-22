@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.futebol.CampeonatoPartidas;
+import net.kingbets.cambista.http.models.futebol.CampeonatoPartidas;
 import net.kingbets.cambista.utils.Img;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 
@@ -43,20 +43,20 @@ public class CampeonatoPartidaAdapter extends RecyclerView.Adapter<CampeonatoPar
 
     @Override
     public void onBindViewHolder(@NonNull CampeonatoPartidaAdapter.ViewHolder holder, int position) {
-        CampeonatoPartidas campeonatoPartidas = this.campeonatoPartidas.get( position );
 
+        CampeonatoPartidas campeonatoPartidas = this.campeonatoPartidas.get( position );
 
         if (campeonatoPartidas.partidas.size() > 0) {
 
-            holder.adapter = new PartidaAdapter();
             holder.imgBandeira.setImageResource(Img.getSquareResourceId(context, campeonatoPartidas.getFlag()) );
             holder.txvTitulo.setText(campeonatoPartidas.titulo);
-            holder.txvTotalPartidas.setText( String.valueOf( campeonatoPartidas.partidas.size() ) );
+            holder.txvTotalPartidas.setText(String.valueOf(campeonatoPartidas.partidas.size()));
 
+            holder.adapter = new PartidaAdapter();
             holder.adapter.setParent(parent);
             holder.adapter.setDataList(campeonatoPartidas.partidas);
 
-            holder.recycler.setLayoutManager(new LinearLayoutManager( context ));
+            holder.recycler.setLayoutManager(new LinearLayoutManager(context));
             holder.recycler.setAdapter(holder.adapter);
             holder.recycler.scrollTo(0, 0);
         }

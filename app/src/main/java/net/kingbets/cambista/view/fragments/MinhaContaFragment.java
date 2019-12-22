@@ -3,7 +3,6 @@ package net.kingbets.cambista.view.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,18 +18,13 @@ import android.widget.TextView;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.contracts.PerfilContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.local.Perfil;
+import net.kingbets.cambista.model.Cambista;
+import net.kingbets.cambista.model.Perfil;
 import net.kingbets.cambista.utils.Str;
 import net.kingbets.cambista.view.CuponsActivity;
 import net.kingbets.cambista.view.FinanceiroActivity;
 
-import java.io.IOException;
 import java.util.Locale;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 
 public class MinhaContaFragment extends BaseFragment {
@@ -85,6 +79,7 @@ public class MinhaContaFragment extends BaseFragment {
 
         cardCupons = view.findViewById(R.id.card_cupons);
         cardCaixa = view.findViewById(R.id.card_caixa);
+        //btnMeusClientes = view.findViewById(R.id.btn_meus_clientes);
 
         txvPontos = view.findViewById(R.id.txv_xp);
         barraContent = view.findViewById(R.id.view_xp_content);

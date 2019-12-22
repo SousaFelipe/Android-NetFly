@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.principais.EmpateAnulaAposta;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.principais.EmpateAnulaAposta;
+import net.kingbets.cambista.view.fragments.BaseFragment;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
 
 public class EmpateAnulaApostaView extends BaseOddsView {
@@ -17,8 +18,8 @@ public class EmpateAnulaApostaView extends BaseOddsView {
 
     private EmpateAnulaAposta empateAnulaAposta;
 
-    private Widget wgtCasa;
-    private Widget wgtFora;
+    private WidgetOdd wgtCasa;
+    private WidgetOdd wgtFora;
 
     private TextView txvOddCasa;
     private TextView txvOddFora;
@@ -27,22 +28,19 @@ public class EmpateAnulaApostaView extends BaseOddsView {
 
     public EmpateAnulaApostaView(Context context, EmpateAnulaAposta empateAnulaAposta) {
         super(LayoutInflater.from(context).inflate(R.layout.odds_empate_anula_aposta, null, false));
-
         setContext(context);
-        setAposta(new Aposta(EmpateAnulaAposta.TIPO).partida(empateAnulaAposta.partida));
-
         this.empateAnulaAposta = empateAnulaAposta;
     }
 
 
     @Override
-    public EmpateAnulaApostaView create() {
+    public EmpateAnulaApostaView create(BaseFragment parent) {
 
-        Aposta casa = new Aposta(EmpateAnulaAposta.TIPO).partida(empateAnulaAposta.partida).titulo("Empate Anula Aposta: Casa").sentenca("C").cotacao(empateAnulaAposta.casaOuAnula);
-        Aposta fora = new Aposta(EmpateAnulaAposta.TIPO).partida(empateAnulaAposta.partida).titulo("Empate Anula Aposta: Fora").sentenca("F").cotacao(empateAnulaAposta.foraOuAnula);
+        Bet casa = new Bet(EmpateAnulaAposta.TIPO).odd(empateAnulaAposta.id).partida(empateAnulaAposta.partida).titulo("Empate Anula Aposta: Casa").sentenca("C").cotacao(empateAnulaAposta.casaOuAnula);
+        Bet fora = new Bet(EmpateAnulaAposta.TIPO).odd(empateAnulaAposta.id).partida(empateAnulaAposta.partida).titulo("Empate Anula Aposta: Fora").sentenca("F").cotacao(empateAnulaAposta.foraOuAnula);
 
-        wgtCasa = new Widget(casa, getRootView().findViewById(R.id.layout_odd_casa_ou_anula));
-        wgtFora = new Widget(fora, getRootView().findViewById(R.id.layout_odd_fora_ou_anula));
+        wgtCasa = new WidgetOdd(casa, getRootView().findViewById(R.id.layout_odd_casa_ou_anula), parent);
+        wgtFora = new WidgetOdd(fora, getRootView().findViewById(R.id.layout_odd_fora_ou_anula), parent);
 
         txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa_ou_anula);
         txvOddFora = getRootView().findViewById(R.id.txv_odd_fora_ou_anula);
@@ -53,8 +51,13 @@ public class EmpateAnulaApostaView extends BaseOddsView {
 
     @Override
     public EmpateAnulaApostaView build() {
-        txvOddCasa.setText( wgtCasa.getTextCotacao() );
-        txvOddFora.setText( wgtFora.getTextCotacao() );
+
+        txvOddCasa.setText( wgtCasa.getTextOdd() );
+        txvOddFora.setText( wgtFora.getTextOdd() );
+
+        wgtCasa.refresh();
+        wgtFora.refresh();
+
         return this;
     }
 }

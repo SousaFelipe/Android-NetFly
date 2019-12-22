@@ -7,9 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.support.annotation.NonNull;
 
-import net.kingbets.cambista.model.BaseContract;
 import net.kingbets.cambista.model.Helper;
-import net.kingbets.cambista.model.local.Impressora;
+import net.kingbets.cambista.model.Impressora;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +24,8 @@ public class ImpressoraContract extends BaseContract {
 
 
 
-    public boolean isEmpty() {
-        return super.isEmpty(Helper.CAMBISTAS);
+    public boolean isNotEmpty() {
+        return super.isNotEmpty(Helper.CAMBISTAS);
     }
 
 
@@ -59,7 +58,7 @@ public class ImpressoraContract extends BaseContract {
 
         Impressora impressora = null;
 
-        if ( ! isEmpty()) {
+        if (isNotEmpty()) {
             connect();
 
             Cursor cursor = connection.rawQuery("SELECT * FROM " + Helper.IMPRESSORAS, null);
@@ -84,7 +83,7 @@ public class ImpressoraContract extends BaseContract {
 
         List<Impressora> impressoras = new ArrayList<>();
 
-        if ( ! isEmpty()) {
+        if (isNotEmpty()) {
             connect();
 
             Cursor cursor = connection.rawQuery("SELECT * FROM " + Helper.IMPRESSORAS, null);

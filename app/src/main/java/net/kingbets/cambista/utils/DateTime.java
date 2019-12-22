@@ -3,6 +3,9 @@ package net.kingbets.cambista.utils;
 
 import android.text.TextUtils;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,6 +66,7 @@ public abstract class DateTime {
         return getInlineDate(date, "yyyy-MM-dd");
     }
 
+
     public static String getInlineDate(Date date, String format) {
 
         try {
@@ -80,7 +84,6 @@ public abstract class DateTime {
 
 
 
-
     public static String compact(String hora) {
         String[] horas = hora.split(":");
         return horas[0] + ":" + horas[1];
@@ -88,7 +91,7 @@ public abstract class DateTime {
 
 
 
-    public static String inverse(String date) {
+    public static String inverse(String date, String joiner) {
 
         String[] oldDate = date.split("-");
         int length = oldDate.length;
@@ -99,7 +102,7 @@ public abstract class DateTime {
             newDate[i] = oldDate[length];
         }
 
-        return TextUtils.join("-", newDate);
+        return TextUtils.join(joiner, newDate);
     }
 
 

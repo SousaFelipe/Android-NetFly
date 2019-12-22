@@ -20,7 +20,7 @@ public class Helper extends SQLiteOpenHelper {
 
 
 
-    Helper(Context context){
+    public Helper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
     }
 

@@ -6,9 +6,7 @@ import android.content.res.Resources;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.bluetooth.StreamManager;
-import net.kingbets.cambista.model.remote.apostas.Aposta;
-import net.kingbets.cambista.utils.DateTime;
-import net.kingbets.cambista.utils.Str;
+import net.kingbets.cambista.http.models.apostas.Bet;
 
 import java.util.Locale;
 
@@ -43,14 +41,12 @@ public class Printer {
         String header = res.getString(R.string.app_name_upper);
         String info = res.getString(R.string.cupom_aposta_info);
 
-        streamManager.printText(header, Commands.Alignment.CENTER, Commands.FontSize.F16, 0, false);
+        streamManager.printText(header, Commands.Alignment.CENTER, Commands.FontSize.F16, 1, false);
 
         streamManager.printDashes(0, false);
-        streamManager.printText(info, Commands.Alignment.CENTER, 0, false);
+        streamManager.printText(info, Commands.Alignment.CENTER, 1, false);
         streamManager.printDashes(0, false);
     }
-
-
 
     public void printCodigo(String codigo) {
         Resources res = context.getResources();
@@ -63,8 +59,6 @@ public class Printer {
         streamManager.printText(codigo, Commands.Alignment.LEFT, 1, false);
     }
 
-
-
     public void printDataHoraAposta(String dataHora) {
         Resources res = context.getResources();
 
@@ -75,8 +69,6 @@ public class Printer {
         streamManager.printText(spacesBTdata, Commands.Alignment.LEFT, 0);
         streamManager.printText(dataHora, Commands.Alignment.LEFT, 1, false);
     }
-
-
 
     public void printCambistaInfo(String nome, String tell) {
         Resources res = context.getResources();
@@ -96,8 +88,6 @@ public class Printer {
         streamManager.printText(tell, Commands.Alignment.LEFT, 1, false);
     }
 
-
-
     public void printApostador(String apostador) {
         Resources res = context.getResources();
 
@@ -115,35 +105,27 @@ public class Printer {
         streamManager.printDashes(0, false);
         streamManager.printText(apostaLB, Commands.Alignment.LEFT, 0, true);
         streamManager.printText(spacesBTaposta, Commands.Alignment.LEFT, 0);
-        streamManager.printText(cotacaoLB, Commands.Alignment.LEFT, 1, false);
+        streamManager.printText(cotacaoLB, Commands.Alignment.LEFT, 0, false);
         streamManager.printDashes(0, false);
     }
 
 
 
-
-
-
-    public void printAposta(Aposta aposta, String futebol, String campeonato, String equipes) {
-
-        Resources res = context.getResources();
+    public void printAposta(Bet bet, String futebol, String campeonato, String equipes) {
 
         streamManager.printText(futebol, Commands.Alignment.LEFT, 0, true);
         streamManager.printText(campeonato, Commands.Alignment.LEFT, 1, true);
         streamManager.printText(equipes, Commands.Alignment.LEFT, 1, false);
 
-        String cotacao = String.format(Locale.getDefault(), "%.2f", aposta.cotacao);
-        byte[] spacesBTcotacao = Utils.getSpaceCount(aposta.titulo, cotacao);
+        String cotacao = String.format(Locale.getDefault(), "%.2f", bet.cotacao);
+        byte[] spacesBTcotacao = Utils.getSpaceCount(bet.titulo, cotacao);
 
-        streamManager.printText(aposta.titulo, Commands.Alignment.LEFT, 0, true);
+        streamManager.printText(bet.titulo, Commands.Alignment.LEFT, 0, true);
         streamManager.printText(spacesBTcotacao, Commands.Alignment.LEFT, 0);
-        streamManager.printText(cotacao, Commands.Alignment.LEFT, 1, false);
+        streamManager.printText(cotacao, Commands.Alignment.LEFT, 0, false);
 
         streamManager.printDashes(0, false);
     }
-
-
-
 
 
 
@@ -158,8 +140,6 @@ public class Printer {
         streamManager.printText(quantJogos, Commands.Alignment.LEFT, 1, false);
     }
 
-
-
     public void printCotacao(String cotacao) {
         Resources res = context.getResources();
 
@@ -171,8 +151,6 @@ public class Printer {
         streamManager.printText(cotacao, Commands.Alignment.LEFT, 1, false);
     }
 
-
-
     public void printTotalApostado(String valor) {
         Resources res = context.getResources();
 
@@ -183,8 +161,6 @@ public class Printer {
         streamManager.printText(spacesBTvalor, Commands.Alignment.LEFT, 0);
         streamManager.printText(valor, Commands.Alignment.LEFT, 1, false);
     }
-
-
 
     public void printPossivelRetorno(String valor) {
         Resources res = context.getResources();
@@ -203,27 +179,5 @@ public class Printer {
         streamManager.printDashes(1, false);
         streamManager.printText("REGRAS - SUGESTOES - RECLAMACOES", Commands.Alignment.CENTER, 1, false);
         streamManager.printText("ACESSE: WWW.KINGBETS.NET", Commands.Alignment.CENTER, 2, false);
-    }
-
-
-
-
-
-    private String getStatus(String status) {
-
-        switch (status) {
-
-            case "G":
-                return "Ganhou";
-
-            case "P":
-                return "Perdeu";
-
-            case "N":
-                return "Anulada";
-
-            default:
-                return "Aguardando";
-        }
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.remote.apostas.Cupom;
+import net.kingbets.cambista.model.apostas.Cupom;
 import net.kingbets.cambista.utils.Img;
 import net.kingbets.cambista.utils.Str;
-import net.kingbets.cambista.view.dialogs.VerCupomDialog;
+import net.kingbets.cambista.view.dialogs.DialogVerCupom;
 
 import java.util.List;
 import java.util.Locale;
@@ -36,8 +35,6 @@ public class CupomAdapter extends RecyclerView.Adapter<CupomAdapter.ViewHolder> 
     public CupomAdapter(List<Cupom> cupons) {
         this.cupons = cupons;
     }
-
-
 
     @NonNull
     @Override
@@ -64,8 +61,8 @@ public class CupomAdapter extends RecyclerView.Adapter<CupomAdapter.ViewHolder> 
 
 
 
-    private void defineStatus(CupomAdapter.ViewHolder holder, String status)
-    {
+    private void defineStatus(CupomAdapter.ViewHolder holder, String status) {
+
         int resource;
 
         switch (status) {
@@ -88,13 +85,13 @@ public class CupomAdapter extends RecyclerView.Adapter<CupomAdapter.ViewHolder> 
 
 
 
-    private void addItemClick(CupomAdapter.ViewHolder holder, String codigo) {
+    private void addItemClick(@NonNull CupomAdapter.ViewHolder holder, String codigo) {
 
         final String fnCodigo = codigo;
 
         holder.contentClick.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                VerCupomDialog.display(context, fragmentManager, fnCodigo);
+                DialogVerCupom.display(context, fragmentManager, fnCodigo);
             }
         });
     }

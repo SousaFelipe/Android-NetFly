@@ -33,7 +33,7 @@
                 android:layout_gravity="start|center_vertical">
 
                 <ImageView
-                    android:id="@+id/imv_cupom_status"
+                    android:id="@+id/imv_status"
                     android:layout_width="@dimen/imv_cupom_status_size"
                     android:layout_height="@dimen/imv_cupom_status_size"
                     android:padding="@dimen/padding_6"

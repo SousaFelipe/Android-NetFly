@@ -11,8 +11,7 @@ import android.widget.Toast;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.utils.URL;
+import net.kingbets.cambista.model.Cambista;
 
 
 public abstract class BaseActivity extends AppCompatActivity {

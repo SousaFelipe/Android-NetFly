@@ -3,11 +3,8 @@ package net.kingbets.cambista.bluetooth;
 
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -111,6 +108,13 @@ public class StreamManager {
 
 
     public void printText(byte[] message, Commands.Alignment alignment, Commands.FontSize fontSize, int breakLines) {
+
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         try {
 

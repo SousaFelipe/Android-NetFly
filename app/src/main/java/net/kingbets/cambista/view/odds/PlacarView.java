@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.principais.Placar;
-import net.kingbets.cambista.view.widgets.WidgetPlacar;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.principais.Placar;
+import net.kingbets.cambista.view.fragments.BaseFragment;
+import net.kingbets.cambista.view.widgets.WidgetOddPlacar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +18,17 @@ import java.util.List;
 public class PlacarView extends BaseOddsView {
 
 
-    private List<Placar>        placaresCasa;
-    private List<WidgetPlacar>  wgtPlacaresCasa;
-    private List<View>          viewWgtCasa;
+    private List<Placar>            placaresCasa;
+    private List<WidgetOddPlacar>   wgtPlacaresCasa;
+    private List<View>              viewWgtCasa;
 
-    private List<Placar>        placaresEmpate;
-    private List<WidgetPlacar>  wgtPlacaresEmpate;
-    private List<View>          viewWgtEmpate;
+    private List<Placar>            placaresEmpate;
+    private List<WidgetOddPlacar>   wgtPlacaresEmpate;
+    private List<View>              viewWgtEmpate;
 
-    private List<Placar>        placaresFora;
-    private List<WidgetPlacar>  wgtPlacaresFora;
-    private List<View>          viewWgtFora;
+    private List<Placar>            placaresFora;
+    private List<WidgetOddPlacar>   wgtPlacaresFora;
+    private List<View>              viewWgtFora;
 
 
 
@@ -35,7 +36,6 @@ public class PlacarView extends BaseOddsView {
         super(LayoutInflater.from(context).inflate(R.layout.odds_placar_exatato, null, false));
 
         setContext(context);
-        setAposta(new Aposta(Placar.TIPO).partida(placaresCasa.get(0).partida));
 
         this.placaresCasa = placaresCasa;
         this.placaresEmpate = placaresEmpate;
@@ -44,14 +44,14 @@ public class PlacarView extends BaseOddsView {
 
 
     @Override
-    public PlacarView create() {
+    public PlacarView create(BaseFragment parent) {
 
         createViewsCasa();
         wgtPlacaresCasa = new ArrayList<>();
         int maxCasa = (placaresCasa.size() < 10) ? placaresCasa.size() : 10;
 
         for (int i = 0; i < maxCasa; i++) {
-            WidgetPlacar widget = new WidgetPlacar( viewWgtCasa.get( i ) );
+            WidgetOddPlacar widget = new WidgetOddPlacar(viewWgtCasa.get(i), parent);
             wgtPlacaresCasa.add(widget);
         }
 
@@ -60,7 +60,7 @@ public class PlacarView extends BaseOddsView {
         int maxEmpate = (placaresEmpate.size() < 6) ? placaresEmpate.size() : 6;
 
         for (int i = 0; i < maxEmpate; i++) {
-            WidgetPlacar widget = new WidgetPlacar( viewWgtEmpate.get( i ) );
+            WidgetOddPlacar widget = new WidgetOddPlacar(viewWgtEmpate.get(i), parent);
             wgtPlacaresEmpate.add(widget);
         }
 
@@ -69,7 +69,7 @@ public class PlacarView extends BaseOddsView {
         int maxFora = (placaresFora.size() < 10) ? placaresFora.size() : 10;
 
         for (int i = 0; i < maxFora; i++) {
-            WidgetPlacar widget = new WidgetPlacar( viewWgtFora.get( i ) );
+            WidgetOddPlacar widget = new WidgetOddPlacar(viewWgtFora.get(i), parent);
             wgtPlacaresFora.add(widget);
         }
 
@@ -130,51 +130,54 @@ public class PlacarView extends BaseOddsView {
     private void buildCasaWidgets() {
 
         int max = (placaresCasa.size() < 10) ? placaresCasa.size() : 10;
+        Placar placar;
+        Bet bet;
 
         for (int i = 0; i < max; i++) {
 
-            Placar placar   = placaresCasa.get(i);
-            Aposta aposta   = new Aposta(Placar.TIPO).partida( placar.partida );
-            aposta.setTitulo(placar);
-            aposta.cotacao  = placar.odds;
+            placar = placaresCasa.get(i);
+            bet = new Bet(Placar.TIPO).odd(placar.id).partida(placar.partida).titulo(placar).sentenca(placar).cotacao(placar.odds);
 
-            WidgetPlacar widget = wgtPlacaresCasa.get( i );
-            widget.setAposta(aposta);
+            WidgetOddPlacar widget = wgtPlacaresCasa.get(i);
+            widget.setBet(bet);
             widget.setTitulo(placar);
+            widget.refresh();
         }
     }
 
     private void buildEmpateWidgets() {
 
         int max = (placaresEmpate.size() < 6) ? placaresEmpate.size() : 6;
+        Placar placar;
+        Bet bet;
 
         for (int i = 0; i < max; i++) {
 
-            Placar placar = placaresEmpate.get(i);
-            Aposta aposta   = new Aposta(Placar.TIPO).partida( placar.partida );
-            aposta.setTitulo(placar);
-            aposta.cotacao  = placar.odds;
+            placar = placaresEmpate.get(i);
+            bet = new Bet(Placar.TIPO).odd(placar.id).partida(placar.partida).titulo(placar).sentenca(placar).cotacao(placar.odds);
 
-            WidgetPlacar widget = wgtPlacaresEmpate.get( i );
-            widget.setAposta(aposta);
+            WidgetOddPlacar widget = wgtPlacaresEmpate.get(i);
+            widget.setBet(bet);
             widget.setTitulo(placar);
+            widget.refresh();
         }
     }
 
     private void buildForaWidgets() {
 
         int max = (placaresFora.size() < 10) ? placaresFora.size() : 10;
+        Placar placar;
+        Bet bet;
 
         for (int i = 0; i < max; i++) {
 
-            Placar placar = placaresFora.get(i);
-            Aposta aposta = new Aposta(Placar.TIPO).partida( placar.partida );
-            aposta.setTitulo(placar);
-            aposta.cotacao  = placar.odds;
+            placar = placaresFora.get(i);
+            bet = new Bet(Placar.TIPO).odd(placar.id).partida(placar.partida).titulo(placar).sentenca(placar).cotacao(placar.odds);
 
-            WidgetPlacar widget = wgtPlacaresFora.get( i );
-            widget.setAposta(aposta);
+            WidgetOddPlacar widget = wgtPlacaresFora.get( i );
+            widget.setBet(bet);
             widget.setTitulo(placar);
+            widget.refresh();
         }
     }
 }

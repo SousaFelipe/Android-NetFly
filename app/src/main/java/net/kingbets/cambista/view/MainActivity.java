@@ -11,8 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.utils.URL;
+import net.kingbets.cambista.alerts.PermissionAlert;
+import net.kingbets.cambista.utils.Config;
+import net.kingbets.cambista.view.fragments.BaseFragment;
 import net.kingbets.cambista.view.fragments.CampeonatosFragmnet;
+import net.kingbets.cambista.view.fragments.ClientesFragment;
 import net.kingbets.cambista.view.fragments.MinhaContaFragment;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 
@@ -21,6 +24,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
 
 
+    private Fragment currentFragment = null;
     private Fragment lastFragment = null;
 
 
@@ -42,7 +46,13 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     protected void onResume() {
         super.onResume();
-        loadFragment(PartidasFragment.newInstance(this));
+
+        if (Config.somePermissionDenied(this)) {
+            PermissionAlert.show(this);
+        }
+
+        currentFragment = PartidasFragment.newInstance(this);
+        loadFragment();
     }
 
 
@@ -54,12 +64,14 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId())
         {
             case R.id.action_refresh:
-
+                if (currentFragment != null) {
+                    ((BaseFragment) currentFragment).request();
+                }
                 break;
 
             case R.id.action_https:
@@ -86,33 +98,35 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        Fragment fragment = null;
-
         switch (item.getItemId()) {
 
             case R.id.bottom_nav_partidas:
-                fragment = PartidasFragment.newInstance(this);
+                currentFragment = PartidasFragment.newInstance(this);
                 break;
 
             case R.id.bottom_nav_campeonatos:
-                fragment = CampeonatosFragmnet.newInstance(this);
+                currentFragment = CampeonatosFragmnet.newInstance(this);
+                break;
+
+            case R.id.bottom_nav_clientes:
+                currentFragment = ClientesFragment.newInstance(this);
                 break;
 
             case R.id.bottom_nav_conta:
-                fragment = MinhaContaFragment.newInstance(this);
+                currentFragment = MinhaContaFragment.newInstance(this);
                 break;
         }
 
-        return loadFragment(fragment);
+        return loadFragment();
     }
 
 
 
-    private boolean loadFragment(Fragment fragment) {
+    private boolean loadFragment() {
 
-        if (fragment != null && lastFragment != fragment) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragments, fragment).commit();
-            lastFragment = fragment;
+        if (currentFragment != null && lastFragment != currentFragment) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragments, currentFragment).commit();
+            lastFragment = currentFragment;
             return true;
         }
 

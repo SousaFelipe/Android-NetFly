@@ -207,17 +207,37 @@
 
         </FrameLayout>
 
-        <ScrollView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/content_odds"
-                android:orientation="vertical"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent">
 
-        </ScrollView>
+                <LinearLayout
+                    android:id="@+id/content_odds"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </ScrollView>
+
+            <FrameLayout
+                android:visibility="gone"
+                android:id="@+id/content_loader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+            </FrameLayout>
+
+        </FrameLayout>
 
     </LinearLayout>
 

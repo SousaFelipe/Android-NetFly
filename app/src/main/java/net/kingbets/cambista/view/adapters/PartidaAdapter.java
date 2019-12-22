@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.local.futebol.Partida;
-import net.kingbets.cambista.model.remote.odds.principais.Resultado;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.futebol.Partida;
+import net.kingbets.cambista.http.models.odds.principais.Resultado;
 import net.kingbets.cambista.utils.Format;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
-import net.kingbets.cambista.view.widgets.MaisOddsWidget;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.view.widgets.WidgetMaisOdds;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,20 +40,16 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull PartidaAdapter.ViewHolder holder, int position) {
 
-        final Partida partida = partidas.get( position );
+        Partida partida = partidas.get( position );
 
         holder.txvHora.setText(Format.Time.compaact(partida.inicio));
         holder.txvCasa.setText(partida.casa);
         holder.txvFora.setText(partida.fora);
 
-        criaCasaWidgets(holder, position);
-        criaEmpateWidgets(holder, position);
-        criaForaWidgets(holder, position);
-
-        holder.wgtMaisOdds.setBackgroundResource(R.drawable.bg_odd_red_right);
-        holder.wgtMaisOdds.setPartida(partida);
-        holder.wgtMaisOdds.verificaSelecao();
-        holder.wgtMaisOdds.setParent(parent);
+        criaCasaWidgets(holder, partida);
+        criaEmpateWidgets(holder, partida);
+        criaForaWidgets(holder, partida);
+        criaWidgetMaisOdds(holder, partida);
     }
 
 
@@ -75,37 +72,53 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
 
 
 
-    private void criaCasaWidgets(ViewHolder holder, int position) {
-        Partida partida = partidas.get( position );
+    private void criaCasaWidgets(ViewHolder holder, Partida partida) {
 
-        holder.wgtCasa.setAposta(new Aposta(Resultado.TIPO).partida(partida).sentenca("C"));
-        holder.wgtCasa.setBackgroundResource(R.drawable.bg_odd_red_left);
-        holder.wgtCasa.setCotacao(partida.resultado.casa);
-        holder.wgtCasa.setTitulo("Casa");
-        holder.wgtCasa.mostraCotacao();
-        holder.wgtCasa.verificaSelecao();
+        Bet bet = new Bet(Resultado.TIPO).partida(partida).titulo("Casa").sentenca("C").cotacao(partida.probabilidades.casa);
+        bet.odd = partida.probabilidades.id;
+
+        holder.mainOdds.get(0).setBet(bet);
+        holder.mainOdds.get(0).setParent(parent);
+        holder.mainOdds.get(0).setSelectedResource(R.drawable.bg_odd_red_left);
+        holder.mainOdds.get(0).setRequestResource(R.drawable.bg_odd_gray_left);
+        holder.mainOdds.get(0).refresh();
     }
 
-    private void criaEmpateWidgets(ViewHolder holder, int position) {
-        Partida partida = partidas.get( position );
 
-        holder.wgtEmpate.setAposta(new Aposta(Resultado.TIPO).partida(partida).sentenca("E"));
-        holder.wgtEmpate.setBackgroundResource(R.drawable.bg_odd_red_mid);
-        holder.wgtEmpate.setCotacao(partida.resultado.empate);
-        holder.wgtEmpate.setTitulo("Empate");
-        holder.wgtEmpate.mostraCotacao();
-        holder.wgtEmpate.verificaSelecao();
+
+    private void criaEmpateWidgets(ViewHolder holder, Partida partida) {
+
+        Bet bet = new Bet(Resultado.TIPO).partida(partida).titulo("Empate").sentenca("E").cotacao(partida.probabilidades.empate);
+        bet.odd = partida.probabilidades.id;
+
+        holder.mainOdds.get(1).setBet(bet);
+        holder.mainOdds.get(1).setParent(parent);
+        holder.mainOdds.get(1).setSelectedResource(R.drawable.bg_odd_red_mid);
+        holder.mainOdds.get(1).setRequestResource(R.drawable.bg_odd_gray_mid);
+        holder.mainOdds.get(1).refresh();
     }
 
-    private void criaForaWidgets(ViewHolder holder, int position) {
-        Partida partida = partidas.get( position );
 
-        holder.wgtFora.setAposta(new Aposta(Resultado.TIPO).partida(partida).sentenca("F"));
-        holder.wgtFora.setBackgroundResource(R.drawable.bg_odd_red_mid);
-        holder.wgtFora.setCotacao(partida.resultado.fora);
-        holder.wgtFora.setTitulo("Fora");
-        holder.wgtFora.mostraCotacao();
-        holder.wgtFora.verificaSelecao();
+
+    private void criaForaWidgets(ViewHolder holder, Partida partida) {
+
+        Bet bet = new Bet(Resultado.TIPO).partida(partida).titulo("Fora").sentenca("F").cotacao(partida.probabilidades.fora);
+        bet.odd = partida.probabilidades.id;
+
+        holder.mainOdds.get(2).setBet(bet);
+        holder.mainOdds.get(2).setParent(parent);
+        holder.mainOdds.get(2).setSelectedResource(R.drawable.bg_odd_red_mid);
+        holder.mainOdds.get(2).setRequestResource(R.drawable.bg_odd_gray_mid);
+        holder.mainOdds.get(2).refresh();
+    }
+
+
+
+    private void criaWidgetMaisOdds(ViewHolder holder, Partida partida) {
+        holder.wgtMaisOdds.setBackgroundResource(R.drawable.bg_odd_red_right);
+        holder.wgtMaisOdds.setPartida(partida);
+        holder.wgtMaisOdds.setParent(parent);
+        holder.wgtMaisOdds.refresh(holder.mainOdds);
     }
 
 
@@ -126,10 +139,9 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
         TextView txvCasa;
         TextView txvFora;
 
-        Widget wgtCasa;
-        Widget wgtEmpate;
-        Widget wgtFora;
-        MaisOddsWidget wgtMaisOdds;
+        List<WidgetOdd> mainOdds = new ArrayList<>(3);
+
+        WidgetMaisOdds wgtMaisOdds;
 
 
         ViewHolder(View view) {
@@ -139,10 +151,11 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
             txvCasa = view.findViewById(R.id.txv_casa);
             txvFora = view.findViewById(R.id.txv_fora);
 
-            wgtCasa = new Widget(view.findViewById(R.id.layout_odd_casa));
-            wgtEmpate = new Widget(view.findViewById(R.id.layout_odd_empate));
-            wgtFora = new Widget(view.findViewById(R.id.layout_odd_fora));
-            wgtMaisOdds = new MaisOddsWidget(view.findViewById(R.id.layout_mais_odds));
+            mainOdds.add(new WidgetOdd(view.findViewById(R.id.layout_odd_casa)));
+            mainOdds.add(new WidgetOdd(view.findViewById(R.id.layout_odd_empate)));
+            mainOdds.add(new WidgetOdd(view.findViewById(R.id.layout_odd_fora)));
+
+            wgtMaisOdds = new WidgetMaisOdds(view.findViewById(R.id.layout_mais_odds));
         }
     }
 }

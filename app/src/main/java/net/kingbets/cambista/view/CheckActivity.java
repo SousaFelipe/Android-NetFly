@@ -10,9 +10,9 @@ import android.widget.TextView;
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
 import net.kingbets.cambista.model.contracts.PerfilContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.responses.PerfilResponse;
-import net.kingbets.cambista.model.responses.StatusResponse;
+import net.kingbets.cambista.model.Cambista;
+import net.kingbets.cambista.http.responses.PerfilResponse;
+import net.kingbets.cambista.http.responses.StatusResponse;
 import net.kingbets.cambista.utils.URL;
 
 import java.io.IOException;

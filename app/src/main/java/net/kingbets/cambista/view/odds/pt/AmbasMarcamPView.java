@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.primeiras.AmbasMarcamP;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.primeiras.AmbasMarcamP;
+import net.kingbets.cambista.view.fragments.BaseFragment;
 import net.kingbets.cambista.view.odds.BaseOddsView;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
 
 public class AmbasMarcamPView extends BaseOddsView {
@@ -19,8 +20,8 @@ public class AmbasMarcamPView extends BaseOddsView {
     private AmbasMarcamP ambasMarcamP;
 
 
-    private Widget wgtSim;
-    private Widget wgtNao;
+    private WidgetOdd wgtSim;
+    private WidgetOdd wgtNao;
 
 
     private TextView txvOddSim;
@@ -30,23 +31,20 @@ public class AmbasMarcamPView extends BaseOddsView {
 
     public AmbasMarcamPView(Context context, AmbasMarcamP ambasMarcamP) {
         super(LayoutInflater.from(context).inflate(R.layout.odds_ambas_marcam_pt, null, false));
-
         setContext(context);
-        setAposta(new Aposta(AmbasMarcamP.TIPO).partida(ambasMarcamP.partida));
-
         this.ambasMarcamP = ambasMarcamP;
     }
 
 
 
     @Override
-    public AmbasMarcamPView create() {
+    public AmbasMarcamPView create(BaseFragment parent) {
 
-        Aposta sim = new Aposta(AmbasMarcamP.TIPO).partida(ambasMarcamP.partida).titulo("1° Tempo - Ambas Marcam: SIM").sentenca("S").cotacao(ambasMarcamP.sim);
-        Aposta nao = new Aposta(AmbasMarcamP.TIPO).partida(ambasMarcamP.partida).titulo("1° Tempo - Ambas Marcam: NAO").sentenca("N").cotacao(ambasMarcamP.nao);
+        Bet sim = new Bet(AmbasMarcamP.TIPO).odd(ambasMarcamP.id).partida(ambasMarcamP.partida).titulo("1° Tempo - Ambas Marcam: SIM").sentenca("S").cotacao(ambasMarcamP.sim);
+        Bet nao = new Bet(AmbasMarcamP.TIPO).odd(ambasMarcamP.id).partida(ambasMarcamP.partida).titulo("1° Tempo - Ambas Marcam: NAO").sentenca("N").cotacao(ambasMarcamP.nao);
 
-        wgtSim = new Widget(sim, getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim_pt));
-        wgtNao = new Widget(nao, getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao_pt));
+        wgtSim = new WidgetOdd(sim, getRootView().findViewById(R.id.layout_odd_ambas_marcam_sim_pt), parent);
+        wgtNao = new WidgetOdd(nao, getRootView().findViewById(R.id.layout_odd_ambas_marcam_nao_pt), parent);
 
         txvOddSim = getRootView().findViewById(R.id.txv_odd_ambas_marcam_sim);
         txvOddNao = getRootView().findViewById(R.id.txv_odd_ambas_marcam_nao);
@@ -58,8 +56,13 @@ public class AmbasMarcamPView extends BaseOddsView {
 
     @Override
     public AmbasMarcamPView build() {
-        txvOddSim.setText( wgtSim.getTextCotacao() );
-        txvOddNao.setText( wgtNao.getTextCotacao() );
+
+        txvOddSim.setText( wgtSim.getTextOdd() );
+        txvOddNao.setText( wgtNao.getTextOdd() );
+
+        wgtSim.refresh();
+        wgtNao.refresh();
+
         return this;
     }
 

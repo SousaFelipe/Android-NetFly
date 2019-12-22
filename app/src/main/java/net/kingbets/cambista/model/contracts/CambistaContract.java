@@ -6,9 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 
-import net.kingbets.cambista.model.BaseContract;
 import net.kingbets.cambista.model.Helper;
-import net.kingbets.cambista.model.local.Cambista;
+import net.kingbets.cambista.model.Cambista;
 
 
 public class CambistaContract extends BaseContract {
@@ -21,8 +20,8 @@ public class CambistaContract extends BaseContract {
 
 
 
-    public boolean isEmpty() {
-        return super.isEmpty(Helper.CAMBISTAS);
+    public boolean isNotEmpty() {
+        return super.isNotEmpty(Helper.CAMBISTAS);
     }
 
 

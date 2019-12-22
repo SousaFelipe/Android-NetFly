@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.primeiras.ParImparP;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.primeiras.ParImparP;
+import net.kingbets.cambista.view.fragments.BaseFragment;
 import net.kingbets.cambista.view.odds.BaseOddsView;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
 
 public class ParOuImparPView extends BaseOddsView {
@@ -18,8 +19,8 @@ public class ParOuImparPView extends BaseOddsView {
 
     private ParImparP parOuImparP;
 
-    private Widget wgtPar;
-    private Widget wgtImpar;
+    private WidgetOdd wgtPar;
+    private WidgetOdd wgtImpar;
 
     private TextView txvOddPar;
     private TextView txvOddImpar;
@@ -28,23 +29,20 @@ public class ParOuImparPView extends BaseOddsView {
 
     public ParOuImparPView(Context context, ParImparP parOuImparP) {
         super(LayoutInflater.from(context).inflate(R.layout.odds_par_ou_impar_pt, null, false));
-
         setContext(context);
-        setAposta(new Aposta(ParImparP.TIPO).partida(parOuImparP.partida));
-
         this.parOuImparP = parOuImparP;
     }
 
 
 
     @Override
-    public ParOuImparPView create() {
+    public ParOuImparPView create(BaseFragment parent) {
 
-        Aposta par = new Aposta(ParImparP.TIPO).partida(parOuImparP.partida).titulo("1° Tempo: Par").sentenca("P").cotacao(parOuImparP.par);
-        Aposta imp = new Aposta(ParImparP.TIPO).partida(parOuImparP.partida).titulo("1° Tempo: Impar").sentenca("I").cotacao(parOuImparP.impar);
+        Bet par = new Bet(ParImparP.TIPO).odd(parOuImparP.id).partida(parOuImparP.partida).titulo("1° Tempo: Par").sentenca("P").cotacao(parOuImparP.par);
+        Bet imp = new Bet(ParImparP.TIPO).odd(parOuImparP.id).partida(parOuImparP.partida).titulo("1° Tempo: Impar").sentenca("I").cotacao(parOuImparP.impar);
 
-        wgtPar = new Widget(par, getRootView().findViewById(R.id.layout_odd_par_pt));
-        wgtImpar = new Widget(imp, getRootView().findViewById(R.id.layout_odd_impar_pt));
+        wgtPar = new WidgetOdd(par, getRootView().findViewById(R.id.layout_odd_par_pt), parent);
+        wgtImpar = new WidgetOdd(imp, getRootView().findViewById(R.id.layout_odd_impar_pt), parent);
 
         txvOddPar = getRootView().findViewById(R.id.txv_odd_par);
         txvOddImpar = getRootView().findViewById(R.id.txv_odd_impar);
@@ -55,8 +53,13 @@ public class ParOuImparPView extends BaseOddsView {
 
     @Override
     public ParOuImparPView build() {
-        txvOddPar.setText( wgtPar.getTextCotacao() );
-        txvOddImpar.setText( wgtImpar.getTextCotacao() );
+
+        txvOddPar.setText( wgtPar.getTextOdd() );
+        txvOddImpar.setText( wgtImpar.getTextOdd() );
+
+        wgtPar.refresh();
+        wgtImpar.refresh();
+
         return this;
     }
 

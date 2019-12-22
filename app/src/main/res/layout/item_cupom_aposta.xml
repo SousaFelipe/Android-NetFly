@@ -14,8 +14,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/txv_cupom_futebol"
@@ -26,10 +25,17 @@
 
         <ImageView
             android:id="@+id/btn_delete_aposta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             android:layout_gravity="end|center_vertical"
             android:src="@drawable/ic_close_light" />
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/content_loader"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_gravity="end|center_vertical"/>
 
     </FrameLayout>
 

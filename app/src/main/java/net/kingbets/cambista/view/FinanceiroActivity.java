@@ -15,8 +15,9 @@ import android.widget.TextView;
 
 import net.kingbets.cambista.R;
 import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.responses.CaixaResponse;
+import net.kingbets.cambista.model.Cambista;
+import net.kingbets.cambista.http.responses.CaixaResponse;
+import net.kingbets.cambista.utils.Config;
 import net.kingbets.cambista.utils.Str;
 import net.kingbets.cambista.utils.URL;
 
@@ -177,6 +178,7 @@ public class FinanceiroActivity extends BaseActivity {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
+                .addHeader(Config.AUTH_HEADER, cambista.token)
                 .url( URL.FINANCEIRO + "resumo/" + cambista.getWebToken() + "/" + getPeriodo() )
                 .build();
 
@@ -189,7 +191,14 @@ public class FinanceiroActivity extends BaseActivity {
     private void proccessResponse(Response response) throws IOException {
         if (response.isSuccessful()) {
             if (response.body() != null) {
-                mostrarResumo( CaixaResponse.receive( response.body().string() ) );
+
+                final String fnBodyString = response.body().string();
+
+                runOnUiThread(new Runnable() {
+                    @Override public void run() {
+                        mostrarResumo(CaixaResponse.receive(fnBodyString));
+                    }
+                });
             }
             else {
                 alert(this, R.string.alert_http_response_empty);
@@ -206,26 +215,17 @@ public class FinanceiroActivity extends BaseActivity {
         if (response.code == 200) {
 
             setLoaderVisibility(false);
+            Cambista cambista = new CambistaContract(FinanceiroActivity.this).first();
 
-            final CaixaResponse fnResponse = response;
-
-            runOnUiThread(new Runnable() {
-                @Override public void run() {
-
-                    Cambista cambista = new CambistaContract(FinanceiroActivity.this).first();
-
-                    txvQuantApostas.setText( String.valueOf(fnResponse.body.quantApostas) );
-                    txvTotalApurado.setText( Str.getCurrency(fnResponse.body.entrada) );
-                    txvComissao.setText( Str.getCurrency(fnResponse.body.comissao) );
-                    txvQuantPremios.setText( String.valueOf(fnResponse.body.quant_premios_cambista + fnResponse.body.quant_premios_kingbets) );
-                    txvNomeCambistaLabel.setText( Str.nomeResumido( cambista.nome ) );
-                    txvTotalPagoCambista.setText( Str.getCurrency(fnResponse.body.premios_cambista) );
-                    txvTotalPagoFortunna.setText( Str.getCurrency(fnResponse.body.premios_kingbets) );
-                    txvTotalPago.setText( Str.getCurrency( fnResponse.body.premios_cambista + fnResponse.body.premios_kingbets ) );
-                    txvDepositar.setText( Str.getCurrency( fnResponse.body.deposito ) );
-
-                }
-            });
+            txvQuantApostas.setText( String.valueOf(response.body.quantApostas) );
+            txvTotalApurado.setText( Str.getCurrency(response.body.entrada) );
+            txvComissao.setText( Str.getCurrency(response.body.comissao) );
+            txvQuantPremios.setText( String.valueOf(response.body.quant_premios_cambista + response.body.quant_premios_kingbets) );
+            txvNomeCambistaLabel.setText( Str.nomeResumido( cambista.nome ) );
+            txvTotalPagoCambista.setText( Str.getCurrency(response.body.premios_cambista) );
+            txvTotalPagoFortunna.setText( Str.getCurrency(response.body.premios_kingbets) );
+            txvTotalPago.setText( Str.getCurrency( response.body.premios_cambista + response.body.premios_kingbets ) );
+            txvDepositar.setText( Str.getCurrency( response.body.deposito ) );
 
         }
         else {

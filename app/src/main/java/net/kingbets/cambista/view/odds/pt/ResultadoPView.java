@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.local.apostas.Aposta;
-import net.kingbets.cambista.model.remote.odds.primeiras.ResultadoP;
+import net.kingbets.cambista.http.models.apostas.Bet;
+import net.kingbets.cambista.http.models.odds.primeiras.ResultadoP;
+import net.kingbets.cambista.view.fragments.BaseFragment;
 import net.kingbets.cambista.view.odds.BaseOddsView;
-import net.kingbets.cambista.view.widgets.Widget;
+import net.kingbets.cambista.view.widgets.WidgetOdd;
 
 
 public class ResultadoPView extends BaseOddsView {
@@ -18,9 +19,9 @@ public class ResultadoPView extends BaseOddsView {
 
     private ResultadoP resultadoP;
 
-    private Widget wgtCasa;
-    private Widget wgtEmpate;
-    private Widget wgtFora;
+    private WidgetOdd wgtCasa;
+    private WidgetOdd wgtEmpate;
+    private WidgetOdd wgtFora;
 
     private TextView txvOddCasa;
     private TextView txvOddEmpate;
@@ -30,28 +31,25 @@ public class ResultadoPView extends BaseOddsView {
 
     public ResultadoPView(Context context, ResultadoP resultadoP) {
         super( LayoutInflater.from(context).inflate(R.layout.odds_principal_pt, null, false));
-
         setContext(context);
-        setAposta(new Aposta(ResultadoP.TIPO).partida(resultadoP.partida));
-
         this.resultadoP = resultadoP;
     }
 
 
     @Override
-    public ResultadoPView create() {
+    public ResultadoPView create(BaseFragment parent) {
 
-        Aposta casa = new Aposta(ResultadoP.TIPO).partida(resultadoP.partida).titulo("1° Tempo - Casa").sentenca("C").cotacao(resultadoP.casa);
-        Aposta empate = new Aposta(ResultadoP.TIPO).partida(resultadoP.partida).titulo("1° Tempo - Empate").sentenca("E").cotacao(resultadoP.empate);
-        Aposta fora = new Aposta(ResultadoP.TIPO).partida(resultadoP.partida).titulo("1° Tempo - Fora").sentenca("F").cotacao(resultadoP.fora);
+        Bet casa    = new Bet(ResultadoP.TIPO).odd(resultadoP.id).partida(resultadoP.partida).titulo("1° Tempo - Casa").sentenca("C").cotacao(resultadoP.casa);
+        Bet empate  = new Bet(ResultadoP.TIPO).odd(resultadoP.id).partida(resultadoP.partida).titulo("1° Tempo - Empate").sentenca("E").cotacao(resultadoP.empate);
+        Bet fora    = new Bet(ResultadoP.TIPO).odd(resultadoP.id).partida(resultadoP.partida).titulo("1° Tempo - Fora").sentenca("F").cotacao(resultadoP.fora);
 
-        wgtCasa = new Widget(casa, getRootView().findViewById(R.id.layout_odd_casa_pt));
-        wgtEmpate = new Widget(empate, getRootView().findViewById(R.id.layout_odd_empate_pt));
-        wgtFora = new Widget(fora, getRootView().findViewById(R.id.layout_odd_fora_pt));
+        wgtCasa     = new WidgetOdd(casa, getRootView().findViewById(R.id.layout_odd_casa_pt), parent);
+        wgtEmpate   = new WidgetOdd(empate, getRootView().findViewById(R.id.layout_odd_empate_pt), parent);
+        wgtFora     = new WidgetOdd(fora, getRootView().findViewById(R.id.layout_odd_fora_pt), parent);
 
-        txvOddCasa = getRootView().findViewById(R.id.txv_odd_casa);
-        txvOddEmpate = getRootView().findViewById(R.id.txv_odd_empate);
-        txvOddFora = getRootView().findViewById(R.id.txv_odd_fora);
+        txvOddCasa      = getRootView().findViewById(R.id.txv_odd_casa);
+        txvOddEmpate    = getRootView().findViewById(R.id.txv_odd_empate);
+        txvOddFora      = getRootView().findViewById(R.id.txv_odd_fora);
 
         return this;
     }
@@ -59,9 +57,15 @@ public class ResultadoPView extends BaseOddsView {
 
     @Override
     public ResultadoPView build() {
-        txvOddCasa.setText( wgtCasa.getTextCotacao() );
-        txvOddEmpate.setText( wgtEmpate.getTextCotacao() );
-        txvOddFora.setText( wgtFora.getTextCotacao() );
+
+        txvOddCasa.setText( wgtCasa.getTextOdd() );
+        txvOddEmpate.setText( wgtEmpate.getTextOdd() );
+        txvOddFora.setText( wgtFora.getTextOdd() );
+
+        wgtCasa.refresh();
+        wgtEmpate.refresh();
+        wgtFora.refresh();
+
         return this;
     }
 

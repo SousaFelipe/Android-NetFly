@@ -321,7 +321,7 @@
 
     <FrameLayout
         android:visibility="gone"
-        android:id="@+id/content_loader"
+        android:id="@+id/content_loader_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient_dark">

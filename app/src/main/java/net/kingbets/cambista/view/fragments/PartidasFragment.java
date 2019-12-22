@@ -14,14 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.kingbets.cambista.R;
-import net.kingbets.cambista.model.contracts.CambistaContract;
-import net.kingbets.cambista.model.local.Cambista;
-import net.kingbets.cambista.model.local.apostas.Single;
-import net.kingbets.cambista.model.responses.CampeonatoPartidasResponse;
+import net.kingbets.cambista.http.models.apostas.BetStack;
+import net.kingbets.cambista.http.responses.CampeonatoPartidasResponse;
+import net.kingbets.cambista.utils.Config;
+import net.kingbets.cambista.utils.Connection;
 import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.adapters.CampeonatoPartidaAdapter;
-import net.kingbets.cambista.view.dialogs.CriaCupomDialog;
-import net.kingbets.cambista.view.dialogs.VerCupomDialog;
+import net.kingbets.cambista.view.dialogs.DialogCriaCupom;
+import net.kingbets.cambista.view.dialogs.DialogVerCupom;
 
 import java.io.IOException;
 
@@ -47,6 +47,7 @@ public class PartidasFragment extends BaseFragment {
     private CardView hoje;
     private CardView amanha;
     private CardView proximos;
+    private View btnShowBets;
 
     private RecyclerView recycler;
     private CampeonatoPartidaAdapter adapter;
@@ -93,14 +94,12 @@ public class PartidasFragment extends BaseFragment {
 
             selecionarWidget(hoje);
 
-            CardView btnViewCupom = getView().findViewById(R.id.btn_view_cupom);
-            btnViewCupom.setOnClickListener(new View.OnClickListener() {
+            btnShowBets = getView().findViewById(R.id.btn_view_cupom);
+            btnShowBets.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     criarCupom();
                 }
             });
-
-            Single.instance().setDisplayButton( (CardView) getView().findViewById(R.id.btn_view_cupom) );
         }
     }
 
@@ -108,19 +107,22 @@ public class PartidasFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        BetStack.instance().setBtnShowBets(btnShowBets);
+
         request();
     }
 
 
 
     public void mostrarCupom(String codigo) {
-        VerCupomDialog.display(this, codigo);
+        DialogVerCupom.display(this, codigo);
     }
 
 
 
     private void criarCupom() {
-        CriaCupomDialog.display(this);
+        DialogCriaCupom.display(this);
     }
 
 
@@ -170,11 +172,10 @@ public class PartidasFragment extends BaseFragment {
         setLoaderVisibility(true);
         setInfoVisibility(false);
 
-        Cambista local = new CambistaContract(context).first();
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = Connection.getClientWithAuthHeader(getContext());
 
         Request request = new Request.Builder()
-                .url(URL.PARTIDAS + "listar/" + local.getWebToken() + "/" + PERIODO)
+                .url(URL.PARTIDAS + "listar/" + Config.getDeviceInfo(getContext()) + "/" + PERIODO)
                 .build();
 
         client.newCall(request).enqueue(callback);
@@ -182,11 +183,21 @@ public class PartidasFragment extends BaseFragment {
 
 
 
-    private void proccessResponse(Response response) throws IOException {
+    private void proccessResponse(@NonNull Response response) throws IOException {
 
         if (response.isSuccessful()) {
+
             if (response.body() != null) {
-                onSuccessResponse(CampeonatoPartidasResponse.receive( response.body().string() ));
+
+                final String fnBodyString = response.body().string();
+
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            onSuccessResponse(CampeonatoPartidasResponse.receive(fnBodyString));
+                        }
+                    });
+                }
             }
             else {
                 alert(R.string.alert_http_response_empty);
@@ -201,31 +212,19 @@ public class PartidasFragment extends BaseFragment {
 
 
 
-    private void onSuccessResponse(CampeonatoPartidasResponse response) {
-
+    private void onSuccessResponse(@NonNull CampeonatoPartidasResponse response) {
         if (response.body.size() > 0) {
 
+            LinearLayoutManager layoutManager = new LinearLayoutManager( context );
+
             adapter.setDataList(response.body);
+            recycler.setLayoutManager( layoutManager );
+            recycler.setAdapter(adapter);
 
-            if (getActivity() != null) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override public void run() {
-                        LinearLayoutManager layoutManager = new LinearLayoutManager( context );
-
-                        recycler.setLayoutManager( layoutManager );
-                        recycler.setAdapter(adapter);
-
-                        layoutManager.scrollToPositionWithOffset(0, 0);
-                    }
-                });
-            }
+            layoutManager.scrollToPositionWithOffset(0, 0);
         }
-        else if (getActivity() != null) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override public void run() {
-                    adapter.clear();
-                }
-            });
+        else {
+            adapter.clear();
             setInfoVisibility(true);
         }
     }

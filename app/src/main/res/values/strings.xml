@@ -17,6 +17,7 @@
 
     <!-- Drawer Actions -->
     <string name="action_cancelar">CANCELAR</string>
+    <string name="action_compartilhar">COMPARTILHAR</string>
     <string name="action_imprimir">IMPRIMIR</string>
     <string name="action_https">HTTPS</string>
     <string name="action_refresh">Atualizar</string>
@@ -40,14 +41,17 @@
     <string name="lb_campeonatos">CAMPEONATOS</string>
     <string name="lb_meu_perfil">FINANCEIRO</string>
     <string name="lb_clientes">CLIENTES</string>
+    <string name="lb_meus_clientes">MEUS CLIENTES</string>
     <string name="lb_mais_odds">MAIS OPÇÕES</string>
     <string name="lb_nenhum_campeonato">NENHUM CAMPEONATO ENCONTRADO</string>
+    <string name="lb_nenhum_cliente">NENHUM CLIENTE ENCONTRADO</string>
     <string name="lb_nenhuma_partida">NENHUMA PARTIDA ENCONTRADA</string>
     <string name="lb_nenhum_cupom">NENHUM BILHETE ENCONTRADO</string>
     <string name="lb_visualizar_cupom">VISUALIZAR BILHETE</string>
     <string name="lb_salvar_cupom">SALVAR BILHETE</string>
     <string name="lb_email">EMAIL</string>
     <string name="lb_contato">CONTATO</string>
+    <string name="lb_codigo">CÓDIGO</string>
     <string name="lb_limite">LIMITE</string>
     <string name="lb_cupons">BILHETES</string>
     <string name="lb_caixa">CAIXA</string>
@@ -71,6 +75,11 @@
     <string name="odd_gols_mais_ou_menos">TOTAL DE GOLS - MAIS OU MENOS</string>
     <string name="odd_placar_extato">PLACAR EXATO</string>
     <string name="odd_empate_anula_aposta">EMPATE ANULA APOSTA</string>
+
+    <string name="odd_tempo_com_mais_gols">TEMPO COM MAIS GOLS</string>
+    <string name="odd_faixa_de_gols">FAIXA DE GOLS NO JOGO</string>
+    <string name="odd_casa_ganha_sem_levar_gols">CASA - GANHA SEM LEVAR GOLS?</string>
+    <string name="odd_fora_ganha_sem_levar_gols">FORA - GANHA SEM LEVAR GOLS?</string>
 
 
     <string name="odd_resultado_p">1° TEMPO - RESULTADO</string>
@@ -109,6 +118,11 @@
     <string name="lb_odd_fora_casa">FORA - CASA</string>
     <string name="lb_odd_fora_empate">FORA - EMPATE</string>
     <string name="lb_odd_fora_fora">FORA - FORA</string>
+    <string name="lb_odd_impar">ÍMPAR</string>
+    <string name="lb_odd_par">PAR</string>
+
+    <string name="lb_odd_casa_ou_anula">CASA</string>
+    <string name="lb_odd_fora_ou_anula">FORA</string>
 
     <string name="lb_odd_mais_05">MAIS DE 0.5</string>
     <string name="lb_odd_menos_05">MENOS DE 0.5</string>
@@ -123,15 +137,20 @@
     <string name="lb_odd_mais_55">MAIS DE 5.5</string>
     <string name="lb_odd_menos_55">MENOS DE 5.5</string>
 
-    <string name="lb_odd_impar">ÍMPAR</string>
-    <string name="lb_odd_par">PAR</string>
+    <string name="lb_odd_tempo_com_mais_gols_p">1° TEMPO</string>
+    <string name="lb_odd_tempo_com_mais_gols_i">IGUAIS</string>
+    <string name="lb_odd_tempo_com_mais_gols_s">2° TEMPO</string>
 
-    <string name="lb_odd_casa_ou_anula">CASA</string>
-    <string name="lb_odd_fora_ou_anula">FORA</string>
+
+    <string name="lb_odd_faixa_de_gols_01">0 a 1</string>
+    <string name="lb_odd_faixa_de_gols_23">2 a 3</string>
+    <string name="lb_odd_faixa_de_gols_45">4 a 5</string>
+    <string name="lb_odd_faixa_de_gols_M6">+ de 6</string>
 
 
     <string name="menu_partidas">PARTIDAS</string>
     <string name="menu_campeonatos">CAMPEONATOS</string>
+    <string name="menu_clientes">CLIENTES</string>
     <string name="menu_conta">MINHA CONTA</string>
 
 
@@ -214,7 +233,6 @@
     <string name="alert_email_empty">É necessário fornecer um email.</string>
     <string name="alert_password_empty">É necessário fornecer uma senha de 6 dígitos!</string>
     <string name="alert_invalid_credentials">Credenciais inválidas!</string>
-
 
 
     <string name="cupom_fake_dashes">--------------------------------------------------------------------------------</string>

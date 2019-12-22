@@ -37,7 +37,6 @@
                     android:layout_width="@dimen/imv_cupom_status_size_large"
                     android:layout_height="@dimen/imv_cupom_status_size_large"
                     android:padding="@dimen/padding_16"
-                    android:src="@drawable/ic_ganhou"
                     android:background="@drawable/bg_image_status"/>
 
                 <LinearLayout

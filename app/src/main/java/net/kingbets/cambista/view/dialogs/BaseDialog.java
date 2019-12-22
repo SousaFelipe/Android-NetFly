@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import net.kingbets.cambista.view.fragments.BaseFragment;
-import net.kingbets.cambista.view.fragments.PartidasFragment;
 
 
 public abstract class BaseDialog extends DialogFragment {
@@ -17,9 +16,14 @@ public abstract class BaseDialog extends DialogFragment {
 
     protected BaseFragment parent;
     protected LinearLayout layoutContentApostas;
+    protected View rootView;
     protected int loader;
 
 
+
+    protected void setRootView(View rootView) {
+        this.rootView = rootView;
+    }
 
     protected void setLoader(int loader) {
         this.loader = loader;
@@ -34,9 +38,7 @@ public abstract class BaseDialog extends DialogFragment {
         if (getActivity() != null) {
             getActivity().runOnUiThread(new Runnable() {
                 @Override public void run() {
-                    if (getView() != null) {
-                        getView().findViewById(loader).setVisibility(fnVisible ? View.VISIBLE : View.GONE);
-                    }
+                    rootView.findViewById(loader).setVisibility(fnVisible ? View.VISIBLE : View.GONE);
                 }
             });
         }

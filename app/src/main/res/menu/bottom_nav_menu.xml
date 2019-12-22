@@ -12,6 +12,11 @@
         android:title="@string/menu_campeonatos" />
 
     <item
+        android:id="@+id/bottom_nav_clientes"
+        android:icon="@drawable/ic_clientes"
+        android:title="@string/menu_clientes" />
+
+    <item
         android:id="@+id/bottom_nav_conta"
         android:icon="@drawable/ic_conta"
         android:title="@string/menu_conta" />

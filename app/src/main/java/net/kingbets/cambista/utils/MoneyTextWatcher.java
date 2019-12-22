@@ -5,8 +5,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-import net.kingbets.cambista.model.local.apostas.Single;
-import net.kingbets.cambista.view.dialogs.CriaCupomDialog;
+import net.kingbets.cambista.http.models.apostas.BetStack;
+import net.kingbets.cambista.model.apostas.Cupom;
+import net.kingbets.cambista.view.dialogs.DialogCriaCupom;
 
 import java.text.NumberFormat;
 
@@ -15,14 +16,14 @@ public class MoneyTextWatcher implements TextWatcher {
 
 
 
-    private CriaCupomDialog parent;
+    private DialogCriaCupom parent;
     private EditText editText;
 
     private String lastAmount = "";
 
 
 
-    public MoneyTextWatcher(CriaCupomDialog parent, EditText editText) {
+    public MoneyTextWatcher(DialogCriaCupom parent, EditText editText) {
         super();
         this.parent = parent;
         this.editText = editText;
@@ -61,11 +62,12 @@ public class MoneyTextWatcher implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
-        Single single = Single.instance();
+        Cupom cupom = BetStack.instance().getCupom();
         String clean = s.toString().replaceAll("[R$,.]", "");
 
-        single.setValorApostado(Double.parseDouble(clean) / 100);
-        single.refresh();
+        cupom.setValorApostado(Double.parseDouble(clean) / 100);
+        cupom.updatePossivelRetorno();
+
         parent.refresh();
     }
 }
