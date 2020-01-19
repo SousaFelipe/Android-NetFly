@@ -28,9 +28,6 @@ import net.kingbets.cambista.utils.URL;
 import net.kingbets.cambista.view.ImpressaoActivity;
 import net.kingbets.cambista.view.fragments.PartidasFragment;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -314,31 +311,11 @@ public class DialogVerCupom extends BaseDialog {
             txvEquipes.setText( equipes );
             txvTitulo.setText( bet.titulo );
             txvCotacao.setText( String.format(Locale.getDefault(), "%.2f", bet.cotacao) );
-            txvStatus.setText( getStatus(bet.status) );
+            txvStatus.setText( bet.getStatusText() );
 
             layoutContentApostas.addView(view);
         }
 
         setLoaderVisibility(false);
-    }
-
-    @NotNull
-    @Contract(pure = true)
-    private String getStatus(@NonNull String status) {
-
-        switch (status) {
-
-            case "G":
-                return "Ganhou";
-
-            case "P":
-                return "Perdeu";
-
-            case "C":
-                return "Cancelada";
-
-            default:
-                return "Aguardando";
-        }
     }
 }

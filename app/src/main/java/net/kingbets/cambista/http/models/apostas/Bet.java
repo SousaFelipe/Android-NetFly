@@ -20,7 +20,6 @@ public class Bet {
 
     private static final String STATUS_AGUARDANDO   = "AGUARDANDO";
     private static final String STATUS_CANCELADA    = "CANCELADA";
-    private static final String STATUS_ADIADA       = "ADIADA";
     private static final String STATUS_GANHOU       = "GANHOU";
     private static final String STATUS_PERDEU       = "PERDEU";
 
@@ -52,9 +51,9 @@ public class Bet {
             tipo = jsonBet.getString("tipo");
             sentenca = jsonBet.getString("sentenca");
             cotacao = jsonBet.getDouble("cotacao");
+            status = jsonBet.has("status") ? jsonBet.getString("status") : "A";
 
             setPartida(jsonBet.getJSONObject("partida"));
-            setStatus(jsonBet.has("status") ? jsonBet.getString("status") : "A");
 
         }
         catch (JSONException e) {
@@ -81,31 +80,16 @@ public class Bet {
         }
     }
 
-    public void setStatus(String status) {
+
+
+    public String getStatusText() {
         switch (status) {
 
-            case "A":
-                this.status = STATUS_AGUARDANDO;
-                break;
+            case "G": return STATUS_GANHOU;
+            case "P": return STATUS_PERDEU;
+            case "C": return STATUS_CANCELADA;
 
-            case "C":
-                this.status = STATUS_CANCELADA;
-                break;
-
-            case "D":
-                this.status = STATUS_ADIADA;
-                break;
-
-            case "G":
-                this.status = STATUS_GANHOU;
-                break;
-
-            case "P":
-                this.status = STATUS_PERDEU;
-                break;
-
-            default:
-                this.status = "ERRO";
+            default: return STATUS_AGUARDANDO;
         }
     }
 
